@@ -20,6 +20,7 @@ import { OverviewComponent } from './components/dashboard/overview/overview.comp
 import { LocationComponent } from './components/dashboard/location/location.component';
 import { StudentsComponent } from './components/dashboard/students/students.component';
 import { TagsComponent } from './components/dashboard/tags/tags.component';
+import { ManageTComponent, DeleteDialogBox } from './components/dashboard/tags/manage-t/manage-t.component';
 import { LecturersComponent } from './components/dashboard/lecturers/lecturers.component';
 
 // AoT requires an exported function for factories
@@ -28,11 +29,19 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 }
 
 @NgModule({
+  entryComponents: [
+    DeleteDialogBox
+  ],
   declarations: [
     AppComponent, 
     DashboardComponent, 
     OverviewComponent, 
-    LocationComponent, StudentsComponent, TagsComponent, LecturersComponent 
+    LocationComponent, 
+    StudentsComponent, 
+    TagsComponent, 
+    ManageTComponent,
+    DeleteDialogBox,
+    LecturersComponent 
   ],
   imports: [
     BrowserModule,
