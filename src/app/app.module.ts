@@ -20,6 +20,7 @@ import { OverviewComponent } from './components/dashboard/overview/overview.comp
 import { LocationComponent } from './components/dashboard/location/location.component';
 import { StudentsComponent } from './components/dashboard/students/students.component';
 import { TagsComponent } from './components/dashboard/tags/tags.component';
+import { LecturersComponent } from './components/dashboard/lecturers/lecturers.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -31,7 +32,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     AppComponent, 
     DashboardComponent, 
     OverviewComponent, 
-    LocationComponent, StudentsComponent, TagsComponent 
+    LocationComponent, StudentsComponent, TagsComponent, LecturersComponent 
   ],
   imports: [
     BrowserModule,
