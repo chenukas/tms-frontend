@@ -1,2 +1,41 @@
-<p>dashboard works!</p>
-<button mat-raised-button color="accent">Accent</button>
+<!-- <nav class="navbar sticky-top fixed-top navbar-light" style="background-color: #504f4f">
+    <a class="navbar-brand"></a>
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button mat-raised-button color="primary" style="margin-right: 30px;">Search</button>
+    </form>
+</nav> -->
+
+<!-- Sidebar -->
+<nav id="sidebar">
+    <div class="sidebar-header" style="text-align: center;">
+        <img src="assets/images/logo.png" class="logo" alt="logo">
+        <h6>ABC INSTITUTE</h6>
+    </div>
+
+    <ul class="list-unstyled components">
+        <li>
+            <a [routerLink]="['overview']">Overview</a>
+        </li>
+        <mat-divider></mat-divider>
+        <li>
+            <a href="#stdSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Students</a>
+            <ul class="collapse list-unstyled" id="stdSubmenu">
+                <li>
+                    <a [routerLink]="['student/add']">Year and Semester</a>
+                </li>
+                <li>
+                    <a [routerLink]="['student/update']">Programs</a>
+                </li>
+                <li>
+                    <a [routerLink]="['student/archive']">Groups/Sub-grups</a>
+                </li>
+            
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<div class="inner-container">
+    <router-outlet></router-outlet>
+</div>
