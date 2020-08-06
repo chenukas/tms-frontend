@@ -15,8 +15,9 @@ const routes: Routes = [
           {
             path: 'manage', component: ManageTComponent
           }
-        ]}
-
+        ]
+      },
+      //set path here
     ]
   }
 ];
