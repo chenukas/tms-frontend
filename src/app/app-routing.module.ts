@@ -6,8 +6,7 @@ import { TagsComponent } from './components/dashboard/tags/tags.component';
 import { ManageTComponent } from './components/dashboard/tags/manage-t/manage-t.component';
 import { LecturersComponent } from './components/dashboard/lecturers/lecturers.component';
 import { AddLecComponent } from './components/dashboard/lecturers/add-lec/add-lec.component';
-import { ViewLecComponent } from './components/dashboard/lecturers/view-lec/view-lec.component';
-import { ArchivesLComponent } from './components/dashboard/lecturers/archives-l/archives-l.component';
+import { ManageLecComponent } from './components/dashboard/lecturers/manage-lec/manage-lec.component';
 
 const routes: Routes = [
   {
@@ -25,8 +24,8 @@ const routes: Routes = [
         component: LecturersComponent,
         children: [
           { path: 'add', component: AddLecComponent },
-          { path: 'view', component: ViewLecComponent},
-          { path: 'delete', component: ArchivesLComponent }
+          { path: 'manage', component: ManageLecComponent}
+          
         ] 
       },
       //set path here

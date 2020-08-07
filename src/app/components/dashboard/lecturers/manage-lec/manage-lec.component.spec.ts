@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArchivesLComponent } from './archives-l.component';
+import { ManageLecComponent } from './manage-lec.component';
 
-describe('ArchivesLComponent', () => {
-  let component: ArchivesLComponent;
-  let fixture: ComponentFixture<ArchivesLComponent>;
+describe('ManageLecComponent', () => {
+  let component: ManageLecComponent;
+  let fixture: ComponentFixture<ManageLecComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArchivesLComponent ]
+      declarations: [ ManageLecComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ArchivesLComponent);
+    fixture = TestBed.createComponent(ManageLecComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
