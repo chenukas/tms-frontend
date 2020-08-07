@@ -22,6 +22,10 @@ import { StudentsComponent } from './components/dashboard/students/students.comp
 import { TagsComponent } from './components/dashboard/tags/tags.component';
 import { ManageTComponent, DeleteDialogBox } from './components/dashboard/tags/manage-t/manage-t.component';
 import { LecturersComponent } from './components/dashboard/lecturers/lecturers.component';
+import { AddLecComponent } from './components/dashboard/lecturers/add-lec/add-lec.component';
+import { UpdateLecComponent } from './components/dashboard/lecturers/update-lec/update-lec.component';
+import { ViewLecComponent } from './components/dashboard/lecturers/view-lec/view-lec.component';
+import { ArchivesLComponent } from './components/dashboard/lecturers/archives-l/archives-l.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -41,7 +45,11 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     TagsComponent, 
     ManageTComponent,
     DeleteDialogBox,
-    LecturersComponent 
+    LecturersComponent,
+    AddLecComponent,
+    UpdateLecComponent,
+    ViewLecComponent,
+    ArchivesLComponent 
   ],
   imports: [
     BrowserModule,
