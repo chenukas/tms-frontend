@@ -33,6 +33,30 @@
             
             </ul>
         </li>
+        <mat-divider></mat-divider>
+        <li>
+            <a href = "#lecSubmenu" data-toggle = "collapse" aria-expanded = "false" class = "dropdown-toggle">Lecturers</a>
+            <ul class = "collapse list-unstyled" id = "lecSubmenu">
+                <li>
+                    <a [routerLink] = "[lecturer/add]">Add Lecturers</a>
+                </li>
+                <li>
+                    <a [routerLink] = "[lecturer/update]">Manage Details</a>
+                </li>
+                <li>
+                    <a [routerLink] = "[lecturer/delete]">Lecturer Archives</a>
+                </li>
+            </ul>
+        </li>
+        <mat-divider></mat-divider>
+        <li>
+            <a href="#tagSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tags</a>
+            <ul class="collapse list-unstyled" id="tagSubmenu">
+                <li>
+                    <a [routerLink]="['tags/manage']">Manage</a>
+                </li>  
+            </ul>  
+        </li>
     </ul>
 </nav>
 
