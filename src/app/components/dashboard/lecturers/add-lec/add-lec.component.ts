@@ -1,6 +1,7 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-add-lec',
@@ -14,7 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormBuilder,
     FormGroup,
     Validators,
-    ReactiveFormsModule
+    MatFormFieldModule,
+    MatButtonModule
   ],
 })
 
