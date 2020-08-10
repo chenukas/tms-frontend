@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -7,6 +7,11 @@ import { ManageTComponent } from './components/dashboard/tags/manage-t/manage-t.
 import { LecturersComponent } from './components/dashboard/lecturers/lecturers.component';
 import { AddLecComponent } from './components/dashboard/lecturers/add-lec/add-lec.component';
 import { ManageLecComponent } from './components/dashboard/lecturers/manage-lec/manage-lec.component';
+import { StudentsComponent } from './components/dashboard/students/students.component';
+import { YearSemsComponent } from './components/dashboard/students/year-sems/year-sems.component';
+import { ProgrammesComponent } from './components/dashboard/students/programmes/programmes.component';
+import { GroupsComponent } from './components/dashboard/students/groups/groups.component';
+import { GenerateBComponent } from './components/dashboard/students/generate-b/generate-b.component';
 
 const routes: Routes = [
   {
@@ -28,6 +33,16 @@ const routes: Routes = [
           
         ] 
       },
+      {
+        path: 'students',
+        component: StudentsComponent,
+        children: [
+          { path: 'yearsems', component: YearSemsComponent },
+          { path: 'programmes', component: ProgrammesComponent },
+          { path: 'groups', component: GroupsComponent },
+          { path: 'generate', component: GenerateBComponent }
+        ]
+      }
       //set path here
     ]
   }

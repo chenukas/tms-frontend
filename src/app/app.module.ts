@@ -24,6 +24,10 @@ import { ManageTComponent, DeleteDialogBox } from './components/dashboard/tags/m
 import { LecturersComponent } from './components/dashboard/lecturers/lecturers.component';
 import { AddLecComponent } from './components/dashboard/lecturers/add-lec/add-lec.component';
 import { ManageLecComponent } from './components/dashboard/lecturers/manage-lec/manage-lec.component';
+import { YearSemsComponent, DeleteDialogBox2 } from './components/dashboard/students/year-sems/year-sems.component';
+import { ProgrammesComponent, DeleteDialogBox1 } from './components/dashboard/students/programmes/programmes.component';
+import { GroupsComponent } from './components/dashboard/students/groups/groups.component';
+import { GenerateBComponent } from './components/dashboard/students/generate-b/generate-b.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -32,7 +36,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 
 @NgModule({
   entryComponents: [
-    DeleteDialogBox
+    DeleteDialogBox,
+    DeleteDialogBox1,
+    DeleteDialogBox2
   ],
   declarations: [
     AppComponent, 
@@ -43,9 +49,15 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     TagsComponent, 
     ManageTComponent,
     DeleteDialogBox,
+    DeleteDialogBox1,
+    DeleteDialogBox2,
     LecturersComponent,
     AddLecComponent,
     ManageLecComponent,
+    YearSemsComponent,
+    ProgrammesComponent,
+    GroupsComponent,
+    GenerateBComponent,
 
   ],
   imports: [
