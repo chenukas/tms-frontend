@@ -1,4 +1,4 @@
-<h2>Add Groups</h2>
+<h2>Add Sub-groups</h2>
 <br>
 <div>
     <form>
@@ -6,20 +6,20 @@
             <div class="form-row">
                 <div class="col-md-12 col-sm-12">
                     <mat-form-field appearance="outline">
-                        <mat-label>Group Number</mat-label>
-                        <input matInput placeholder="01" name="name" [(ngModel)]="name" style="color: #999;" maxlength="2">
+                        <mat-label>Sub-group Number</mat-label>
+                        <input matInput placeholder="1" name="name" [(ngModel)]="name" style="color: #999;" maxlength="2">
                     </mat-form-field>
                 </div>
             </div>
         </div>
-        <button mat-raised-button color="primary" style="float: right;" (click)="createGroup()" *ngIf="!isOnUpdate">Save</button>
-        <button mat-raised-button color="primary" style="float: right;" (click)="updateGroup()" *ngIf="isOnUpdate">Update</button>
+        <button mat-raised-button color="primary" style="float: right;" (click)="createSubGroup()" *ngIf="!isOnUpdate">Save</button>
+        <button mat-raised-button color="primary" style="float: right;" (click)="updateSubGroup()" *ngIf="isOnUpdate">Update</button>
     </form>
 </div>
 <br>
 <br>
 <div>
-    <h4>Groups</h4>
+    <h4>Sub-groups</h4>
 </div>
 <br>
 <div class="list mat-elevation-z8">
@@ -28,14 +28,14 @@
         <!-- Title Column -->
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef> Name </th>
-          <td mat-cell *matCellDef="let group"> {{group.name}} </td>
+          <td mat-cell *matCellDef="let subgroup"> {{subgroup.name}} </td>
         </ng-container>
 
         <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Action </th>
-            <td mat-cell *matCellDef="let group">
-                <a mat-stroked-button style="color: #f69223;" (click)="navigateUpdateGroup(group._id)" >Edit</a>
-                <a mat-stroked-button style="color: red;" (click)="openDialog(group._id)" >Delete</a>     
+            <td mat-cell *matCellDef="let subgroup">
+                <a mat-stroked-button style="color: #f69223;" (click)="navigateUpdateSubGroup(subgroup._id)" >Edit</a>
+                <a mat-stroked-button style="color: red;" (click)="openDialog(subgroup._id)" >Delete</a>     
             </td> 
         </ng-container>
 
