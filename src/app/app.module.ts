@@ -26,8 +26,9 @@ import { AddLecComponent } from './components/dashboard/lecturers/add-lec/add-le
 import { ManageLecComponent } from './components/dashboard/lecturers/manage-lec/manage-lec.component';
 import { YearSemsComponent, DeleteDialogBox2 } from './components/dashboard/students/year-sems/year-sems.component';
 import { ProgrammesComponent, DeleteDialogBox1 } from './components/dashboard/students/programmes/programmes.component';
-import { GroupsComponent } from './components/dashboard/students/groups/groups.component';
+import { GroupsComponent, DeleteDialogBox3 } from './components/dashboard/students/groups/groups.component';
 import { GenerateBComponent } from './components/dashboard/students/generate-b/generate-b.component';
+import { SubGroupsComponent, DeleteDialogBox4 } from './components/dashboard/students/sub-groups/sub-groups.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -38,7 +39,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   entryComponents: [
     DeleteDialogBox,
     DeleteDialogBox1,
-    DeleteDialogBox2
+    DeleteDialogBox2,
+    DeleteDialogBox3,
+    DeleteDialogBox4
   ],
   declarations: [
     AppComponent, 
@@ -51,6 +54,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     DeleteDialogBox,
     DeleteDialogBox1,
     DeleteDialogBox2,
+    DeleteDialogBox3,
+    DeleteDialogBox4,
     LecturersComponent,
     AddLecComponent,
     ManageLecComponent,
@@ -58,6 +63,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ProgrammesComponent,
     GroupsComponent,
     GenerateBComponent,
+    SubGroupsComponent,
 
   ],
   imports: [

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GroupsService } from 'app/services/groups.service';
+import { SubGroupsService } from 'app/services/sub-groups.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
@@ -11,11 +11,11 @@ interface APIResponse {
 }
 
 @Component({
-  selector: 'app-groups',
-  templateUrl: './groups.component.html',
-  styleUrls: ['./groups.component.scss']
+  selector: 'app-sub-groups',
+  templateUrl: './sub-groups.component.html',
+  styleUrls: ['./sub-groups.component.scss']
 })
-export class GroupsComponent implements OnInit {
+export class SubGroupsComponent implements OnInit {
   public id: string;
   public name: String;
   public isOnUpdate: boolean;
@@ -24,7 +24,7 @@ export class GroupsComponent implements OnInit {
   dataSource = new MatTableDataSource()
 
   constructor(
-    private groupsService: GroupsService,
+    private subGroupsService: SubGroupsService,
     private route: ActivatedRoute,
     private router: Router,
     private dialog: MatDialog
@@ -33,11 +33,11 @@ export class GroupsComponent implements OnInit {
   ngOnInit(): void {
     this.name = '';
 
-    this.viewAllGroups();
+    this.viewAllSubGroups();
 
     this.route.queryParams.subscribe(params => {
       if(params.id) {
-        this.groupsService.viewGroupById(params.id).subscribe((res: { data: any}) => {
+        this.subGroupsService.viewSubGroupById(params.id).subscribe((res: { data: any}) => {
           this.id = params.id;
           this.name = res.data.name;
           this.isOnUpdate = true;
@@ -46,16 +46,16 @@ export class GroupsComponent implements OnInit {
     });
   }
 
-  viewAllGroups() {
-    this.groupsService.viewGroups().subscribe((response: APIResponse) => {
+  viewAllSubGroups() {
+    this.subGroupsService.viewSubGroups().subscribe((response: APIResponse) => {
       this.dataSource = response.data;
     })
   }
 
-  createGroup() {
-    this.groupsService.createGroup(this.name).subscribe(response => {
+  createSubGroup() {
+    this.subGroupsService.createSubGroup(this.name).subscribe(response => {
       console.log(response);
-      this.viewAllGroups();
+      this.viewAllSubGroups();
     }, err => {
       console.log(err.message);
     });
@@ -66,8 +66,8 @@ export class GroupsComponent implements OnInit {
     this.name = '';
   }
 
-  updateGroup() {
-    this.groupsService.updateGroupById(
+  updateSubGroup() {
+    this.subGroupsService.updateSubGroupById(
       this.id,
       {
         name: this.name
@@ -75,32 +75,32 @@ export class GroupsComponent implements OnInit {
     ).subscribe(response => {
       console.log(response);
       this.isOnUpdate = false;
-      this.router.navigate(['/students/groups']);
+      this.router.navigate(['/students/subgroups']);
       this.clear();
-      this.viewAllGroups();
+      this.viewAllSubGroups();
     }, err => {
       console.log(err.message);
     });
   }
 
-  navigateUpdateGroup(id: String) {
-    this.router.navigate(['/students/groups'], {queryParams: {id} });
+  navigateUpdateSubGroup(id: String) {
+    this.router.navigate(['/students/subgroups'], {queryParams: {id} });
   }
 
   openDialog(_id: string) {
-    const dialogRef = this.dialog.open(DeleteDialogBox3);
+    const dialogRef = this.dialog.open(DeleteDialogBox4);
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.deleteGroup(_id);
+        this.deleteSubGroup(_id);
       }
     });
   }
 
-  deleteGroup(id: String) {
-    this.groupsService.deleteGroupById(id).subscribe(response => {
+  deleteSubGroup(id: String) {
+    this.subGroupsService.deleteSubGroupById(id).subscribe(response => {
       console.log(response);
-      this.viewAllGroups();
+      this.viewAllSubGroups();
     },err => {
       console.log(err.message);
     });
@@ -109,11 +109,11 @@ export class GroupsComponent implements OnInit {
 
 @Component({
   selector: 'dialogBox',
-  templateUrl: 'dialogBox3.html',
+  templateUrl: 'dialogBox4.html',
 })
-export class DeleteDialogBox3 {
+export class DeleteDialogBox4 {
   constructor() {}
 
-  public deleteGroup() {}
+  public deleteSubGroup() {}
 
 }

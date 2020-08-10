@@ -11,6 +11,7 @@ import { StudentsComponent } from './components/dashboard/students/students.comp
 import { YearSemsComponent } from './components/dashboard/students/year-sems/year-sems.component';
 import { ProgrammesComponent } from './components/dashboard/students/programmes/programmes.component';
 import { GroupsComponent } from './components/dashboard/students/groups/groups.component';
+import { SubGroupsComponent } from './components/dashboard/students/sub-groups/sub-groups.component';
 import { GenerateBComponent } from './components/dashboard/students/generate-b/generate-b.component';
 
 const routes: Routes = [
@@ -40,6 +41,7 @@ const routes: Routes = [
           { path: 'yearsems', component: YearSemsComponent },
           { path: 'programmes', component: ProgrammesComponent },
           { path: 'groups', component: GroupsComponent },
+          { path: 'subgroups', component: SubGroupsComponent },
           { path: 'generate', component: GenerateBComponent }
         ]
       }
