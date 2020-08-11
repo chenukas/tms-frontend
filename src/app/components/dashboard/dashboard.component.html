@@ -22,15 +22,20 @@
             <a href="#locSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Students</a>
             <ul class="collapse list-unstyled" id="locSubmenu">
                 <li>
-                    <a [routerLink]="['student/add']">Year and Semester</a>
+                    <a [routerLink]="['students/generate']">Generate Batch IDs</a>
                 </li>
                 <li>
-                    <a [routerLink]="['student/update']">Programs</a>
+                    <a [routerLink]="['students/yearsems']">Year & Semester</a>
                 </li>
                 <li>
-                    <a [routerLink]="['student/archive']">Groups/Sub-grups</a>
+                    <a [routerLink]="['students/programmes']">Programmes</a>
                 </li>
-            
+                <li>
+                    <a [routerLink]="['students/groups']">Groups</a>
+                </li>
+                <li>
+                    <a [routerLink]="['students/subgroups']">Sub-groups</a>
+                </li>    
             </ul>
         </li>
         <mat-divider></mat-divider>
