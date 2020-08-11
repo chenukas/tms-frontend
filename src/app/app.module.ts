@@ -23,6 +23,13 @@ import { TagsComponent } from './components/dashboard/tags/tags.component';
 import { ManageTComponent, DeleteDialogBox } from './components/dashboard/tags/manage-t/manage-t.component';
 import { LecturersComponent } from './components/dashboard/lecturers/lecturers.component';
 import { AddLocationComponent } from './components/dashboard/location/add-location/add-location.component';
+import { AddLecComponent } from './components/dashboard/lecturers/add-lec/add-lec.component';
+import { ManageLecComponent } from './components/dashboard/lecturers/manage-lec/manage-lec.component';
+import { YearSemsComponent, DeleteDialogBox2 } from './components/dashboard/students/year-sems/year-sems.component';
+import { ProgrammesComponent, DeleteDialogBox1 } from './components/dashboard/students/programmes/programmes.component';
+import { GroupsComponent, DeleteDialogBox3 } from './components/dashboard/students/groups/groups.component';
+import { GenerateBComponent } from './components/dashboard/students/generate-b/generate-b.component';
+import { SubGroupsComponent, DeleteDialogBox4 } from './components/dashboard/students/sub-groups/sub-groups.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -31,7 +38,11 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 
 @NgModule({
   entryComponents: [
-    DeleteDialogBox
+    DeleteDialogBox,
+    DeleteDialogBox1,
+    DeleteDialogBox2,
+    DeleteDialogBox3,
+    DeleteDialogBox4
   ],
   declarations: [
     AppComponent, 
@@ -44,6 +55,18 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     DeleteDialogBox,
     LecturersComponent,
     AddLocationComponent,
+    DeleteDialogBox1,
+    DeleteDialogBox2,
+    DeleteDialogBox3,
+    DeleteDialogBox4,
+    AddLecComponent,
+    ManageLecComponent,
+    YearSemsComponent,
+    ProgrammesComponent,
+    GroupsComponent,
+    GenerateBComponent,
+    SubGroupsComponent,
+
   ],
   imports: [
     BrowserModule,
