@@ -21,7 +21,7 @@ export class ManageTComponent implements OnInit {
   public isOnUpdate: boolean;
 
   displayedColumns = ['name','action'];
-  dataSource = new MatTableDataSource();
+  dataSource: MatTableDataSource<any>;
 
   constructor(
     private tagsService: TagsService,
@@ -48,7 +48,7 @@ export class ManageTComponent implements OnInit {
 
   viewAllTags() {
     this.tagsService.viewTags().subscribe((response: APIResponse) => {
-      this.dataSource = response.data;
+      this.dataSource = new MatTableDataSource(response.data);
     });
   }
 
