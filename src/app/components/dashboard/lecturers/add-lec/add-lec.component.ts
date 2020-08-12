@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { LecturersService } from 'app/services/lecturers.service';
 import { Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Lecturer } from 'app/models/lecturer';
-import { APIResponse } from 'app/models/apiresponse';
-//import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+interface APIResponse {
+  success: boolean,
+  data: any
+}
 
 @Component({
   selector: 'app-add-lec',
@@ -16,11 +18,17 @@ import { APIResponse } from 'app/models/apiresponse';
 
 export class AddLecComponent implements OnInit {
 
-  private lecturerFormGroup : FormGroup;
-  public id : string;
-  public isOnUpdate : boolean;
-
-  email = new FormControl('', [Validators.required, Validators.email]);
+  private empid: string;
+  private fname: string;
+  private lname: string;
+  private email: string;
+  private faculty: string;
+  private department: string;
+  private center: string;
+  private building: string;
+  private level: string;
+  private id : string;
+  private isOnUpdate : boolean;
 
   constructor( 
       private formBuilder: FormBuilder,
@@ -31,54 +39,83 @@ export class AddLecComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    this.lecturerFormGroup = this.formBuilder.group({
-      empid: ['', Validators.required],
-      fname: ['', Validators.required],
-      lname: ['', Validators.required],
-      email: ['', Validators.email],
-      faculty: ['', Validators.required],
-      department: ['', Validators.required],
-      center: ['', Validators.required],
-      building: ['', Validators.required],
-      level: ['', Validators.required]
-    })
 
+    this.empid = '';
+    this.fname = '';
+    this.lname = '';
+    this.email = '';
+    this.faculty = '';
+    this.department = '';
+    this.center = '';
+    this.building = '';
+    this.level = '';
+    
     this.route.queryParams.subscribe(params => {
       if (params.id) {
-        this.lecturersService.viewLecturerById(params.id).subscribe((res: APIResponse) => {
+        this.lecturersService.viewLecturerById(params.id).subscribe((res: {data: any}) => {
           this.id = params.id;
+          this.empid = res.data.empid;
+          this.fname = res.data.fname;
+          this.lname = res.data.lname;
+          this.email = res.data.email;
+          this.faculty = res.data.faculty;
+          this.department = res.data.department;
+          this.center= res.data.center;
+          this.building = res.data.building;
+          this.level = res.data.level;
           this.isOnUpdate = true;
-          this.lecturerFormGroup.patchValue(res.data);
         });
-
-      } else {
-        this.isOnUpdate = false;
-      }
-    })
+      } 
+    });
   }
 
-  public get LecturerFormGroup(): FormGroup{
-    return this.lecturerFormGroup;
-  }
-
+  //Adding Lecturers To The System
   addLecturer() {
-      const lecturer = new Lecturer(this.lecturerFormGroup.getRawValue());
-
-      this.lecturersService.addLecturer(lecturer).subscribe(res => {
-
+    this.lecturersService.addLecturer(this.empid, this.fname, this.lname, this.email, this.faculty, this.department, this.center, this.building, this.level ).subscribe(res => {
+        console.log(res);
         this.snackbar.open('Added Successfully', '', {duration: 2000});
-
-        this.clear();
       }, err => {
-
         this.snackbar.open('Unsuccessful', '', { duration: 2000 });
+        console.log(err.message);
       });
 
       this.clear();
   }
 
   clear() {
-    this.lecturerFormGroup.reset();
+    this.empid = '';
+    this.fname = '';
+    this.lname = '';
+    this.email = '';
+    this.faculty = '';
+    this.department = '';
+    this.center = '';
+    this.building = '';
+    this.level = '';
   }
 
+  //Updating Lecturer Details
+  updateLecturer(){
+    this.lecturersService.updateLecturerById(
+      this.id,
+      {
+        empid: this.empid,
+        fname: this.fname,
+        lname: this.lname,
+        email: this.email,
+        faculty: this.faculty,
+        department: this.department,
+        center: this.center,
+        building: this.building,
+        level: this.level,
+      }
+    ).subscribe(res => {
+      console.log(res);
+      this.snackbar.open('Lecturer details are successfully updated', null, { duration : 2000});
+      this.router.navigate(['dashboard/lecturers/manage']);
+    }, err => {
+      this.snackbar.open('Unsuccessfull', null, { duration : 2000});
+      console.log(err.message);
+    });
+  }
 }

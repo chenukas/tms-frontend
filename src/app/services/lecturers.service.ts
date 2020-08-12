@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppConfig } from 'environments/environment';
-import { Lecturer } from '../models/lecturer';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +17,8 @@ export class LecturersService {
     return this.http.get(`${AppConfig.environment}/lecturers/${id}`);
   }
 
-  public addLecturer(lecturer: Lecturer) {
-    return this.http.post(`${AppConfig.environment}/lecturers`, lecturer);
+  public addLecturer(empid, fname, lname, email, faculty, department, center, building, level) {
+    return this.http.post(`${AppConfig.environment}/lecturers`, {empid, fname, lname, email, faculty, department, center, building, level});
   }
 
   public viewLecturers() {

@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { YearSemsService } from 'app/services/year-sems.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 interface APIResponse {
   success: boolean,
@@ -22,7 +24,10 @@ export class YearSemsComponent implements OnInit {
   public isOnUpdate: boolean;
 
   displayedColumns = ['name','action'];
-  dataSource = new MatTableDataSource();
+  dataSource: MatTableDataSource<any>;
+
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(
     private yearSemsService: YearSemsService,
@@ -32,7 +37,6 @@ export class YearSemsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     this.name = '';
 
     this.viewAllYearSems();
@@ -50,7 +54,9 @@ export class YearSemsComponent implements OnInit {
   
   viewAllYearSems() {
     this.yearSemsService.viewYearSems().subscribe((response: APIResponse) => {
-      this.dataSource = response.data;
+      this.dataSource = new MatTableDataSource(response.data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
     });
   }
 
