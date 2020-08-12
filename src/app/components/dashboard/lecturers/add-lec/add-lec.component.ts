@@ -1,16 +1,12 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { LecturersService } from 'app/services/lecturers.service';
-import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
-//import { MatFormFieldModule } from '@angular/material/form-field';
+import { Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Lecturer } from 'app/models/lecturer';
-
-interface APIResponse {
-  success: boolean,
-  data: any
-}
+import { APIResponse } from 'app/models/apiresponse';
+//import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-add-lec',
@@ -21,11 +17,10 @@ interface APIResponse {
 export class AddLecComponent implements OnInit {
 
   private lecturerFormGroup : FormGroup;
-  //private matcher: LecturerErrorStateMatcher;
-  public id : String;
+  public id : string;
   public isOnUpdate : boolean;
 
-  //email = new FormControl('', [Validators.required, Validators.email]);
+  email = new FormControl('', [Validators.required, Validators.email]);
 
   constructor( 
       private formBuilder: FormBuilder,
@@ -40,7 +35,7 @@ export class AddLecComponent implements OnInit {
       empid: ['', Validators.required],
       fname: ['', Validators.required],
       lname: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', Validators.email],
       faculty: ['', Validators.required],
       department: ['', Validators.required],
       center: ['', Validators.required],
@@ -50,36 +45,40 @@ export class AddLecComponent implements OnInit {
 
     this.route.queryParams.subscribe(params => {
       if (params.id) {
-        this.isOnUpdate = true;
-        this.id = params.id;
+        this.lecturersService.viewLecturerById(params.id).subscribe((res: APIResponse) => {
+          this.id = params.id;
+          this.isOnUpdate = true;
+          this.lecturerFormGroup.patchValue(res.data);
+        });
+
       } else {
         this.isOnUpdate = false;
       }
-    });
+    })
   }
 
-  //Add lecturer details 
-  public addLecturers() {
+  public get LecturerFormGroup(): FormGroup{
+    return this.lecturerFormGroup;
+  }
 
-    const lecturer = new Lecturer( this.lecturerFormGroup.getRawValue());
+  addLecturer() {
+      const lecturer = new Lecturer(this.lecturerFormGroup.getRawValue());
 
-    this.lecturersService.addLecturers(lecturer).subscribe(res =>{
-      //console.log(res);
-      this.snackbar.open('Added successfully!', '', { duration: 2000 });
+      this.lecturersService.addLecturer(lecturer).subscribe(res => {
+
+        this.snackbar.open('Added Successfully', '', {duration: 2000});
+
+        this.clear();
+      }, err => {
+
+        this.snackbar.open('Unsuccessful', '', { duration: 2000 });
+      });
 
       this.clear();
-
-    },err => {
-
-      this.snackbar.open('Please fill required fields', '', {
-        duration: 2000
-      });
-    });
-    this.clear();
   }
 
-  public clear() {
-    this.lecturerFormGroup.reset ();
+  clear() {
+    this.lecturerFormGroup.reset();
   }
 
 }

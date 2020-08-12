@@ -1,5 +1,5 @@
 export class Lecturer{
-    private empid: number;
+    private empid: string;
     private fname: string;
     private lname: string;
     private email: string;
@@ -21,11 +21,11 @@ export class Lecturer{
         this.level = value.level;
     }
 
-    public get getempid(): number {
+    public get getempid(): string {
         return this.empid;
     }
     
-    public set setempid( empid: number) {
+    public set setempid( empid: string) {
         this.empid = empid;
     }
 

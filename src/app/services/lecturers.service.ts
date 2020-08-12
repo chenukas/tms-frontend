@@ -6,13 +6,19 @@ import { Lecturer } from '../models/lecturer';
 @Injectable({
   providedIn: 'root'
 })
+
 export class LecturersService {
 
   constructor(
     private http: HttpClient
   ) { }
 
-  public addLecturers(lecturer: Lecturer) {
+
+  public getLecturerId(id: string){
+    return this.http.get(`${AppConfig.environment}/lecturers/${id}`);
+  }
+
+  public addLecturer(lecturer: Lecturer) {
     return this.http.post(`${AppConfig.environment}/lecturers`, lecturer);
   }
 
@@ -24,11 +30,11 @@ export class LecturersService {
     return this.http.get(`${AppConfig.environment}/lecturers/${id}`);
   }
 
-  public updateLecturers(id: string, lecturer) {
-    return this.http.put(`${AppConfig.environment}/lecturers`, lecturer);
+  public updateLecturerById(id: string, lecturer) {
+    return this.http.put(`${AppConfig.environment}/lecturers/${id}`, lecturer);
   }
 
-  public deleteLecturer(id) {
+  public deleteLecturerById(id) {
     return this.http.delete(`${AppConfig.environment}/lecturers/${id}`);
   }
 

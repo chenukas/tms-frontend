@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+//import { MatTableDatasource } from '@angular/material/table';
 
 @Component({
   selector: 'app-manage-lec',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manage-lec.component.scss']
 })
 export class ManageLecComponent implements OnInit {
+
+  //dataSource = new MatTableDatasource();
 
   constructor() { }
 
