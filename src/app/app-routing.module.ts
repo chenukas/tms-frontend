@@ -13,6 +13,9 @@ import { ProgrammesComponent } from './components/dashboard/students/programmes/
 import { GroupsComponent } from './components/dashboard/students/groups/groups.component';
 import { SubGroupsComponent } from './components/dashboard/students/sub-groups/sub-groups.component';
 import { GenerateBComponent } from './components/dashboard/students/generate-b/generate-b.component';
+import { SubjectsComponent } from './components/dashboard/subjects/subjects.component';
+import { AddSubComponent } from './components/dashboard/subjects/add-sub/add-sub.component';
+import { ManageSubComponent } from './components/dashboard/subjects/manage-sub/manage-sub.component';
 
 const routes: Routes = [
   {
@@ -43,6 +46,14 @@ const routes: Routes = [
           { path: 'groups', component: GroupsComponent },
           { path: 'subgroups', component: SubGroupsComponent },
           { path: 'generate', component: GenerateBComponent }
+        ]
+      },
+      {
+        path: 'subjects',
+        component: SubjectsComponent,
+        children: [
+          { path: 'add', component: AddSubComponent },
+          { path: 'manage', component: ManageSubComponent }
         ]
       }
       //set path here
