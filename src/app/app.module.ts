@@ -30,6 +30,9 @@ import { ProgrammesComponent, DeleteDialogBox1 } from './components/dashboard/st
 import { GroupsComponent, DeleteDialogBox3 } from './components/dashboard/students/groups/groups.component';
 import { GenerateBComponent, DeleteDialogBox5 } from './components/dashboard/students/generate-b/generate-b.component';
 import { SubGroupsComponent, DeleteDialogBox4 } from './components/dashboard/students/sub-groups/sub-groups.component';
+import { SubjectsComponent } from './components/dashboard/subjects/subjects.component';
+import { AddSubComponent } from './components/dashboard/subjects/add-sub/add-sub.component';
+import { ManageSubComponent } from './components/dashboard/subjects/manage-sub/manage-sub.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -67,6 +70,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     GroupsComponent,
     GenerateBComponent,
     SubGroupsComponent,
+    SubjectsComponent,
+    AddSubComponent,
+    ManageSubComponent,
 
   ],
   imports: [

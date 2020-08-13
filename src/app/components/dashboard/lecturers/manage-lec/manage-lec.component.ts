@@ -3,7 +3,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { LecturersService } from 'app/services/lecturers.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-//import { MatTableModule } from '@angular/material/table';
 
 interface APIResponse {
   success : boolean,

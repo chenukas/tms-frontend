@@ -59,6 +59,18 @@
                 </li>  
             </ul>  
         </li>
+        <mat-divider></mat-divider>
+        <li>
+            <a href = "#subjectSubmenu" data-toggle = "collapse" aria-expanded = "false" class = "dropdown-toggle">Subjects</a>
+            <ul class = "collapse list-unstyled" id = "subjectSubmenu">
+                <li>
+                    <a [routerLink] = "['subjects/add']">Add Subjects</a>
+                </li>
+                <li>
+                    <a [routerLink] = "['subjects/manage']">Manage Details</a>
+                </li>
+            </ul> 
+        </li>
     </ul>
 </nav>
 

@@ -1,0 +1,29 @@
+<h2>MANAGE DETAILS</h2><br>
+
+<div>
+    <table mat-table [dataSource] = "dataSource" matSort class="mat-elevation-z8">
+
+        <ng-container matColumnDef="subCode">
+            <th mat-header-cell *matHeaderCellDef> Subject Code</th>
+            <td mat-cell *matCellDef = "let subject"> {{subject.code}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="subName">
+            <th mat-header-cell *matHeaderCellDef> Subject Name </th>
+            <td mat-cell *matCellDef = "let subject"> {{subject.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Action </th>
+            <td mat-cell *matCellDef="let subject">
+                <a mat-stroked-button style="color: #1125e2;" (click) = "updateSubject(subject._id)">Edit</a>
+                <a mat-stroked-button style="color: red;" (click) = "deleteSubject(subject._id)">Delete</a>    
+            </td> 
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+</div>
+
