@@ -1,8 +1,17 @@
 <h2>MANAGE DETAILS</h2><br>
 
+<div>
+    <table mat-table [dataSource] = "dataSource" matSort class="mat-elevation-z8">
 
-<div class = "list mat-elevation-z8">
-    <table mat-table [dataSourse] = "dataSourse" style="border-radius: 50px;">
+        <ng-container matColumnDef="lecId">
+            <th mat-header-cell *matHeaderCellDef> Lecturer's ID </th>
+            <td mat-cell *matCellDef = "let lecturer"> {{lecturer.empid}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lecRank">
+            <th mat-header-cell *matHeaderCellDef> Lecturer's Rank </th>
+            <td mat-cell *matCellDef = "let lecturer"> {{lecturer.level}}.{{lecturer.empid}} </td>
+        </ng-container>
 
         <ng-container matColumnDef="lecName">
             <th mat-header-cell *matHeaderCellDef> Lecturer's Name </th>
@@ -12,8 +21,8 @@
         <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Action </th>
             <td mat-cell *matCellDef="let lecturer">
-                <a mat-stroked-button style="color: #1125e2;" >Edit</a>
-                <a mat-stroked-button style="color: red;" >Delete</a>     
+                <a mat-stroked-button style="color: #1125e2;" (click) = "updateLecturer(lecturer._id)">Edit</a>
+                <a mat-stroked-button style="color: red;" (click) = "deleteLecturer(lecturer._id)">Delete</a>    
             </td> 
         </ng-container>
 

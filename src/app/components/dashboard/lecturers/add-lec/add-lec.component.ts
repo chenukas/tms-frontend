@@ -27,6 +27,7 @@ export class AddLecComponent implements OnInit {
   private center: string;
   private building: string;
   private level: string;
+  //private rank: string;
   private id : string;
   private isOnUpdate : boolean;
 
@@ -49,6 +50,7 @@ export class AddLecComponent implements OnInit {
     this.center = '';
     this.building = '';
     this.level = '';
+    //this.rank = '';
     
     this.route.queryParams.subscribe(params => {
       if (params.id) {
@@ -63,6 +65,7 @@ export class AddLecComponent implements OnInit {
           this.center= res.data.center;
           this.building = res.data.building;
           this.level = res.data.level;
+          //this.rank = res.data.rank;
           this.isOnUpdate = true;
         });
       } 
@@ -112,7 +115,7 @@ export class AddLecComponent implements OnInit {
     ).subscribe(res => {
       console.log(res);
       this.snackbar.open('Lecturer details are successfully updated', null, { duration : 2000});
-      this.router.navigate(['dashboard/lecturers/manage']);
+      this.router.navigate(['/lecturers/manage']);
     }, err => {
       this.snackbar.open('Unsuccessfull', null, { duration : 2000});
       console.log(err.message);
