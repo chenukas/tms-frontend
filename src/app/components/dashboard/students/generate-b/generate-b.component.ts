@@ -7,7 +7,7 @@ import { BatchesService } from 'app/services/batches.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
-import {MatPaginator} from '@angular/material/paginator';
+import { MatPaginator } from '@angular/material/paginator';
 
 interface APIResponse {
   success: boolean,
