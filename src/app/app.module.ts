@@ -24,6 +24,8 @@ import { ManageTComponent, DeleteDialogBox } from './components/dashboard/tags/m
 import { LecturersComponent } from './components/dashboard/lecturers/lecturers.component';
 import { AddLecComponent } from './components/dashboard/lecturers/add-lec/add-lec.component';
 import { ManageLecComponent } from './components/dashboard/lecturers/manage-lec/manage-lec.component';
+import { WorksComponent } from './components/dashboard/works/works.component';
+import { AddWorksComponent } from './components/dashboard/works/add-works/add-works.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -46,6 +48,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     LecturersComponent,
     AddLecComponent,
     ManageLecComponent,
+    WorksComponent,
+    AddWorksComponent,
 
   ],
   imports: [

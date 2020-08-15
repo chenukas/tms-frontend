@@ -30,7 +30,7 @@
                 <li>
                     <a [routerLink]="['student/archive']">Groups/Sub-grups</a>
                 </li>
-            
+
             </ul>
         </li>
         <mat-divider></mat-divider>
@@ -51,8 +51,17 @@
             <ul class="collapse list-unstyled" id="tagSubmenu">
                 <li>
                     <a [routerLink]="['tags/manage']">Manage</a>
-                </li>  
-            </ul>  
+                </li>
+            </ul>
+        </li>
+        <mat-divider></mat-divider>
+        <li>
+            <a href="#worksSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Works</a>
+            <ul class="collapse list-unstyled" id="worksSubmenu">
+                <li>
+                    <a [routerLink]="['works/addWorks']">addWorks</a>
+                </li>
+            </ul>
         </li>
     </ul>
 </nav>

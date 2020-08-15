@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 export class AddWorksComponent implements OnInit {
 
   selectedDays: string[];
+  disable: boolean;
+  count: number;
+  cheDisable: boolean;
 
   constructor(
     public worksService: WorksService,
@@ -21,6 +24,10 @@ export class AddWorksComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedDays = new Array<string>();
+    this.disable = true;
+    this.count = 1;
+    this.cheDisable = true;
+
   }
 
   daysArr = [
@@ -58,10 +65,20 @@ export class AddWorksComponent implements OnInit {
     //this.worksService.selectedWorks.timeTableType = event.target.value;
   }
 
+  getNoOfWorkingDays(){
+    this.cheDisable = false;
+  }
+
   workingDayChange(event:any, value:string){
     let index = this.selectedDays.indexOf(value);
     if (index == -1){
       this.selectedDays.push(value);
+      if(this.count == this.worksService.selectedWorks.noOfWorkingDays){
+        this.cheDisable = true;
+      }
+      else{
+        this.count = this.count + 1;
+      }
     }
     else {
       this.selectedDays.splice(index, 1);
@@ -72,6 +89,11 @@ export class AddWorksComponent implements OnInit {
     this.worksService.selectedWorks.workingDays = this.selectedDays.toString();
     this.worksService.addWork(this.worksService.selectedWorks).subscribe(response => {
       console.log(response);
+      this.disable = false;
+      setTimeout(() => {
+        this.disable = true;
+      }, 1000);
+
     }, err => {
       console.log(err.message);
     });
