@@ -17,16 +17,16 @@ interface APIResponse {
 })
 export class AddSubComponent implements OnInit {
 
-  private year: string;
-  private semester: string;
-  private name: string;
-  private code: string;
-  private lechours: number;
-  private tutehours: number;
-  private labhours: number;
-  private evahours: number;
-  private id : string;
-  private isOnUpdate : boolean;
+  public year: string;
+  public semester: string;
+  public name: string;
+  public code: string;
+  public lechours: number;
+  public tutehours: number;
+  public labhours: number;
+  public evahours: number;
+  public id : string;
+  public isOnUpdate : boolean;
 
   constructor(
     private formBuilder: FormBuilder,

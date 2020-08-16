@@ -36,7 +36,7 @@ export class GroupsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.name = '';
+    this.name = '0';
 
     this.viewAllGroups();
 
