@@ -18,18 +18,18 @@ interface APIResponse {
 
 export class AddLecComponent implements OnInit {
 
-  private empid: string;
-  private fname: string;
-  private lname: string;
-  private email: string;
-  private faculty: string;
-  private department: string;
-  private center: string;
-  private building: string;
-  private level: string;
-  //private rank: string;
-  private id : string;
-  private isOnUpdate : boolean;
+  public empid: string;
+  public fname: string;
+  public lname: string;
+  public email: string;
+  public faculty: string;
+  public department: string;
+  public center: string;
+  public building: string;
+  public level: string;
+  //public rank: string;
+  public id : string;
+  public isOnUpdate : boolean;
 
   constructor( 
       private formBuilder: FormBuilder,
