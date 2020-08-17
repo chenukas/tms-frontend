@@ -37,7 +37,7 @@ export class ManageWorksComponent implements OnInit {
   }
 
   navigateEditWork(_id: String) {
-    this.router.navigate(['/works/editWorks'], {queryParams: {_id} });
+    this.router.navigate(['/works/edit'], {queryParams: {_id} });
   }
 
   navigateAddTimeSlots(_id: String) {

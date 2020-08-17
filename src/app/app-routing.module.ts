@@ -19,6 +19,8 @@ import { ManageSubComponent } from './components/dashboard/subjects/manage-sub/m
 import { WorksComponent } from './components/dashboard/works/works.component';
 import { AddWorksComponent } from './components/dashboard/works/add-works/add-works.component';
 import { ManageWorksComponent } from './components/dashboard/works/manage-works/manage-works.component';
+import { UpdateWorksComponent } from './components/dashboard/works/update-works/update-works.component';
+
 
 const routes: Routes = [
   {
@@ -65,6 +67,7 @@ const routes: Routes = [
         children: [
           { path: 'add', component: AddWorksComponent },
           { path: 'manage', component: ManageWorksComponent },
+          { path: 'edit', component: UpdateWorksComponent },
         ]
       }
     ]
