@@ -16,6 +16,9 @@ import { GenerateBComponent } from './components/dashboard/students/generate-b/g
 import { SubjectsComponent } from './components/dashboard/subjects/subjects.component';
 import { AddSubComponent } from './components/dashboard/subjects/add-sub/add-sub.component';
 import { ManageSubComponent } from './components/dashboard/subjects/manage-sub/manage-sub.component';
+import { WorksComponent } from './components/dashboard/works/works.component';
+import { AddWorksComponent } from './components/dashboard/works/add-works/add-works.component';
+import { ManageWorksComponent } from './components/dashboard/works/manage-works/manage-works.component';
 
 const routes: Routes = [
   {
@@ -34,8 +37,8 @@ const routes: Routes = [
         children: [
           { path: 'add', component: AddLecComponent },
           { path: 'manage', component: ManageLecComponent}
-          
-        ] 
+
+        ]
       },
       {
         path: 'students',
@@ -52,11 +55,18 @@ const routes: Routes = [
         path: 'subjects',
         component: SubjectsComponent,
         children: [
-          { path: 'add', component: AddSubComponent },
+          { path: 'add', component: AddWorksComponent },
           { path: 'manage', component: ManageSubComponent }
         ]
+      },
+      {
+        path: 'works',
+        component: WorksComponent,
+        children: [
+          { path: 'add', component: AddWorksComponent },
+          { path: 'manage', component: ManageWorksComponent },
+        ]
       }
-      //set path here
     ]
   }
 ];

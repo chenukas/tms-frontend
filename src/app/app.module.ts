@@ -33,6 +33,9 @@ import { SubGroupsComponent, DeleteDialogBox4 } from './components/dashboard/stu
 import { SubjectsComponent } from './components/dashboard/subjects/subjects.component';
 import { AddSubComponent } from './components/dashboard/subjects/add-sub/add-sub.component';
 import { ManageSubComponent } from './components/dashboard/subjects/manage-sub/manage-sub.component';
+import { WorksComponent } from './components/dashboard/works/works.component';
+import { AddWorksComponent } from './components/dashboard/works/add-works/add-works.component';
+import { ManageWorksComponent } from './components/dashboard/works/manage-works/manage-works.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -73,6 +76,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     SubjectsComponent,
     AddSubComponent,
     ManageSubComponent,
+    WorksComponent,
+    AddWorksComponent,
+    ManageWorksComponent,
 
   ],
   imports: [
