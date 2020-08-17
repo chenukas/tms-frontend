@@ -84,6 +84,14 @@ export class AddWorksComponent implements OnInit {
     }
   }
 
+  clear(){
+    this.worksService.selectedWorks.timeTableType = "",
+    this.worksService.selectedWorks.noOfWorkingDays = null,
+    this.worksService.selectedWorks.workingDays = "",
+    this.worksService.selectedWorks.noOfHours = null,
+    this.worksService.selectedWorks.noOfMinutes = null
+  }
+
   createWork() {
     this.worksService.selectedWorks.workingDays = this.selectedDays.toString();
     this.worksService.addWork(this.worksService.selectedWorks).subscribe(response => {
@@ -92,6 +100,7 @@ export class AddWorksComponent implements OnInit {
       setTimeout(() => {
         this.disable = true;
       }, 1000);
+      //this.clear();
 
     }, err => {
       console.log(err.message);
