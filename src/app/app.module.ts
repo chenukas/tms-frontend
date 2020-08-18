@@ -37,6 +37,7 @@ import { ManageSubComponent } from './components/dashboard/subjects/manage-sub/m
 import { WorksComponent } from './components/dashboard/works/works.component';
 import { AddWorksComponent } from './components/dashboard/works/add-works/add-works.component';
 import { ManageWorksComponent } from './components/dashboard/works/manage-works/manage-works.component';
+import { ViewLocationsComponent } from './components/dashboard/location/view-locations/view-locations.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -82,6 +83,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     WorksComponent,
     AddWorksComponent,
     ManageWorksComponent,
+    ViewLocationsComponent,
 
   ],
   imports: [
