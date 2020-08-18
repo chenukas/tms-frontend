@@ -67,11 +67,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     DeleteDialogBox2,
     DeleteDialogBox3,
     DeleteDialogBox4,
-<<<<<<< HEAD
-=======
     DeleteDialogBox5,
     LecturersComponent,
->>>>>>> f418763ba5605b74869a9f9dd2168083e985971b
     AddLecComponent,
     ManageLecComponent,
     YearSemsComponent,
