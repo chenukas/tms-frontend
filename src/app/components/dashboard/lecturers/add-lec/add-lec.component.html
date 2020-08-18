@@ -1,6 +1,7 @@
-<h2>ADD LECTURERS</h2><br>
-
-<form [FormControl] = "LecturerForm">
+<h2>ADD LECTURERS</h2>
+<br>
+<div>
+<form>
     <div class="col-md-6">
         <h4 style="padding-bottom: 20px;">Lecturer Details</h4>
     </div>
@@ -18,14 +19,14 @@
             <div class="col-md-6 col-sm-12">
                 <mat-form-field appearance="outline">
                     <mat-label>First Name</mat-label>
-                    <input matInput placeholder="Enter first name here" name="fname" [(ngModel)]="fname" style="color: #999;">
+                    <input matInput placeholder="Enter first name here" name="fname" [(ngModel)]="fname" required style="color: #999;">
                 </mat-form-field>
             </div>
 
             <div class="col-md-6 col-sm-12">
                 <mat-form-field appearance="outline">
                     <mat-label>Last Name</mat-label>
-                    <input matInput placeholder="Enter last name here" name="lname" [(ngModel)]="lname" style="color: #999;">
+                    <input matInput placeholder="Enter last name here" name="lname" [(ngModel)]="lname" required style="color: #999;">
                 </mat-form-field>
             </div>
         </div>
@@ -43,7 +44,7 @@
             <div class="col-md-6 col-sm-12">
                 <mat-form-field appearance="outline">
                     <mat-label>Faculty</mat-label>
-                    <mat-select name="faculty" [(ngModel)]="faculty" style="color: #999;">
+                    <mat-select name="faculty" [(ngModel)]="faculty" required style="color: #999;">
                         <mat-option value="computing">Faculty of Computing</mat-option>
                         <mat-option value="business">Faculty of Business</mat-option>
                         <mat-option value="engineering">Faculty of Engineering</mat-option>
@@ -59,7 +60,7 @@
             <div class="col-md-6 col-sm-12">
                 <mat-form-field appearance="outline">
                     <mat-label>Department</mat-label>
-                    <mat-select name="department" [(ngModel)]="department" style="color: #999;">
+                    <mat-select name="department" [(ngModel)]="department" required style="color: #999;">
                         <mat-option value="csse">Department of Computer Science and Software Engineering</mat-option>
                         <mat-option value="it">Department of Information Technology</mat-option>
                         <mat-option value="csne">Department of Computer Systems and Network Engineering</mat-option>
@@ -85,7 +86,7 @@
             <div class="col-md-6 col-sm-12">
                 <mat-form-field appearance="outline">
                     <mat-label>Center</mat-label>
-                    <mat-select name="center" [(ngModel)]="center" style="color: #999;">
+                    <mat-select name="center" [(ngModel)]="center" required style="color: #999;">
                         <mat-option value="malabe">Malabe</mat-option>
                         <mat-option value="metro">Metro</mat-option>
                         <mat-option value="kandy">Kandy</mat-option>
@@ -99,7 +100,7 @@
             <div class="col-md-6 col-sm-12">
                 <mat-form-field appearance="outline">
                     <mat-label>Building</mat-label>
-                    <mat-select name="building" [(ngModel)]="building" style="color: #999;">
+                    <mat-select name="building" [(ngModel)]="building" required style="color: #999;">
                         <mat-option value="main">Main Building</mat-option>
                         <mat-option value="new">New Building</mat-option>
                         <mat-option value="busibuild">Business Building</mat-option>
@@ -127,6 +128,10 @@
         </div>
     </div>
 
-    <button mat-raised-button color="primary" style="float: right;">Save Details</button>
+    <button mat-raised-button color="primary" style="float: right;" (click) = "addLecturer()" *ngIf = "!isOnUpdate">Save</button>
+    <button mat-raised-button color="primary" style="float: right;" (click) = "updateLecturer()" *ngIf = "isOnUpdate">Update</button>
 
 </form>
+</div>
+
+

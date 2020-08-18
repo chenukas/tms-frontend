@@ -15,6 +15,12 @@ import { ProgrammesComponent } from './components/dashboard/students/programmes/
 import { GroupsComponent } from './components/dashboard/students/groups/groups.component';
 import { SubGroupsComponent } from './components/dashboard/students/sub-groups/sub-groups.component';
 import { GenerateBComponent } from './components/dashboard/students/generate-b/generate-b.component';
+import { SubjectsComponent } from './components/dashboard/subjects/subjects.component';
+import { AddSubComponent } from './components/dashboard/subjects/add-sub/add-sub.component';
+import { ManageSubComponent } from './components/dashboard/subjects/manage-sub/manage-sub.component';
+import { WorksComponent } from './components/dashboard/works/works.component';
+import { AddWorksComponent } from './components/dashboard/works/add-works/add-works.component';
+import { ManageWorksComponent } from './components/dashboard/works/manage-works/manage-works.component';
 
 const routes: Routes = [
   {
@@ -34,8 +40,8 @@ const routes: Routes = [
         children: [
           { path: 'add', component: AddLecComponent },
           { path: 'manage', component: ManageLecComponent}
-          
-        ] 
+
+        ]
       },
       {
         path: 'students',
@@ -54,6 +60,22 @@ const routes: Routes = [
         path: 'locations', component: LocationComponent,
         children: [
           { path: 'add', component: AddLocationComponent }
+        ]
+      },
+      {
+        path: 'subjects',
+        component: SubjectsComponent,
+        children: [
+          { path: 'add', component: AddWorksComponent },
+          { path: 'manage', component: ManageSubComponent }
+        ]
+      },
+      {
+        path: 'works',
+        component: WorksComponent,
+        children: [
+          { path: 'add', component: AddWorksComponent },
+          { path: 'manage', component: ManageWorksComponent },
         ]
       }
     ]

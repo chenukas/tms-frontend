@@ -4,6 +4,7 @@ import '../polyfills';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,8 +29,14 @@ import { ManageLecComponent } from './components/dashboard/lecturers/manage-lec/
 import { YearSemsComponent, DeleteDialogBox2 } from './components/dashboard/students/year-sems/year-sems.component';
 import { ProgrammesComponent, DeleteDialogBox1 } from './components/dashboard/students/programmes/programmes.component';
 import { GroupsComponent, DeleteDialogBox3 } from './components/dashboard/students/groups/groups.component';
-import { GenerateBComponent } from './components/dashboard/students/generate-b/generate-b.component';
+import { GenerateBComponent, DeleteDialogBox5 } from './components/dashboard/students/generate-b/generate-b.component';
 import { SubGroupsComponent, DeleteDialogBox4 } from './components/dashboard/students/sub-groups/sub-groups.component';
+import { SubjectsComponent } from './components/dashboard/subjects/subjects.component';
+import { AddSubComponent } from './components/dashboard/subjects/add-sub/add-sub.component';
+import { ManageSubComponent } from './components/dashboard/subjects/manage-sub/manage-sub.component';
+import { WorksComponent } from './components/dashboard/works/works.component';
+import { AddWorksComponent } from './components/dashboard/works/add-works/add-works.component';
+import { ManageWorksComponent } from './components/dashboard/works/manage-works/manage-works.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -42,7 +49,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     DeleteDialogBox1,
     DeleteDialogBox2,
     DeleteDialogBox3,
-    DeleteDialogBox4
+    DeleteDialogBox4,
+    DeleteDialogBox5
   ],
   declarations: [
     AppComponent, 
@@ -59,6 +67,11 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     DeleteDialogBox2,
     DeleteDialogBox3,
     DeleteDialogBox4,
+<<<<<<< HEAD
+=======
+    DeleteDialogBox5,
+    LecturersComponent,
+>>>>>>> f418763ba5605b74869a9f9dd2168083e985971b
     AddLecComponent,
     ManageLecComponent,
     YearSemsComponent,
@@ -66,11 +79,18 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     GroupsComponent,
     GenerateBComponent,
     SubGroupsComponent,
+    SubjectsComponent,
+    AddSubComponent,
+    ManageSubComponent,
+    WorksComponent,
+    AddWorksComponent,
+    ManageWorksComponent,
 
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     MaterialModule,
