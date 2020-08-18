@@ -1,0 +1,48 @@
+<h2>Add Tags</h2>
+<br>
+<div>
+    <form>
+        <div class="content">
+            <div class="form-row">
+                <div class="col-md-12 col-sm-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Tag Name</mat-label>
+                        <input matInput placeholder="Enter tag name here" name="name" [(ngModel)]="name" style="color: #999;">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <button mat-raised-button color="primary" style="float: right;" (click)="createTag()" *ngIf="!isOnUpdate">Save</button>
+        <button mat-raised-button color="primary" style="float: right;" (click)="updateTag()" *ngIf="isOnUpdate">Update</button>
+    </form>
+</div>
+<br>
+<br>
+<div>
+    <h4>Tags</h4>
+</div>
+<br>
+<div class="list mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+        <!-- Title Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let tag"> {{tag.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Action </th>
+            <td mat-cell *matCellDef="let tag">
+                <a mat-stroked-button style="color: #f69223;" (click)="navigateUpdateTag(tag._id)" >Edit</a>
+                <a mat-stroked-button style="color: red;" (click)="openDialog(tag._id)" >Delete</a>     
+            </td> 
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+</div>
+
+
+

@@ -1,1 +1,103 @@
-<p>dashboard works!</p>
+<!-- <nav class="navbar sticky-top fixed-top navbar-light" style="background-color: #504f4f">
+    <a class="navbar-brand"></a>
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button mat-raised-button color="primary" style="margin-right: 30px;">Search</button>
+    </form>
+</nav> -->
+
+<!-- Sidebar -->
+<nav id="sidebar">
+    <div class="sidebar-header" style="text-align: center;">
+        <img src="assets/images/logo.png" class="logo" alt="logo">
+        <h6>ABC INSTITUTE</h6>
+    </div>
+
+    <ul class="list-unstyled components">
+        <li>
+            <a [routerLink]="['overview']">Overview</a>
+        </li>
+        <mat-divider></mat-divider>
+        <li>
+            <a href="#stdSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Students</a>
+            <ul class="collapse list-unstyled" id="stdSubmenu">
+                <li>
+                    <a [routerLink]="['students/generate']">Generate Batch IDs</a>
+                </li>
+                <li>
+                    <a [routerLink]="['students/yearsems']">Year & Semester</a>
+                </li>
+                <li>
+                    <a [routerLink]="['students/programmes']">Programmes</a>
+                </li>
+                <li>
+                    <a [routerLink]="['students/groups']">Groups</a>
+                </li>
+                <li>
+                    <a [routerLink]="['students/subgroups']">Sub-groups</a>
+                </li>
+            </ul>
+        </li>
+        <mat-divider></mat-divider>
+        <li>
+            <a href = "#lecSubmenu" data-toggle = "collapse" aria-expanded = "false" class = "dropdown-toggle">Lecturers</a>
+            <ul class = "collapse list-unstyled" id = "lecSubmenu">
+                <li>
+                    <a [routerLink] = "['lecturers/add']">Add Lecturers</a>
+                </li>
+                <li>
+                    <a [routerLink] = "['lecturers/manage']">Manage Details</a>
+                </li>
+            </ul>
+        </li>
+        <mat-divider></mat-divider>
+        <li>
+            <a href = "#locSubmenu" data-toggle = "collapse" aria-expanded = "false" class = "dropdown-toggle">Locations</a>
+            <ul class = "collapse list-unstyled" id = "locSubmenu">
+                <li>
+                    <a [routerLink] = "['locations/add']">Add Locations</a>
+                </li>
+                <li>
+                    <a [routerLink] = "['locations/view']">View Locations</a>
+                </li>
+            </ul>
+        </li>
+        <mat-divider></mat-divider>
+        <li>
+            <a href="#tagSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tags</a>
+            <ul class="collapse list-unstyled" id="tagSubmenu">
+                <li>
+                    <a [routerLink]="['tags/manage']">Manage</a>
+                </li>
+            </ul>
+        </li>
+        <mat-divider></mat-divider>
+        <li>
+            <a href = "#workSubmenu" data-toggle = "collapse" aria-expanded = "false" class = "dropdown-toggle">Works</a>
+            <ul class = "collapse list-unstyled" id = "workSubmenu">
+                <li>
+                    <a [routerLink] = "['works/add']">Add Works</a>
+                </li>
+                <li>
+                    <a [routerLink] = "['works/manage']">Manage Works</a>
+                </li>
+            </ul>
+        </li>
+        <mat-divider></mat-divider>
+        <li>
+            <a href = "#subjectSubmenu" data-toggle = "collapse" aria-expanded = "false" class = "dropdown-toggle">Subjects</a>
+            <ul class = "collapse list-unstyled" id = "subjectSubmenu">
+                <li>
+                    <a [routerLink] = "['subjects/add']">Add Subjects</a>
+                </li>
+                <li>
+                    <a [routerLink] = "['subjects/manage']">Manage Details</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<div class="inner-container">
+    <router-outlet></router-outlet>
+</div>

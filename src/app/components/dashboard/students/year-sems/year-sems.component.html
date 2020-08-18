@@ -1,0 +1,50 @@
+<h2>Add Year & Semester</h2>
+<br>
+<div>
+    <form>
+        <div class="content">
+            <div class="form-row">
+                <div class="col-md-12 col-sm-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Year & Semester</mat-label>
+                        <input matInput placeholder="Y1.S2" name="name" [(ngModel)]="name" style="color: #999;" maxlength="5">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <button mat-raised-button color="primary" style="float: right;" (click)="createYearSem()" *ngIf="!isOnUpdate">Save</button>
+        <button mat-raised-button color="primary" style="float: right;" (click)="updateYearSem()" *ngIf="isOnUpdate">Update</button>
+    </form>
+</div>
+<br>
+<br>
+<div>
+    <h4>Years & Semesters</h4>
+</div>
+<br>
+<div class="list mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+        <!-- Title Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let yearsem"> {{yearsem.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Action </th>
+            <td mat-cell *matCellDef="let yearsem">
+                <a mat-stroked-button style="color: #f69223;" (click)="navigateUpdateYearSem(yearsem._id)" >Edit</a>
+                <a mat-stroked-button style="color: red;" (click)="openDialog(yearsem._id)" >Delete</a>     
+            </td> 
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[3]" showFirstLastButtons></mat-paginator>
+</div>
+
+
+
+
