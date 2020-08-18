@@ -51,7 +51,7 @@ const routes: Routes = [
       //set path here
 
       {
-        path: 'location', component: LocationComponent,
+        path: 'locations', component: LocationComponent,
         children: [
           { path: 'add', component: AddLocationComponent }
         ]
