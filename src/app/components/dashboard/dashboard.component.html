@@ -19,8 +19,8 @@
         </li>
         <mat-divider></mat-divider>
         <li>
-            <a href="#locSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Students</a>
-            <ul class="collapse list-unstyled" id="locSubmenu">
+            <a href="#stdSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Students</a>
+            <ul class="collapse list-unstyled" id="stdSubmenu">
                 <li>
                     <a [routerLink]="['students/generate']">Generate Batch IDs</a>
                 </li>
@@ -47,6 +47,18 @@
                 </li>
                 <li>
                     <a [routerLink] = "['lecturers/manage']">Manage Details</a>
+                </li>
+            </ul>
+        </li>
+        <mat-divider></mat-divider>
+        <li>
+            <a href = "#locSubmenu" data-toggle = "collapse" aria-expanded = "false" class = "dropdown-toggle">Locations</a>
+            <ul class = "collapse list-unstyled" id = "locSubmenu">
+                <li>
+                    <a [routerLink] = "['locations/add']">Add Locations</a>
+                </li>
+                <li>
+                    <a [routerLink] = "['locations/view']">View Locations</a>
                 </li>
             </ul>
         </li>
