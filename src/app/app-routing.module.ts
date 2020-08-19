@@ -23,6 +23,7 @@ import { ManageWorksComponent } from './components/dashboard/works/manage-works/
 import { UpdateWorksComponent } from './components/dashboard/works/update-works/update-works.component';
 import { BuildingsComponent } from './components/dashboard/locations/buildings/buildings.component';
 import { RoomsComponent } from './components/dashboard/locations/rooms/rooms.component';
+import { ViewBuildingComponent } from './components/dashboard/locations/buildings/view-building/view-building.component';
 
 
 const routes: Routes = [
@@ -63,6 +64,7 @@ const routes: Routes = [
         children: [
           { path: 'buildings', component: BuildingsComponent },
           { path: 'rooms', component: RoomsComponent },
+          { path: 'buildings/:id', component: ViewBuildingComponent }
         ]
       },
       {

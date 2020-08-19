@@ -41,6 +41,7 @@ import { AddTimeSlotsComponent } from './components/dashboard/works/add-time-slo
 import { BuildingsComponent } from './components/dashboard/locations/buildings/buildings.component';
 import { RoomsComponent } from './components/dashboard/locations/rooms/rooms.component';
 import { AddNewBuildingComponent } from './components/dashboard/locations/buildings/add-new-building/add-new-building.component';
+import { ViewBuildingComponent } from './components/dashboard/locations/buildings/view-building/view-building.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -90,6 +91,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     BuildingsComponent,
     RoomsComponent,
     AddNewBuildingComponent,
+    ViewBuildingComponent,
   ],
   imports: [
     BrowserModule,

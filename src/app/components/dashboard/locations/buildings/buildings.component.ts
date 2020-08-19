@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { AddNewBuildingComponent } from './add-new-building/add-new-building.component';
 import alert from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-buildings',
@@ -20,7 +21,8 @@ export class BuildingsComponent implements OnInit {
 
   constructor(
     private buildingService: BuildingService,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -77,6 +79,10 @@ export class BuildingsComponent implements OnInit {
       }
     })
     
+  }
+
+  public viewBuilding(id: string) {
+    this.router.navigate(['locations/buildings/' + id]);
   }
 
   public get Buildings(): MatTableDataSource<Building> {

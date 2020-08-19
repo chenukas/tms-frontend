@@ -28,7 +28,7 @@
                 <ng-container matColumnDef="actions">
                   <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
                   <mat-cell *matCellDef="let element">
-                      <button mat-flat-button color="accent" style="margin-right: 10px;">View Building</button>
+                      <button mat-flat-button color="accent" style="margin-right: 10px;" (click)="viewBuilding(element._id)">View Building</button>
                       <button mat-stroked-button color="warn" (click)="deleteBuilding(element._id, element.building_name)">Delete</button>
                   </mat-cell>
                 </ng-container>

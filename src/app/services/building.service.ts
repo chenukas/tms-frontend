@@ -19,6 +19,10 @@ export class BuildingService {
     return this.http.get(`${AppConfig.environment}/buildings`);
   }
 
+  public getBuildingById(id: string) {
+    return this.http.get(`${AppConfig.environment}/buildings/${id}`);
+  }
+
   public viewBuilding(id) {
     return this.http.get(`${AppConfig.environment}/buildings/${id}`);
   }
