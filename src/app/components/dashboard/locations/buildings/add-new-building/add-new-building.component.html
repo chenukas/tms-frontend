@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="row" style="margin-bottom: 1.5rem;">
+        <div class="col-md-12">
+            <h2>Add New Building</h2>
+            <p><small>This will create a new building for you. A building is a physical space with multiple rooms in it.</small></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+                <mat-form-field appearance="fill">
+                  <mat-label>Building Name</mat-label>
+                  <input matInput placeholder="Building Name" [(ngModel)]="building_name">
+                  <mat-hint>Use a unique name that is known by almost anyone.</mat-hint>
+                </mat-form-field>
+              </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <button mat-flat-button style="float: right; margin-left: 10px;" (click)="closeDialog()">Close</button>
+            <button mat-flat-button color="primary" style="float: right;" (click)="addNewBuilding()" [disabled]="!building_name">Add New Building</button>
+        </div>
+    </div>
+</div>

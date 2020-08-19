@@ -11,8 +11,8 @@ export class BuildingService {
     private http: HttpClient
   ) { }
 
-  public addBuilding(bname) {
-    return this.http.post(`${AppConfig.environment}/buildings`, {bname});
+  public addBuilding(building_name: string) {
+    return this.http.post(`${AppConfig.environment}/buildings`, {building_name});
   }
 
   public getAllBuildings() {
