@@ -22,4 +22,8 @@ export class BuildingService {
   public viewBuilding(id) {
     return this.http.get(`${AppConfig.environment}/buildings/${id}`);
   }
+
+  public deleteBuiding(id: string) {
+    return this.http.delete(`${AppConfig.environment}/buildings/${id}`);
+  }
 }

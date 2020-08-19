@@ -23,17 +23,16 @@ h2 {
 
 .ghost-buildings-table {
     width: 100%;
-    background-color: rgb(49, 49, 49);
+    background-color: rgba(49, 49, 49, 0.192);
     height: auto;
     padding-bottom: 20px;
 
     .ghost-row {
         height: 50px;
         margin-bottom: 20px;
-        border-bottom: 1px solid rgb(88, 88, 88);
+        border-bottom: 1px solid rgba(88, 88, 88, 0.068);
         padding: 20px;
         margin: auto;
         @include animate-ghost-line;
     }
 }
-
