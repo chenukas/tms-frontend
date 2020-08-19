@@ -1,1 +1,28 @@
-<p>manage-works works!</p>
+<h2 class="mb-3">Working Days and Hours</h2>
+<div>
+  <table class="table table-dark">
+    <thead style="color: #2E86C1; font-family:cursive; font-weight: bold;">
+      <tr>
+        <th scope="col">Timetable Type</th>
+        <th scope="col">No of working days</th>
+        <th scope="col">Working days</th>
+        <th scope="col">Working hours per day</th>
+        <th scope="col">Working minutes per day</th>
+        <th scope="col">Timeslots</th>
+        <th scope="col">Edit / Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let workObj of worksService.works">
+        <td>{{workObj.timeTableType}}</td>
+        <td>{{workObj.noOfWorkingDays}}</td>
+        <td>{{workObj.workingDays}}</td>
+        <td>{{workObj.noOfHours}}</td>
+        <td>{{workObj.noOfMinutes}}</td>
+        <td><img src="assets/images/plus.png" (click)="navigateAddTimeSlots(workObj._id)" style="width: 30px; height: 30px;"/></td>
+        <td><img src="assets/images/edit.png" (click)="navigateEditWork(workObj._id)" class="mr-1" style="width: 20px; height: 20px;"/>/<img src="assets/images/delete.png" (click)="deleteWork(workObj._id)" class="ml-1" style="width: 20px; height: 20px;"/></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

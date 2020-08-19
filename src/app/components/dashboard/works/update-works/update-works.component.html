@@ -1,0 +1,48 @@
+<h2 class="mb-3">Add Working Days and Hours</h2>
+<div>
+  <form #worksForm="ngForm">
+    <div class="content">
+      <div class="form-row">
+        <div class="col-md-12 col-sm-12">
+          <mat-form-field appearance="outline">
+            <mat-label>Select Timetable Type</mat-label>
+            <input matInput name="timetableType" [(ngModel)]="worksService.selectedWorks.timeTableType" style="color: #fff;" readonly>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Number of working Days</mat-label>
+            <input matInput name="noOfWorkingDays" [(ngModel)]="worksService.selectedWorks.noOfWorkingDays" style="color: #fff;">
+          </mat-form-field>
+          <mat-label class="mb-2">Working Days</mat-label>
+          <section>
+            <div *ngFor="let obj of daysArr">
+              <mat-checkbox class="checkBoxData" name="{{obj.value}}" value="{{obj.value}}" (change)="workingDayChange($event, obj.value)"
+               [checked]="selectedDays.indexOf(obj.value) != -1" [disabled]="cheDisable">{{obj.key}}</mat-checkbox><br>
+            </div>
+          </section>
+          <mat-label class="row" style="padding-left: 15px;">Working time per Day</mat-label>
+          <div class="row mt-2">
+            <div class="col-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Hours</mat-label>
+                <input matInput [(ngModel)]="worksService.selectedWorks.noOfHours" name="hours" style="color: #fff;">
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Minutes</mat-label>
+                <input matInput [(ngModel)]="worksService.selectedWorks.noOfMinutes" name="minutes" style="color: #fff;">
+              </mat-form-field>
+            </div>
+          </div>
+          <button mat-flat-button class="col-2" (click)="updateWorks()" style="background-color: #5A59F2;" [disabled]="worksForm.invalid">UPDATE DETAILS</button>
+          <div *ngIf="disable == false" class="mt-2">
+            <div class="alert" style="background-color: #E67E22; color: #fff; " role="alert">
+              Working Days and Hours are Successfully Updated.......
+            </div>
+          </div>
+      </div>
+      </div>
+    </div>
+  </form>
+</div>
+

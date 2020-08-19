@@ -4,8 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TagsComponent } from './components/dashboard/tags/tags.component';
 import { ManageTComponent } from './components/dashboard/tags/manage-t/manage-t.component';
-import { LocationComponent } from './components/dashboard/location/location.component';
-import { AddLocationComponent } from './components/dashboard/location/add-location/add-location.component';
+import { LocationComponent } from './components/dashboard/locations/location.component';
+import { AddLocationComponent } from './components/dashboard/locations/add-location/add-location.component';
 import { LecturersComponent } from './components/dashboard/lecturers/lecturers.component';
 import { AddLecComponent } from './components/dashboard/lecturers/add-lec/add-lec.component';
 import { ManageLecComponent } from './components/dashboard/lecturers/manage-lec/manage-lec.component';
@@ -21,6 +21,8 @@ import { ManageSubComponent } from './components/dashboard/subjects/manage-sub/m
 import { WorksComponent } from './components/dashboard/works/works.component';
 import { AddWorksComponent } from './components/dashboard/works/add-works/add-works.component';
 import { ManageWorksComponent } from './components/dashboard/works/manage-works/manage-works.component';
+import { UpdateWorksComponent } from './components/dashboard/works/update-works/update-works.component';
+
 
 const routes: Routes = [
   {
@@ -76,6 +78,7 @@ const routes: Routes = [
         children: [
           { path: 'add', component: AddWorksComponent },
           { path: 'manage', component: ManageWorksComponent },
+          { path: 'edit', component: UpdateWorksComponent },
         ]
       }
     ]
