@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { StatisticsService } from 'app/services/statistics.service';
+import { APIResponse } from 'app/models/apiresponse';
 
 @Component({
   selector: 'app-overview',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OverviewComponent implements OnInit {
 
-  constructor() { }
+  public data;
+
+  constructor(
+    private statisticsService: StatisticsService
+  ) { }
 
   ngOnInit(): void {
+    this.statisticsService.getAllStatistics().subscribe((response: APIResponse) => {
+      if (response.success) {
+        this.data = response.data;
+      }
+    })
   }
 
 }
