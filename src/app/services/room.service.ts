@@ -15,4 +15,8 @@ export class RoomService {
     return this.http.post(`${AppConfig.environment}/buildings/${building_id}/rooms`, {room_name, room_type});
   }
 
+  public deleteRoom(id: string) {
+    return this.http.delete(`${AppConfig.environment}/rooms/${id}`);
+  }
+
 }

@@ -8,6 +8,7 @@ import { APIResponse } from 'app/models/apiresponse';
 import { AlertService } from 'app/services/alert.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddNewRoomComponent } from '../../rooms/add-new-room/add-new-room.component';
+import { RoomService } from 'app/services/room.service';
 
 @Component({
   selector: 'app-view-building',
@@ -25,6 +26,7 @@ export class ViewBuildingComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private buildingService: BuildingService,
+    private roomService: RoomService,
     private alertService: AlertService,
     private router: Router,
     private matDialog: MatDialog
@@ -65,8 +67,8 @@ export class ViewBuildingComponent implements OnInit {
   public save() {
     this.alertService.showConfirm('Update Building?', 'This will save the changes you have made.', 'warning').then(result => {
         if (result.value) {
+          this.loading = true;
           this.buildingService.updateBuilding(this.id, this.building.building_name).subscribe((response: APIResponse) => {
-            this.loading = true;
             this.alertService.showAlert('Success!', 'The building information was updated successfully!', 'success');
             this.getBuildingById(this.id);
           });
@@ -77,6 +79,7 @@ export class ViewBuildingComponent implements OnInit {
   public deleteBuilding() {
     this.alertService.showConfirm('Are you sure?', `This will delete buiding ${this.building.building_name} and is not reversible!`).then(result => {
       if (result.value) {
+        this.loading = true;
         this.buildingService.deleteBuiding(this.id).subscribe((response: APIResponse) => {
           if (response.success) {
             this.alertService.showAlert('Deleted!', `${this.building.building_name} was delete successfully from the system`, 'success');
@@ -101,6 +104,20 @@ export class ViewBuildingComponent implements OnInit {
       if (result) {
         this.loading = true;
         this.getBuildingById(this.id);
+      }
+    })
+  }
+
+  public deleteRoom(id: string, name: string) {
+    this.alertService.showConfirm('Are you sure?', `This will delete the room ${name} from the building ${this.building.building_name} and is not reversible!`).then(result => {
+      if (result.value) {
+        this.loading = true;
+        this.roomService.deleteRoom(id).subscribe((response: APIResponse) => {
+          if (response.success) {
+            this.alertService.showAlert('Deleted!', `${name} was delete successfully from the building ${this.building.building_name}`, 'success');
+            this.getBuildingById(this.id);
+          }
+        });
       }
     })
   }
