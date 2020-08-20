@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row" style="margin-bottom: 1.5rem;">
         <div class="col-md-6">
-            <a [routerLink]="['/locations/buildings']"><h2>Buildings</h2></a> <span style="font-weight: 900;"> . </span> <span *ngIf="!isLoading"> {{building.building_name}}</span> 
+            <a [routerLink]="['/locations/buildings']"><h2>Buildings</h2></a> <span style="font-weight: 900;"> . </span> <span *ngIf="!isLoading"> {{Building.building_name}}</span> 
             <div *ngIf="isLoading" class="building_name_ghost"></div>
             <p><small>View and manage the selected building here.</small></p>
         </div>
