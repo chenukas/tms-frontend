@@ -1,1 +1,53 @@
-<p>add-time-slots works!</p>
+<h2 class="mb-3">Add Time Slots</h2>
+<div>
+  <form>
+      <div class="content">
+          <div class="form-row">
+              <div class="col-md-12 col-sm-12">
+                  <mat-form-field appearance="outline">
+                      <mat-label>Timetable Type</mat-label>
+                      <input matInput name="timeTableType" #timeTableType="ngModel" [(ngModel)]="timeSlotsService.selectedTimeSlot.timeTableType" style="color: #fff;" readonly>
+                  </mat-form-field>
+                  <mat-label>Working Time Per Day</mat-label>
+                  <div class="row">
+                    <div class="col-4">
+                      <mat-form-field appearance="outline">
+                        <mat-label>Start Time</mat-label>
+                        <input matInput name="startTime" #startTime="ngModel" [(ngModel)]="timeSlotsService.selectedTimeSlot.startTime" style="color: #fff;" required>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field appearance="outline">
+                        <mat-label>End Time</mat-label>
+                        <input matInput name="endTime" #endTime="ngModel" [(ngModel)]="timeSlotsService.selectedTimeSlot.endTime" style="color: #fff;" required>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-3">
+                      <img src="assets/images/plus.png" (click)="addTimeSlots(startTime.value, endTime.value)" style="width: 60px; height: 60px">
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <table class="table table-dark">
+                      <thead>
+                        <tr>
+                          <th scope="col">Start Time</th>
+                          <th scope="col">End Time</th>
+                          <th scope="col">Delete</th>
+                        </tr>
+                      </thead>
+                      <tbody *ngFor="let timeSlotsTable of works">
+                        <tr *ngIf="timeSlotsTable.startTime != '' && timeSlotsTable.endTime != ''" style="background-color: #212529;">
+                          <td>{{timeSlotsTable.startTime}}</td>
+                          <td>{{timeSlotsTable.endTime}}</td>
+                          <td><img src="assets/images/dlt.png" style="width: 25px; height: 25px" (click)="deleteTimeSlots(timeSlotsTable)"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <button mat-flat-button class="col-4" (click)="addTime()" style="background-color: #5A59F2;">ADD TIME SLOTS</button>
+              </div>
+          </div>
+      </div>
+  </form>
+</div>
+

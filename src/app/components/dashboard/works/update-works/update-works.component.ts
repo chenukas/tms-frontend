@@ -16,7 +16,7 @@ export class UpdateWorksComponent implements OnInit {
   disable: boolean;
   count: number;
   cheDisable: boolean;
-  lableDisable: boolean;
+  labelDisable: boolean;
 
   constructor(
     public worksService: WorksService,
@@ -29,6 +29,7 @@ export class UpdateWorksComponent implements OnInit {
     this.disable = true;
     this.count = 0;
     this.cheDisable = false;
+    this.labelDisable = false;
 
     this.route.queryParams.subscribe(params => {
       if (params._id) {
@@ -88,19 +89,15 @@ export class UpdateWorksComponent implements OnInit {
       }
     }
 
-    //ableConditon()
-
     updateWorks(){
       this.worksService.selectedWorks.workingDays = this.selectedDays.toString();
       if(this.selectedDays.length != this.worksService.selectedWorks.noOfWorkingDays){
-        this.lableDisable = true;
-        console.log("hi")
+        this.labelDisable = true;
       }
       else{
         this.worksService.editWorks(this.worksService.selectedWorks).subscribe((res) => {
           this.worksService.viewWorks()
-          this.worksService.selectedWorks = new Works()
-          //this.router.navigate(['/works/viewWorks']);
+          this.worksService.selectedWorks = new Works();
           this.disable = false;
           setTimeout(() => {
           this.disable = true;

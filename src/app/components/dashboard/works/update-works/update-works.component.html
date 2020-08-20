@@ -12,6 +12,9 @@
             <mat-label>Number of working Days</mat-label>
             <input matInput name="noOfWorkingDays" [(ngModel)]="worksService.selectedWorks.noOfWorkingDays" style="color: #fff;">
           </mat-form-field>
+          <div *ngIf="labelDisable == true">
+            <label style="color: #960B06; font-family: 'Courier New'; font-weight: bolder;">Updated unsuccessfully</label><label style="color: #E80DD0; font-family: 'Courier New'; font-weight: bolder;">Number of working days and working days are unMatching..</label>
+          </div>
           <mat-label class="mb-2">Working Days</mat-label>
           <section>
             <div *ngFor="let obj of daysArr">
