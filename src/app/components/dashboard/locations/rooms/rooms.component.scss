@@ -36,3 +36,14 @@ h2 {
         @include animate-ghost-line;
     }
 }
+
+.image-wrapper {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    top: 12vh;
+    color: #666;
+    img {
+        margin-bottom: 20px;
+    }
+}

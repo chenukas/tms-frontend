@@ -36,6 +36,11 @@
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                 <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
               </mat-table>
+
+            <div class="image-wrapper" *ngIf="Buildings.data.length === 0">
+                <img src="../../../../../assets/images/safebox.svg" width="60px">
+                <p><small>No buildings found in the system!</small></p>
+            </div>
         </div>
     </div>
 
