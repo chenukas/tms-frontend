@@ -1,0 +1,58 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Buildings</h2>
+            <p><small>View and manage all buildings added to the system here</small></p>
+        </div>
+        <div class="col-md-6">
+            <button mat-flat-button color="primary" style="float: right;" (click)="openNewBuildingDialog()">Add New Building</button>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="!isLoading">
+        <div class="col-md-12">
+            <mat-table [dataSource]="Buildings" class="mat-elevation-z8">
+                <!-- Position Column -->
+                <ng-container matColumnDef="building_name">
+                  <mat-header-cell *matHeaderCellDef> Building Name </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.building_name}} </mat-cell>
+                </ng-container>
+              
+                <!-- Name Column -->
+                <ng-container matColumnDef="number_of_rooms">
+                  <mat-header-cell *matHeaderCellDef> Number of Rooms </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.rooms && element.rooms.length  || 0}} </mat-cell>
+                </ng-container>
+              
+                <!-- Weight Column -->
+                <ng-container matColumnDef="actions">
+                  <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+                  <mat-cell *matCellDef="let element">
+                      <button mat-flat-button color="accent" style="margin-right: 10px;" (click)="viewBuilding(element._id)">View Building</button>
+                      <button mat-stroked-button color="warn" (click)="deleteBuilding(element._id, element.building_name)">Delete</button>
+                  </mat-cell>
+                </ng-container>
+              
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              </mat-table>
+
+            <div class="image-wrapper" *ngIf="Buildings.data.length === 0">
+                <img src="../../../../../assets/images/safebox.svg" width="60px">
+                <p><small>No buildings found in the system!</small></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="isLoading">
+        <div class="col-md-12">
+            <div class="ghost-buildings-table">
+                <div class="ghost-row"></div>
+                <div class="ghost-row"></div>
+                <div class="ghost-row"></div>
+                <div class="ghost-row"></div>
+
+            </div>
+        </div>
+    </div>
+</div>

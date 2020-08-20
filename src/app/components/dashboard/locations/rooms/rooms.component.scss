@@ -1,0 +1,49 @@
+$base-color: rgba(221, 221, 221, 0.863);
+$ghost-color: #ecebebf1;
+$animation-duration: 1000ms; 
+$gradient-offset: 52 + 16; 
+
+p {
+    margin-top: 0;
+}
+
+h2 {
+    margin-bottom: 0;
+}
+
+@keyframes ghost-lines { 
+    0%   { background-position: -100px;  }
+    40%  { background-position: 40vw;    }
+    100% { background-position: 60vw;    }
+}
+
+@mixin animate-ghost-line {
+    animation: ghost-lines $animation-duration infinite linear;
+}
+
+.ghost-buildings-table {
+    width: 100%;
+    background-color: rgba(49, 49, 49, 0.192);
+    height: auto;
+    padding-bottom: 20px;
+
+    .ghost-row {
+        height: 50px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(88, 88, 88, 0.068);
+        padding: 20px;
+        margin: auto;
+        @include animate-ghost-line;
+    }
+}
+
+.image-wrapper {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    top: 12vh;
+    color: #666;
+    img {
+        margin-bottom: 20px;
+    }
+}

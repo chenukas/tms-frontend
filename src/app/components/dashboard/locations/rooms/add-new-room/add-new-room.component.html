@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="row" style="margin-bottom: 1.5rem;">
+        <div class="col-md-12">
+            <h2>Add New Room</h2>
+            <p><small>This will create a new room <span *ngIf="!building_id">in the building you provide</span>.</small></p>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="selectBuilding">
+        <div class="col-md-12">
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Building</mat-label>
+                    <mat-select [(ngModel)]="building_id">
+                        <mat-option *ngFor="let building of buildings" 
+                            [value]="building._id">
+                            {{building.building_name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+              </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+                <mat-form-field appearance="fill">
+                  <mat-label>Room Name</mat-label>
+                  <input matInput placeholder="Room Name" [(ngModel)]="room_name">
+                  <mat-hint>Use a unique name that is known by almost anyone.</mat-hint>
+                </mat-form-field>
+              </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Type of Room</mat-label>
+                    <mat-select [(ngModel)]="room_type">
+                        <mat-option [value]="1">Lecture Hall</mat-option>
+                        <mat-option [value]="2">Laboratory</mat-option>
+                    </mat-select>
+                </mat-form-field>
+              </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <button mat-flat-button style="float: right; margin-left: 10px;" (click)="closeDialog()">Close</button>
+            <button mat-flat-button color="primary" style="float: right;" (click)="save()" [disabled]="!room_name">Add New Building</button>
+        </div>
+    </div>
+</div>
