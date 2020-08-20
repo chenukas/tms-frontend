@@ -25,12 +25,14 @@ import { BuildingsComponent } from './components/dashboard/locations/buildings/b
 import { RoomsComponent } from './components/dashboard/locations/rooms/rooms.component';
 import { ViewBuildingComponent } from './components/dashboard/locations/buildings/view-building/view-building.component';
 import { ViewRoomComponent } from './components/dashboard/locations/rooms/view-room/view-room.component';
+import { OverviewComponent } from './components/dashboard/overview/overview.component';
 
 
 const routes: Routes = [
   {
     path: "", component: DashboardComponent,
     children: [
+      { path: 'overview', component: OverviewComponent },
       {
         path: 'tags',
         component: TagsComponent,
