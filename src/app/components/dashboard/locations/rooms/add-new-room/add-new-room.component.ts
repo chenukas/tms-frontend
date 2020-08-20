@@ -18,6 +18,7 @@ export class AddNewRoomComponent implements OnInit {
   public building_id: string;
   public room_name: string;
   public room_type: number = 1;
+  public selectBuilding: boolean;
 
   constructor(
     public dialogRef: MatDialogRef<AddNewRoomComponent>,
@@ -28,7 +29,8 @@ export class AddNewRoomComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (!this.data.building_id) {
+    if (!this.data || !this.data.building_id) {
+      this.selectBuilding = true;
       this.loadAllBuildings();
     } else {
       this.building_id = this.data.building_id;
@@ -36,6 +38,7 @@ export class AddNewRoomComponent implements OnInit {
   }
 
   private loadAllBuildings() {
+    console.log('Loading all buildings');
     this.buildingService.getAllBuildings().subscribe((response: APIResponse) => {
       if (response.success) {
         this.buildings = response.data as Building[];

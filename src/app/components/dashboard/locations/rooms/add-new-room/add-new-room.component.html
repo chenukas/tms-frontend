@@ -2,7 +2,23 @@
     <div class="row" style="margin-bottom: 1.5rem;">
         <div class="col-md-12">
             <h2>Add New Room</h2>
-            <p><small>This will create a new room.</small></p>
+            <p><small>This will create a new room <span *ngIf="!building_id">in the building you provide</span>.</small></p>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="selectBuilding">
+        <div class="col-md-12">
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Building</mat-label>
+                    <mat-select [(ngModel)]="building_id">
+                        <mat-option *ngFor="let building of buildings" 
+                            [value]="building._id">
+                            {{building.building_name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+              </p>
         </div>
     </div>
 
@@ -16,7 +32,9 @@
                 </mat-form-field>
               </p>
         </div>
+    </div>
 
+    <div class="row">
         <div class="col-md-12">
             <p>
                 <mat-form-field appearance="fill">
