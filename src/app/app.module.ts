@@ -43,6 +43,7 @@ import { RoomsComponent } from './components/dashboard/locations/rooms/rooms.com
 import { AddNewBuildingComponent } from './components/dashboard/locations/buildings/add-new-building/add-new-building.component';
 import { ViewBuildingComponent } from './components/dashboard/locations/buildings/view-building/view-building.component';
 import { AddNewRoomComponent } from './components/dashboard/locations/rooms/add-new-room/add-new-room.component';
+import { ViewRoomComponent } from './components/dashboard/locations/rooms/view-room/view-room.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -94,6 +95,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     AddNewBuildingComponent,
     ViewBuildingComponent,
     AddNewRoomComponent,
+    ViewRoomComponent,
   ],
   imports: [
     BrowserModule,

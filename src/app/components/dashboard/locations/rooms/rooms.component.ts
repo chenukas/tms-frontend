@@ -6,6 +6,7 @@ import { RoomService } from 'app/services/room.service';
 import { APIResponse } from 'app/models/apiresponse';
 import { MatTableDataSource } from '@angular/material/table';
 import { AlertService } from 'app/services/alert.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rooms',
@@ -22,7 +23,8 @@ export class RoomsComponent implements OnInit {
   constructor(
     private matDialog: MatDialog,
     private roomService: RoomService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -81,6 +83,10 @@ export class RoomsComponent implements OnInit {
         });
       }
     })
+  }
+
+  public viewRoom(id: string) {
+    this.router.navigate(['/locations/rooms/' + id]);
   }
 
   

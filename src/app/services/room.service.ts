@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppConfig } from 'environments/environment';
+import { Room } from 'app/models/room';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,10 @@ export class RoomService {
 
   public createRoomInBuilding(building_id, room_name, room_type) {
     return this.http.post(`${AppConfig.environment}/buildings/${building_id}/rooms`, {room_name, room_type});
+  }
+
+  public updateRoom(id: string, room: Room) {
+    return this.http.put(`${AppConfig.environment}/rooms/${id}`, { room_name: room.room_name, room_type: room.room_type });
   }
 
   public deleteRoom(id: string) {
