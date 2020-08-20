@@ -1,1 +1,81 @@
-<p>overview works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Overview</h2>
+            <p><small>View overall statistics of entities in the system</small></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+          <div class="stat-card" *ngIf="!isLoading">
+            <div class="row">
+              <div class="col-md-4">
+                <span class="count">{{data.groupCount}}</span>
+              </div>
+              <div class="col-md-8 separator" style="text-align: left;">
+                <p class="count-label">Student Groups</p>
+                <p class="count-hint">Active student groups</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-card-ghost" *ngIf="isLoading"></div>
+        </div>
+    
+    
+        <div class="col-md-3">
+          <div class="stat-card" *ngIf="!isLoading">
+            <div class="row">
+              <div class="col-md-4">
+                <span class="count">{{data.lecturerCount}}</span>
+              </div>
+              <div class="col-md-8 separator" style="text-align: left;">
+                <p class="count-label">Lecturers</p>
+                <p class="count-hint">Active lecturers</p>
+              </div>
+            </div>
+          </div>
+          <div class="stat-card-ghost" *ngIf="isLoading"></div>
+
+        </div>
+    
+    
+        <div class="col-md-3">
+          <div class="stat-card" *ngIf="!isLoading">
+            <div class="row">
+              <div class="col-md-4">
+                <span class="count">{{data.subjectCount}}</span>
+              </div>
+              <div class="col-md-8 separator" style="text-align: left;">
+                <p class="count-label">Subjects</p>
+                <p class="count-hint">Active Subjects</p>
+              </div>
+            </div>
+          </div>
+          <div class="stat-card-ghost" *ngIf="isLoading"></div>
+
+        </div>
+    
+    
+        <div class="col-md-3">
+          <div class="stat-card" *ngIf="!isLoading">
+            <div class="row">
+              <div class="col-md-4">
+                <span class="count">{{data.roomsCount}}</span>
+              </div>
+              <div class="col-md-8 separator" style="text-align: left;">
+                <p class="count-label">Rooms</p>
+                <p class="count-hint">Available rooms</p>
+              </div>
+            </div>
+          </div>
+          <div class="stat-card-ghost" *ngIf="isLoading"></div>
+
+        </div>
+    
+        
+      </div>
+    
+</div>
+
