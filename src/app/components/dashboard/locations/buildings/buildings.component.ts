@@ -77,7 +77,7 @@ export class BuildingsComponent implements OnInit {
   public openNewBuildingDialog() {
     const ref = this.matDialog.open(AddNewBuildingComponent, {
       width: '50%',
-      disableClose: true
+      disableClose: true,
     });
 
     ref.afterClosed().subscribe((building_name) => {

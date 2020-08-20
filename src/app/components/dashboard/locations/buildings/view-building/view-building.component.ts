@@ -6,6 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Room } from 'app/models/room';
 import { APIResponse } from 'app/models/apiresponse';
 import { AlertService } from 'app/services/alert.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AddNewRoomComponent } from '../../rooms/add-new-room/add-new-room.component';
 
 @Component({
   selector: 'app-view-building',
@@ -24,7 +26,8 @@ export class ViewBuildingComponent implements OnInit {
     private route: ActivatedRoute,
     private buildingService: BuildingService,
     private alertService: AlertService,
-    private router: Router
+    private router: Router,
+    private matDialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -83,6 +86,23 @@ export class ViewBuildingComponent implements OnInit {
       }
     })
     
+  }
+
+  public addRoom() {
+    let ref = this.matDialog.open(AddNewRoomComponent, {
+      width: '50%',
+      disableClose: true,
+      data: {
+        building_id: this.id
+      },
+    });
+
+    ref.afterClosed().subscribe(result => {
+      if (result) {
+        this.loading = true;
+        this.getBuildingById(this.id);
+      }
+    })
   }
 
 }
