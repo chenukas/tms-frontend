@@ -12,7 +12,7 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Building</mat-label>
                     <mat-select [(ngModel)]="building_id">
-                        <mat-option *ngFor="let building of buildings" 
+                        <mat-option *ngFor="let building of Buildings" 
                             [value]="building._id">
                             {{building.building_name}}
                         </mat-option>
