@@ -8,7 +8,7 @@
 
     <div class="row">
         <div class="col-md-3">
-          <div class="stat-card">
+          <div class="stat-card" *ngIf="!isLoading">
             <div class="row">
               <div class="col-md-4">
                 <span class="count">{{data.groupCount}}</span>
@@ -19,11 +19,13 @@
               </div>
             </div>
           </div>
+
+          <div class="stat-card-ghost" *ngIf="isLoading"></div>
         </div>
     
     
         <div class="col-md-3">
-          <div class="stat-card">
+          <div class="stat-card" *ngIf="!isLoading">
             <div class="row">
               <div class="col-md-4">
                 <span class="count">{{data.lecturerCount}}</span>
@@ -34,11 +36,13 @@
               </div>
             </div>
           </div>
+          <div class="stat-card-ghost" *ngIf="isLoading"></div>
+
         </div>
     
     
         <div class="col-md-3">
-          <div class="stat-card">
+          <div class="stat-card" *ngIf="!isLoading">
             <div class="row">
               <div class="col-md-4">
                 <span class="count">{{data.subjectCount}}</span>
@@ -49,11 +53,13 @@
               </div>
             </div>
           </div>
+          <div class="stat-card-ghost" *ngIf="isLoading"></div>
+
         </div>
     
     
         <div class="col-md-3">
-          <div class="stat-card">
+          <div class="stat-card" *ngIf="!isLoading">
             <div class="row">
               <div class="col-md-4">
                 <span class="count">{{data.roomsCount}}</span>
@@ -64,6 +70,8 @@
               </div>
             </div>
           </div>
+          <div class="stat-card-ghost" *ngIf="isLoading"></div>
+
         </div>
     
         
