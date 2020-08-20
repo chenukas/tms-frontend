@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BuildingService } from 'app/services/building.service';
 import { Building } from 'app/models/building';
 import { MatTableDataSource } from '@angular/material/table';
 import { Room } from 'app/models/room';
 import { APIResponse } from 'app/models/apiresponse';
+import { AlertService } from 'app/services/alert.service';
 
 @Component({
   selector: 'app-view-building',
@@ -21,7 +22,9 @@ export class ViewBuildingComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private buildingService: BuildingService
+    private buildingService: BuildingService,
+    private alertService: AlertService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -54,6 +57,32 @@ export class ViewBuildingComponent implements OnInit {
 
   public getTypeOfRoom(type: number) {
     return type === 1 ? 'Lecture Hall' : 'Laboratory';
+  }
+
+  public save() {
+    this.alertService.showConfirm('Update Building?', 'This will save the changes you have made.', 'warning').then(result => {
+        if (result.value) {
+          this.buildingService.updateBuilding(this.id, this.building.building_name).subscribe((response: APIResponse) => {
+            this.loading = true;
+            this.alertService.showAlert('Success!', 'The building information was updated successfully!', 'success');
+            this.getBuildingById(this.id);
+          });
+        }
+    })
+  }
+
+  public deleteBuilding() {
+    this.alertService.showConfirm('Are you sure?', `This will delete buiding ${this.building.building_name} and is not reversible!`).then(result => {
+      if (result.value) {
+        this.buildingService.deleteBuiding(this.id).subscribe((response: APIResponse) => {
+          if (response.success) {
+            this.alertService.showAlert('Deleted!', `${this.building.building_name} was delete successfully from the system`, 'success');
+            this.router.navigate(['locations/buildings']);
+          }
+        });
+      }
+    })
+    
   }
 
 }

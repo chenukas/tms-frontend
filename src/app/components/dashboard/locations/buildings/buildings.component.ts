@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddNewBuildingComponent } from './add-new-building/add-new-building.component';
 import alert from 'sweetalert2';
 import { Router } from '@angular/router';
+import { AlertService } from 'app/services/alert.service';
 
 @Component({
   selector: 'app-buildings',
@@ -22,33 +23,13 @@ export class BuildingsComponent implements OnInit {
   constructor(
     private buildingService: BuildingService,
     private matDialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private alertService: AlertService
   ) { }
 
   ngOnInit(): void {
     this.loading = true;
     this.getAllBuildings();
-  }
-
-  private showAlert(title: string, message: string, type: any) {
-    alert.fire({
-      title,
-      text: message,
-      icon: type,
-      showCloseButton: true
-    });
-  }
-
-  private showConfirm(title: string, message: string, icon='warning') {
-    return alert.fire({
-      title: title,
-      text: message,
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    });
   }
 
   private getAllBuildings() {
@@ -61,18 +42,18 @@ export class BuildingsComponent implements OnInit {
   private createNewBuilding(building_name: string) {
     this.buildingService.addBuilding(building_name).subscribe((response: APIResponse) => {
       if (response.success) {
-        this.showAlert('Created!', `${building_name} was added successfully as a building to the system`, 'success');
+        this.alertService.showAlert('Created!', `${building_name} was added successfully as a building to the system`, 'success');
         this.getAllBuildings();
       }
     })
   } 
 
-  private deleteBuilding(id: string, building_name: string) {
-    this.showConfirm('Are you sure?', `This will delete buiding ${building_name} and is not reversible!`).then(result => {
+  public deleteBuilding(id: string, building_name: string) {
+    this.alertService.showConfirm('Are you sure?', `This will delete buiding ${building_name} and is not reversible!`).then(result => {
       if (result.value) {
         this.buildingService.deleteBuiding(id).subscribe((response: APIResponse) => {
           if (response.success) {
-            this.showAlert('Deleted!', `${building_name} was delete successfully from the system`, 'success');
+            this.alertService.showAlert('Deleted!', `${building_name} was delete successfully from the system`, 'success');
             this.getAllBuildings();
           }
         });

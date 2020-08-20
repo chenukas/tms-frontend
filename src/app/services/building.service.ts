@@ -30,4 +30,8 @@ export class BuildingService {
   public deleteBuiding(id: string) {
     return this.http.delete(`${AppConfig.environment}/buildings/${id}`);
   }
+
+  public updateBuilding(id: string, building_name: string) {
+    return this.http.put(`${AppConfig.environment}/buildings/${id}`, { building_name });
+  }
 }
