@@ -27,7 +27,7 @@
                  <!-- Name Column -->
                 <ng-container matColumnDef="building">
                     <mat-header-cell *matHeaderCellDef> Building </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.building && element.building.building_name}} </mat-cell>
+                    <mat-cell *matCellDef="let element"> {{(element.building && element.building.building_name) || 'N/A'}} </mat-cell>
                 </ng-container>
             
                 <!-- Weight Column -->
@@ -35,7 +35,7 @@
                   <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
                   <mat-cell *matCellDef="let element">
                       <button mat-flat-button color="accent" style="margin-right: 10px;" (click)="viewRoom(element._id)">View Room</button>
-                      <button mat-stroked-button color="warn" (click)="deleteRoom(element._id, element.room_name)">Delete</button>
+                      <button mat-stroked-button color="warn" (click)="deleteRoom(element._id, element.room_name, element.building && element.building.building_name)">Delete</button>
                   </mat-cell>
                 </ng-container>
               

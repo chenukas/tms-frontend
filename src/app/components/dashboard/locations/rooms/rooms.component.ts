@@ -5,6 +5,7 @@ import { Room } from 'app/models/room';
 import { RoomService } from 'app/services/room.service';
 import { APIResponse } from 'app/models/apiresponse';
 import { MatTableDataSource } from '@angular/material/table';
+import { AlertService } from 'app/services/alert.service';
 
 @Component({
   selector: 'app-rooms',
@@ -20,7 +21,8 @@ export class RoomsComponent implements OnInit {
 
   constructor(
     private matDialog: MatDialog,
-    private roomService: RoomService
+    private roomService: RoomService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit(): void {
@@ -59,6 +61,26 @@ export class RoomsComponent implements OnInit {
 
   public getTypeOfRoom(type: number) {
     return type === 1 ? 'Lecture Hall' : 'Laboratory';
+  }
+
+  public deleteRoom(id: string, name: string, building_name: string) {
+    this.alertService.showConfirm('Are you sure?', 
+      building_name ? 
+      `This will delete the room ${name} from the building ${building_name} and is not reversible!` : 
+      `This will delete the room ${name}  andd is not reversible!`).then(result => {
+      if (result.value) {
+        this.loading = true;
+        this.roomService.deleteRoom(id).subscribe((response: APIResponse) => {
+          if (response.success) {
+            this.alertService.showAlert('Deleted!', 
+              building_name ? 
+              `${name} was delete successfully from the building ${building_name}` : 
+              `${name} was delete successfully`, 'success');
+            this.loadAllRooms();
+          }
+        });
+      }
+    })
   }
 
   
