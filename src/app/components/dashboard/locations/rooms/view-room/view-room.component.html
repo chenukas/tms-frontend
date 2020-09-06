@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="row" style="margin-bottom: 1.5rem;">
+        <div class="col-md-6">
+            <a [routerLink]="['/locations/rooms']"><h2>Rooms</h2></a> <span style="font-weight: 900;"> . </span> <span *ngIf="!isLoading"> {{Room.room_name}}</span> 
+            <div *ngIf="isLoading" class="building_name_ghost"></div>
+            <p><small>View and manage the selected room here.</small></p>
+        </div>
+        <div class="col-md-6">
+            <button mat-flat-button color="warn" style="float: right;" (click)="deleteRoom()">Delete Room</button>
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 1.5rem;">
+        <div class="col-md-8">
+            <p *ngIf="!isLoading">
+                <mat-form-field appearance="fill">
+                  <mat-label>Room Name</mat-label>
+                  <input matInput placeholder="Room Name" [(ngModel)]="Room.room_name">
+                  <mat-hint>Use a unique name that is known by almost anyone.</mat-hint>
+                </mat-form-field>
+            </p>
+            <div class="form-field-ghost" *ngIf="isLoading"></div>
+        </div>
+
+        <div class="col-md-4">
+            <button mat-flat-button color="primary" style="float: right;" (click)="save()" *ngIf="!isLoading">Save Changes</button>
+            <div class="button-ghost" *ngIf="isLoading"></div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 1.5rem;">
+        <div class="col-md-8">
+            <p *ngIf="!isLoading">
+                <mat-form-field appearance="fill">
+                    <mat-label>Type of Room</mat-label>
+                    <mat-select [(ngModel)]="Room.room_type">
+                        <mat-option [value]="1">Lecture Hall</mat-option>
+                        <mat-option [value]="2">Laboratory</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </p>
+            <div class="form-field-ghost" *ngIf="isLoading"></div>
+        </div>
+    </div>
+</div>

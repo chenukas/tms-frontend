@@ -23,7 +23,6 @@ import { StudentsComponent } from './components/dashboard/students/students.comp
 import { TagsComponent } from './components/dashboard/tags/tags.component';
 import { ManageTComponent, DeleteDialogBox } from './components/dashboard/tags/manage-t/manage-t.component';
 import { LecturersComponent } from './components/dashboard/lecturers/lecturers.component';
-import { AddLocationComponent } from './components/dashboard/locations/add-location/add-location.component';
 import { AddLecComponent } from './components/dashboard/lecturers/add-lec/add-lec.component';
 import { ManageLecComponent } from './components/dashboard/lecturers/manage-lec/manage-lec.component';
 import { YearSemsComponent, DeleteDialogBox2 } from './components/dashboard/students/year-sems/year-sems.component';
@@ -37,9 +36,14 @@ import { ManageSubComponent } from './components/dashboard/subjects/manage-sub/m
 import { WorksComponent } from './components/dashboard/works/works.component';
 import { AddWorksComponent } from './components/dashboard/works/add-works/add-works.component';
 import { ManageWorksComponent } from './components/dashboard/works/manage-works/manage-works.component';
-import { ViewLocationsComponent } from './components/dashboard/locations/view-locations/view-locations.component';
 import { UpdateWorksComponent } from './components/dashboard/works/update-works/update-works.component';
 import { AddTimeSlotsComponent } from './components/dashboard/works/add-time-slots/add-time-slots.component';
+import { BuildingsComponent } from './components/dashboard/locations/buildings/buildings.component';
+import { RoomsComponent } from './components/dashboard/locations/rooms/rooms.component';
+import { AddNewBuildingComponent } from './components/dashboard/locations/buildings/add-new-building/add-new-building.component';
+import { ViewBuildingComponent } from './components/dashboard/locations/buildings/view-building/view-building.component';
+import { AddNewRoomComponent } from './components/dashboard/locations/rooms/add-new-room/add-new-room.component';
+import { ViewRoomComponent } from './components/dashboard/locations/rooms/view-room/view-room.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -65,7 +69,6 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ManageTComponent,
     DeleteDialogBox,
     LecturersComponent,
-    AddLocationComponent,
     DeleteDialogBox1,
     DeleteDialogBox2,
     DeleteDialogBox3,
@@ -85,10 +88,14 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     WorksComponent,
     AddWorksComponent,
     ManageWorksComponent,
-    ViewLocationsComponent,
     UpdateWorksComponent,
     AddTimeSlotsComponent,
-
+    BuildingsComponent,
+    RoomsComponent,
+    AddNewBuildingComponent,
+    ViewBuildingComponent,
+    AddNewRoomComponent,
+    ViewRoomComponent,
   ],
   imports: [
     BrowserModule,
