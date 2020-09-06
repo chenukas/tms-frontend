@@ -68,7 +68,7 @@ const routes: Routes = [
         path: 'subjects',
         component: SubjectsComponent,
         children: [
-          { path: 'add', component: AddWorksComponent },
+          { path: 'add', component: AddSubComponent },
           { path: 'manage', component: ManageSubComponent }
         ]
       },

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WorksService } from './../../../../services/works.service';
+import { WorksService } from 'app/services/works.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Works } from 'app/models/works.model';
