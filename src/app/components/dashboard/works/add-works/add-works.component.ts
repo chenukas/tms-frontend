@@ -62,7 +62,7 @@ export class AddWorksComponent implements OnInit {
   ];
 
   getTimetableType(event){
-    //this.worksService.selectedWorks.timeTableType = event.target.value;
+    this.worksService.selectedWorks.timeTableType = event.target.value;
   }
 
   getNoOfWorkingDays(){
