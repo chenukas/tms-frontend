@@ -20,7 +20,7 @@
         <td>{{workObj.noOfHours}}</td>
         <td>{{workObj.noOfMinutes}}</td>
         <td><img src="assets/images/plus.png" (click)="navigateAddTimeSlots(workObj._id)" style="width: 30px; height: 30px;"/></td>
-        <td><img src="assets/images/edit.png" (click)="navigateEditWork(workObj._id)" class="mr-1" style="width: 20px; height: 20px;"/>/<img src="assets/images/delete.png" (click)="deleteWork(workObj._id)" class="ml-1" style="width: 20px; height: 20px;"/></td>
+        <td><img src="assets/images/edit.png" (click)="navigateEditWork(workObj._id)" class="mr-1" style="width: 20px; height: 20px;"/>/<img src="assets/images/delete.png" (click)="openDialog(workObj._id)" class="ml-1" style="width: 20px; height: 20px;"/></td>
       </tr>
     </tbody>
   </table>

@@ -1,6 +1,9 @@
 export class TimeSlots {
-    _id: string;
-    timeSlots: [number];
-    timeTableID: string;
-    timeTableType: string;
-  }
+  _id: string;
+  timeTableID: string;
+  timeTableType: string;
+  startTime: string;
+  endTime: string;
+  timeSlotsStartTimes: string;
+  timeSlotsEndTimes: string;
+}
