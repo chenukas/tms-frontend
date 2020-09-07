@@ -31,7 +31,7 @@ import { OverviewComponent } from './components/dashboard/overview/overview.comp
 
 const routes: Routes = [
   {
-    path: "", component: DashboardComponent,
+    path: '', component: DashboardComponent,
     children: [
       { path: '', component: OverviewComponent },
       {

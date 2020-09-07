@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WorksService } from './../../../../services/works.service';
+import { WorksService } from 'app/services/works.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Works } from 'app/models/works.model';
@@ -85,7 +85,7 @@ export class AddWorksComponent implements OnInit {
   ];
 
   getTimetableType(event){
-    //this.worksService.selectedWorks.timeTableType = event.target.value;
+    this.worksService.selectedWorks.timeTableType = event.target.value;
   }
 
   getNoOfWorkingDays(){
