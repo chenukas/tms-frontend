@@ -5,7 +5,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TagsComponent } from './components/dashboard/tags/tags.component';
 import { ManageTComponent } from './components/dashboard/tags/manage-t/manage-t.component';
 import { LocationComponent } from './components/dashboard/locations/location.component';
-import { AddLocationComponent } from './components/dashboard/locations/add-location/add-location.component';
 import { LecturersComponent } from './components/dashboard/lecturers/lecturers.component';
 import { AddLecComponent } from './components/dashboard/lecturers/add-lec/add-lec.component';
 import { ManageLecComponent } from './components/dashboard/lecturers/manage-lec/manage-lec.component';
@@ -23,12 +22,18 @@ import { AddWorksComponent } from './components/dashboard/works/add-works/add-wo
 import { ManageWorksComponent } from './components/dashboard/works/manage-works/manage-works.component';
 import { UpdateWorksComponent } from './components/dashboard/works/update-works/update-works.component';
 import { AddTimeSlotsComponent } from './components/dashboard/works/add-time-slots/add-time-slots.component';
+import { BuildingsComponent } from './components/dashboard/locations/buildings/buildings.component';
+import { RoomsComponent } from './components/dashboard/locations/rooms/rooms.component';
+import { ViewBuildingComponent } from './components/dashboard/locations/buildings/view-building/view-building.component';
+import { ViewRoomComponent } from './components/dashboard/locations/rooms/view-room/view-room.component';
+import { OverviewComponent } from './components/dashboard/overview/overview.component';
 
 
 const routes: Routes = [
   {
     path: "", component: DashboardComponent,
     children: [
+      { path: '', component: OverviewComponent },
       {
         path: 'tags',
         component: TagsComponent,
@@ -58,18 +63,20 @@ const routes: Routes = [
         ]
       },
       //set path here
-
       {
         path: 'locations', component: LocationComponent,
         children: [
-          { path: 'add', component: AddLocationComponent }
+          { path: 'buildings', component: BuildingsComponent },
+          { path: 'rooms', component: RoomsComponent },
+          { path: 'buildings/:id', component: ViewBuildingComponent },
+          { path: 'rooms/:id', component: ViewRoomComponent}
         ]
       },
       {
         path: 'subjects',
         component: SubjectsComponent,
         children: [
-          { path: 'add', component: AddWorksComponent },
+          { path: 'add', component: AddSubComponent },
           { path: 'manage', component: ManageSubComponent }
         ]
       },

@@ -1,0 +1,86 @@
+<div class="container-fluid">
+    <div class="row" style="margin-bottom: 1.5rem;">
+        <div class="col-md-6">
+            <a [routerLink]="['/locations/buildings']"><h2>Buildings</h2></a> <span style="font-weight: 900;"> . </span> <span *ngIf="!isLoading"> {{Building.building_name}}</span> 
+            <div *ngIf="isLoading" class="building_name_ghost"></div>
+            <p><small>View and manage the selected building here.</small></p>
+        </div>
+        <div class="col-md-6">
+            <button mat-flat-button color="warn" style="float: right;" (click)="deleteBuilding()">Delete Building</button>
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 1.5rem;">
+        <div class="col-md-8">
+            <p *ngIf="!isLoading">
+                <mat-form-field appearance="fill">
+                  <mat-label>Building Name</mat-label>
+                  <input matInput placeholder="Building Name" [(ngModel)]="Building.building_name">
+                  <mat-hint>Use a unique name that is known by almost anyone.</mat-hint>
+                </mat-form-field>
+            </p>
+            <div class="form-field-ghost" *ngIf="isLoading"></div>
+        </div>
+
+        <div class="col-md-4">
+            <button mat-flat-button color="primary" style="float: right;" (click)="save()" *ngIf="!isLoading">Save Changes</button>
+            <div class="button-ghost" *ngIf="isLoading"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <h4>Rooms</h4>
+            <p><small>View and manage rooms in this building below.</small></p>
+        </div>
+        <div class="col-md-4">
+            <button mat-flat-button color="primary" style="float: right;" (click)="addRoom()" *ngIf="!isLoading">Add Room</button>
+            <div class="button-ghost" *ngIf="isLoading"></div>
+        </div>
+    </div>
+    <div class="row" *ngIf="!isLoading">
+        <div class="col-md-12">
+            <mat-table [dataSource]="Rooms" class="mat-elevation-z8">
+                <!-- Position Column -->
+                <ng-container matColumnDef="room_name">
+                  <mat-header-cell *matHeaderCellDef> Room Name </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.room_name}} </mat-cell>
+                </ng-container>
+              
+                <!-- Name Column -->
+                <ng-container matColumnDef="room_type">
+                  <mat-header-cell *matHeaderCellDef> Type of Room </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{getTypeOfRoom(element.room_type)}} </mat-cell>
+                </ng-container>
+              
+                <!-- Weight Column -->
+                <ng-container matColumnDef="actions">
+                  <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+                  <mat-cell *matCellDef="let element">
+                      <button mat-stroked-button color="warn" (click)="deleteRoom(element._id, element.room_name)">Delete</button>
+                  </mat-cell>
+                </ng-container>
+              
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              </mat-table>
+
+              <div class="image-wrapper" *ngIf="Building && Building.rooms && Building.rooms.length === 0">
+                  <img src="../../../../../../assets/images/safebox.svg" width="60px">
+                  <p><small>No rooms found for this building!</small></p>
+              </div>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="isLoading">
+        <div class="col-md-12">
+            <div class="ghost-buildings-table">
+                <div class="ghost-row"></div>
+                <div class="ghost-row"></div>
+                <div class="ghost-row"></div>
+                <div class="ghost-row"></div>
+
+            </div>
+        </div>
+    </div>
+</div>
