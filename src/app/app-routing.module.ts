@@ -21,6 +21,7 @@ import { WorksComponent } from './components/dashboard/works/works.component';
 import { AddWorksComponent } from './components/dashboard/works/add-works/add-works.component';
 import { ManageWorksComponent } from './components/dashboard/works/manage-works/manage-works.component';
 import { UpdateWorksComponent } from './components/dashboard/works/update-works/update-works.component';
+import { AddTimeSlotsComponent } from './components/dashboard/works/add-time-slots/add-time-slots.component';
 import { BuildingsComponent } from './components/dashboard/locations/buildings/buildings.component';
 import { RoomsComponent } from './components/dashboard/locations/rooms/rooms.component';
 import { ViewBuildingComponent } from './components/dashboard/locations/buildings/view-building/view-building.component';
@@ -86,6 +87,7 @@ const routes: Routes = [
           { path: 'add', component: AddWorksComponent },
           { path: 'manage', component: ManageWorksComponent },
           { path: 'edit', component: UpdateWorksComponent },
+          { path: 'timeslots', component: AddTimeSlotsComponent }
         ]
       }
     ]

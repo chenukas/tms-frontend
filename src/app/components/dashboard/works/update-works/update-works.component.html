@@ -1,4 +1,4 @@
-<h2 class="mb-3">Add Working Days and Hours</h2>
+<h2 class="mb-3">Update Working Days and Hours</h2>
 <div>
   <form #worksForm="ngForm">
     <div class="content">
@@ -12,13 +12,30 @@
             <mat-label>Number of working Days</mat-label>
             <input matInput name="noOfWorkingDays" [(ngModel)]="worksService.selectedWorks.noOfWorkingDays" style="color: #fff;">
           </mat-form-field>
-          <mat-label class="mb-2">Working Days</mat-label>
+          <div *ngIf="labelDisable == true">
+            <label style="color: #960B06; font-family: 'Courier New'; font-weight: bolder;" class="mr-2">Updated unsuccessfully</label><label style="color: #E80DD0; font-family: 'Courier New'; font-weight: bolder;">Number of working days and working days are unMatching..</label>
+          </div>
+
+          <div *ngIf="worksService.selectedWorks.timeTableType == 'weekday'">
+            <mat-label class="mb-2">Working Days</mat-label>
           <section>
-            <div *ngFor="let obj of daysArr">
+            <div *ngFor="let obj of weekdaysArr">
               <mat-checkbox class="checkBoxData" name="{{obj.value}}" value="{{obj.value}}" (change)="workingDayChange($event, obj.value)"
                [checked]="selectedDays.indexOf(obj.value) != -1" [disabled]="cheDisable">{{obj.key}}</mat-checkbox><br>
             </div>
           </section>
+          </div>
+
+          <div *ngIf="worksService.selectedWorks.timeTableType == 'weekend'">
+            <mat-label class="mb-2">Working Days</mat-label>
+          <section>
+            <div *ngFor="let obj of weekendsArr">
+              <mat-checkbox class="checkBoxData" name="{{obj.value}}" value="{{obj.value}}" (change)="workingDayChange($event, obj.value)"
+               [checked]="selectedDays.indexOf(obj.value) != -1" [disabled]="cheDisable">{{obj.key}}</mat-checkbox><br>
+            </div>
+          </section>
+          </div>
+
           <mat-label class="row" style="padding-left: 15px;">Working time per Day</mat-label>
           <div class="row mt-2">
             <div class="col-6">

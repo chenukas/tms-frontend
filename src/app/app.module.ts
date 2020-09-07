@@ -35,7 +35,8 @@ import { AddSubComponent } from './components/dashboard/subjects/add-sub/add-sub
 import { ManageSubComponent } from './components/dashboard/subjects/manage-sub/manage-sub.component';
 import { WorksComponent } from './components/dashboard/works/works.component';
 import { AddWorksComponent } from './components/dashboard/works/add-works/add-works.component';
-import { ManageWorksComponent } from './components/dashboard/works/manage-works/manage-works.component';
+import { ManageWorksComponent, DeleteDialogBox6 } from './components/dashboard/works/manage-works/manage-works.component';
+//import { ViewLocationsComponent } from './components/dashboard/locations/view-locations/view-locations.component';
 import { UpdateWorksComponent } from './components/dashboard/works/update-works/update-works.component';
 import { AddTimeSlotsComponent } from './components/dashboard/works/add-time-slots/add-time-slots.component';
 import { BuildingsComponent } from './components/dashboard/locations/buildings/buildings.component';
@@ -57,15 +58,16 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     DeleteDialogBox2,
     DeleteDialogBox3,
     DeleteDialogBox4,
-    DeleteDialogBox5
+    DeleteDialogBox5,
+    DeleteDialogBox6
   ],
   declarations: [
-    AppComponent, 
-    DashboardComponent, 
-    OverviewComponent, 
-    LocationComponent, 
-    StudentsComponent, 
-    TagsComponent, 
+    AppComponent,
+    DashboardComponent,
+    OverviewComponent,
+    LocationComponent,
+    StudentsComponent,
+    TagsComponent,
     ManageTComponent,
     DeleteDialogBox,
     LecturersComponent,
@@ -74,6 +76,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     DeleteDialogBox3,
     DeleteDialogBox4,
     DeleteDialogBox5,
+    DeleteDialogBox6,
     LecturersComponent,
     AddLecComponent,
     ManageLecComponent,
