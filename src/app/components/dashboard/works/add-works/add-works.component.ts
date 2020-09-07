@@ -30,7 +30,30 @@ export class AddWorksComponent implements OnInit {
     this.cheDisable = true;
   }
 
-  daysArr = [
+  weekdaysArr = [
+    {
+      "key":"Monday",
+      "value": "monday"
+    },
+    {
+      "key":"Tuesday",
+      "value": "tuesday"
+    },
+    {
+      "key":"Wednesday",
+      "value": "wednesday"
+    },
+    {
+      "key":"Thursday",
+      "value": "thursday"
+    },
+    {
+      "key":"Friday",
+      "value": "friday"
+    }
+  ];
+
+  weekendsArr = [
     {
       "key":"Monday",
       "value": "monday"

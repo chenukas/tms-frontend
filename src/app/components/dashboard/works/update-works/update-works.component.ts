@@ -47,36 +47,59 @@ export class UpdateWorksComponent implements OnInit {
 
   }
 
-    daysArr = [
-      {
-        "key":"Monday",
-        "value": "monday"
-      },
-      {
-        "key":"Tuesday",
-        "value": "tuesday"
-      },
-      {
-        "key":"Wednesday",
-        "value": "wednesday"
-      },
-      {
-        "key":"Thursday",
-        "value": "thursday"
-      },
-      {
-        "key":"Friday",
-        "value": "friday"
-      },
-      {
-        "key":"Saturday",
-        "value": "saturday"
-      },
-      {
-        "key":"Sunday",
-        "value": "sunday"
-      }
-    ];
+  weekdaysArr = [
+    {
+      "key":"Monday",
+      "value": "monday"
+    },
+    {
+      "key":"Tuesday",
+      "value": "tuesday"
+    },
+    {
+      "key":"Wednesday",
+      "value": "wednesday"
+    },
+    {
+      "key":"Thursday",
+      "value": "thursday"
+    },
+    {
+      "key":"Friday",
+      "value": "friday"
+    }
+  ];
+
+  weekendsArr = [
+    {
+      "key":"Monday",
+      "value": "monday"
+    },
+    {
+      "key":"Tuesday",
+      "value": "tuesday"
+    },
+    {
+      "key":"Wednesday",
+      "value": "wednesday"
+    },
+    {
+      "key":"Thursday",
+      "value": "thursday"
+    },
+    {
+      "key":"Friday",
+      "value": "friday"
+    },
+    {
+      "key":"Saturday",
+      "value": "saturday"
+    },
+    {
+      "key":"Sunday",
+      "value": "sunday"
+    }
+  ];
 
     workingDayChange(event:any, value:string){
       let index = this.selectedDays.indexOf(value);
@@ -99,6 +122,7 @@ export class UpdateWorksComponent implements OnInit {
           this.worksService.viewWorks()
           this.worksService.selectedWorks = new Works();
           this.disable = false;
+          this.labelDisable = false;
           setTimeout(() => {
           this.disable = true;
         }, 1000);

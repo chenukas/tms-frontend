@@ -15,13 +15,24 @@
             <mat-label>Number of working Days</mat-label>
             <input matInput name="noOfWorkingDays" [(ngModel)]="worksService.selectedWorks.noOfWorkingDays" #noOfWorkingDays="ngModel" (change)="getNoOfWorkingDays()" style="color: #fff;" required>
           </mat-form-field>
+          <div  *ngIf="worksService.selectedWorks.timeTableType == 'weekday'">
+            <mat-label class="mb-2">Working Days</mat-label>
+            <section>
+              <div *ngFor="let obj of weekdaysArr">
+                <mat-checkbox class="checkBoxData" name="{{obj.value}}" value="{{obj.value}}" (change)="workingDayChange($event, obj.value)" [disabled]="cheDisable" required>{{obj.key}}</mat-checkbox><br>
+              </div>
+            </section>
+          </div>
 
-          <mat-label class="mb-2">Working Days</mat-label>
-          <section>
-            <div *ngFor="let obj of daysArr">
-              <mat-checkbox class="checkBoxData" name="{{obj.value}}" value="{{obj.value}}" (change)="workingDayChange($event, obj.value)" [disabled]="cheDisable" required>{{obj.key}}</mat-checkbox><br>
-            </div>
-          </section>
+          <div *ngIf="worksService.selectedWorks.timeTableType == 'weekend'">
+            <mat-label class="mb-2">Working Days</mat-label>
+            <section>
+              <div *ngFor="let obj of weekendsArr">
+                <mat-checkbox class="checkBoxData" name="{{obj.value}}" value="{{obj.value}}" (change)="workingDayChange($event, obj.value)" [disabled]="cheDisable" required>{{obj.key}}</mat-checkbox><br>
+              </div>
+            </section>
+          </div>
+
           <mat-label class="row" style="padding-left: 15px;">Working time per Day</mat-label>
           <div class="row mt-2">
             <div class="col-6">

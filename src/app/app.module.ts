@@ -18,11 +18,12 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OverviewComponent } from './components/dashboard/overview/overview.component';
-import { LocationComponent } from './components/dashboard/location/location.component';
+import { LocationComponent } from './components/dashboard/locations/location.component';
 import { StudentsComponent } from './components/dashboard/students/students.component';
 import { TagsComponent } from './components/dashboard/tags/tags.component';
 import { ManageTComponent, DeleteDialogBox } from './components/dashboard/tags/manage-t/manage-t.component';
 import { LecturersComponent } from './components/dashboard/lecturers/lecturers.component';
+import { AddLocationComponent } from './components/dashboard/locations/add-location/add-location.component';
 import { AddLecComponent } from './components/dashboard/lecturers/add-lec/add-lec.component';
 import { ManageLecComponent } from './components/dashboard/lecturers/manage-lec/manage-lec.component';
 import { YearSemsComponent, DeleteDialogBox2 } from './components/dashboard/students/year-sems/year-sems.component';
@@ -35,7 +36,12 @@ import { AddSubComponent } from './components/dashboard/subjects/add-sub/add-sub
 import { ManageSubComponent } from './components/dashboard/subjects/manage-sub/manage-sub.component';
 import { WorksComponent } from './components/dashboard/works/works.component';
 import { AddWorksComponent } from './components/dashboard/works/add-works/add-works.component';
+//<<<<<<< HEAD
 import { ManageWorksComponent, DeleteDialogBox6 } from './components/dashboard/works/manage-works/manage-works.component';
+//=======
+//import { ManageWorksComponent } from './components/dashboard/works/manage-works/manage-works.component';
+import { ViewLocationsComponent } from './components/dashboard/locations/view-locations/view-locations.component';
+//>>>>>>> 34f6ae54642965b109c7c54000bf5df4ace1cc5d
 import { UpdateWorksComponent } from './components/dashboard/works/update-works/update-works.component';
 import { AddTimeSlotsComponent } from './components/dashboard/works/add-time-slots/add-time-slots.component';
 
@@ -63,6 +69,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     TagsComponent,
     ManageTComponent,
     DeleteDialogBox,
+    LecturersComponent,
+    AddLocationComponent,
     DeleteDialogBox1,
     DeleteDialogBox2,
     DeleteDialogBox3,
@@ -83,6 +91,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     WorksComponent,
     AddWorksComponent,
     ManageWorksComponent,
+    ViewLocationsComponent,
     UpdateWorksComponent,
     AddTimeSlotsComponent,
 
