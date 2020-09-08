@@ -11,8 +11,8 @@ export class BatchesService {
     private http: HttpClient
   ) { }
 
-  public createBatch(name) {
-    return this.http.post(`${AppConfig.environment}/batches`,{name});
+  public createBatch(name,type) {
+    return this.http.post(`${AppConfig.environment}/batches`,{name,type});
   }
 
   public viewBatches() {
