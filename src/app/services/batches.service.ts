@@ -19,6 +19,14 @@ export class BatchesService {
     return this.http.get(`${AppConfig.environment}/batches`);
   }
 
+  public viewMainGroups() {
+    return this.http.get(`${AppConfig.environment}/batches/maingroups`);
+  }
+
+  public viewSubGroups() {
+    return this.http.get(`${AppConfig.environment}/batches/subgroups`);
+  }
+
   public viewBatchById(id) {
     return this.http.get(`${AppConfig.environment}/batches/${id}`);
   }
