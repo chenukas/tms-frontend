@@ -33,6 +33,7 @@ export class GenerateBComponent implements OnInit {
   public id: string;
   public name: String;
   public isOnUpdate: boolean;
+  public type: String;
 
   displayedColumns = ['name','action'];
   dataSource: MatTableDataSource<any>;
@@ -62,6 +63,7 @@ export class GenerateBComponent implements OnInit {
     this.selectedProgramme = '';
     this.selectedGroup = '';
     this.selectedSubgroup = '';
+    this.type = '';
   }
 
   applyFilter(event: Event) {
@@ -78,17 +80,24 @@ export class GenerateBComponent implements OnInit {
   }
 
   createBatch() {
-    if( this.selectedSubgroup === '')
+    if( this.selectedSubgroup === '') {
       this.name = `${this.selectedYearsem}.${this.selectedProgramme}.${this.selectedGroup}`;
-    else
+      this.type = 'maingroup';
+    }
+    else {
       this.name = `${this.selectedYearsem}.${this.selectedProgramme}.${this.selectedGroup}.${this.selectedSubgroup}`;
-    this.batchesService.createBatch(this.name).subscribe(response => {
-      console.log(response);
-      this.viewAllBatches();
-    }, err => {
-      console.log(err.message);
-    });
-    this.clear();
+      this.type = 'subgroup';
+    }
+
+    if (this.selectedYearsem !== '' && this.selectedProgramme !== '' && this.selectedGroup !== '') {
+      this.batchesService.createBatch(this.name, this.type).subscribe(response => {
+        console.log(response);
+        this.viewAllBatches();
+      }, err => {
+        console.log(err.message);
+      });
+      this.clear();
+    }
   }
 
   clear() {
@@ -97,6 +106,7 @@ export class GenerateBComponent implements OnInit {
     this.selectedProgramme = '';
     this.selectedGroup = '';
     this.selectedSubgroup = '';
+    this.type = '';
   }
 
   openDialog(_id: string) {

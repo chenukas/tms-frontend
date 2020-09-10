@@ -11,12 +11,20 @@ export class BatchesService {
     private http: HttpClient
   ) { }
 
-  public createBatch(name) {
-    return this.http.post(`${AppConfig.environment}/batches`,{name});
+  public createBatch(name,type) {
+    return this.http.post(`${AppConfig.environment}/batches`,{name,type});
   }
 
   public viewBatches() {
     return this.http.get(`${AppConfig.environment}/batches`);
+  }
+
+  public viewMainGroups() {
+    return this.http.get(`${AppConfig.environment}/batches/maingroups`);
+  }
+
+  public viewSubGroups() {
+    return this.http.get(`${AppConfig.environment}/batches/subgroups`);
   }
 
   public viewBatchById(id) {
