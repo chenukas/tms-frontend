@@ -27,7 +27,6 @@ export class AddLecComponent implements OnInit {
   public center: string;
   public building: string;
   public level: string;
-  //public rank: string;
   public id : string;
   public isOnUpdate : boolean;
 
@@ -50,7 +49,6 @@ export class AddLecComponent implements OnInit {
     this.center = '';
     this.building = '';
     this.level = '';
-    //this.rank = '';
     
     this.route.queryParams.subscribe(params => {
       if (params.id) {
@@ -65,7 +63,6 @@ export class AddLecComponent implements OnInit {
           this.center= res.data.center;
           this.building = res.data.building;
           this.level = res.data.level;
-          //this.rank = res.data.rank;
           this.isOnUpdate = true;
         });
       } 

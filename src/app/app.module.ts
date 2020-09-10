@@ -45,6 +45,9 @@ import { AddNewBuildingComponent } from './components/dashboard/locations/buildi
 import { ViewBuildingComponent } from './components/dashboard/locations/buildings/view-building/view-building.component';
 import { AddNewRoomComponent } from './components/dashboard/locations/rooms/add-new-room/add-new-room.component';
 import { ViewRoomComponent } from './components/dashboard/locations/rooms/view-room/view-room.component';
+import { SessionsComponent } from './components/dashboard/sessions/sessions.component';
+import { AddSessionComponent } from './components/dashboard/sessions/add-session/add-session.component';
+import { ManageSessionsComponent } from './components/dashboard/sessions/manage-sessions/manage-sessions.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -99,6 +102,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ViewBuildingComponent,
     AddNewRoomComponent,
     ViewRoomComponent,
+    SessionsComponent,
+    AddSessionComponent,
+    ManageSessionsComponent,
   ],
   imports: [
     BrowserModule,

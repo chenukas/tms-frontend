@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { SubjectsService } from 'app/services/subjects.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 
 interface APIResponse {
   success : boolean,
@@ -34,7 +35,8 @@ export class ManageSubComponent implements OnInit {
   constructor(
     private subjectsService: SubjectsService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {

@@ -1,0 +1,94 @@
+<h2>ADD SESSIONS</h2>
+<br>
+<div>
+    <form>
+        <div class="col-md-6">
+            <h4 style="padding-bottom: 20px;">Session Details</h4>
+        </div>
+
+        <div>
+            <div class = "form-row">
+                <div class="col-md-6 col-sm-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Lecturer's Name</mat-label>
+                        <mat-select name="lecturers" [(ngModel)]="selectedLecturer" style="color: #999;" required>
+                            <mat-option value={{lecturer._id}} *ngFor="let lecturer of lecturers">{{lecturer.fname}}  {{lecturer.lname}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-6 col-sm-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Subject Name</mat-label>
+                        <mat-select name="subjects" [(ngModel)]="selectedSubject" style="color: #999;" required>
+                            <mat-option value={{subject._id}} *ngFor="let subject of subjects">{{subject.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Subject Code</mat-label>
+                        <input matInput placeholder="Subject Code" name="subCode" [(ngModel)]="subCode" required style="color: #999;">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class = "form-row">
+                <div class="col-md-6 col-sm-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Session Tag</mat-label>
+                        <mat-select name="tags" [(ngModel)]="selectedTag" style="color: #999;" required>
+                            <mat-option value={{tag._id}} *ngFor="let tag of tags">{{tag.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class = "form-row">
+                <div class="col-md-6 col-sm-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Main Group ID</mat-label>
+                        <mat-select name="maingroups" [(ngModel)]="selectedMainGroup" style="color: #999;" required>
+                            <mat-option value={{batches._id}} *ngFor="let maingroup of maingroups">{{batches.groups}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Sub Group ID</mat-label>
+                        <mat-select name="subgroups" [(ngModel)]="selectedSubGroup" style="color: #999;" required>
+                            <mat-option value={{batches._id}} *ngFor="let subgroup of subgroups">{{batches.subgroups}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class = "form-row">
+                <div class="col-md-6 col-sm-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Number Of Students</mat-label>
+                        <input matInput placeholder="Enter number of students here" name="studentCount" [(ngModel)]="studentCount" required style="color: #999;">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class = "form-row">
+                <div class="col-md-6 col-sm-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Duration</mat-label>
+                        <input matInput placeholder="Enter number of hours here" name="duration" [(ngModel)]="duration" required style="color: #999;">
+                    </mat-form-field>
+                </div>
+            </div>
+
+        </div>
+
+        <button mat-raised-button color="primary" style="float: right;" (click) = "createSession()" *ngIf = "!isOnUpdate">Save</button>
+        <button mat-raised-button color="primary" style="float: right;" (click) = "updateSession()" *ngIf = "isOnUpdate">Update</button>
+
+    </form>
+</div>

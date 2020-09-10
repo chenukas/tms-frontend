@@ -27,6 +27,9 @@ import { RoomsComponent } from './components/dashboard/locations/rooms/rooms.com
 import { ViewBuildingComponent } from './components/dashboard/locations/buildings/view-building/view-building.component';
 import { ViewRoomComponent } from './components/dashboard/locations/rooms/view-room/view-room.component';
 import { OverviewComponent } from './components/dashboard/overview/overview.component';
+import { SessionsComponent } from './components/dashboard/sessions/sessions.component';
+import { AddSessionComponent } from './components/dashboard/sessions/add-session/add-session.component';
+import { ManageSessionsComponent } from './components/dashboard/sessions/manage-sessions/manage-sessions.component';
 
 
 const routes: Routes = [
@@ -89,7 +92,15 @@ const routes: Routes = [
           { path: 'edit', component: UpdateWorksComponent },
           { path: 'timeslots', component: AddTimeSlotsComponent }
         ]
-      }
+      },
+      {
+        path : 'sessions',
+        component : SessionsComponent,
+        children : [
+          { path : 'add', component : AddSessionComponent },
+          { path : 'manage', component : ManageSessionsComponent }
+        ]
+      },
     ]
   }
 ];

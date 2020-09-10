@@ -95,6 +95,18 @@
                 </li>
             </ul>
         </li>
+        <mat-divider></mat-divider>
+        <li>
+            <a href = "#sessionSubmenu" data-toggle="collapse" aria-expanded="false" class = "dropdown-toggle">Sessions</a>
+            <ul class = "collapse list-unstyled" id="sessionSubmenu">
+                <li>
+                    <a [routerLink] = "['sessions/add']">Add Sessions</a>
+                </li>
+                <li>
+                    <a [routerLink] = "['sessions/manage']">Manage Sessions</a>
+                </li>
+            </ul>
+        </li>
     </ul>
 </nav>
 
