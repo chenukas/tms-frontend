@@ -45,6 +45,11 @@ import { AddNewBuildingComponent } from './components/dashboard/locations/buildi
 import { ViewBuildingComponent } from './components/dashboard/locations/buildings/view-building/view-building.component';
 import { AddNewRoomComponent } from './components/dashboard/locations/rooms/add-new-room/add-new-room.component';
 import { ViewRoomComponent } from './components/dashboard/locations/rooms/view-room/view-room.component';
+import { ManagerComponent } from './components/dashboard/manager/manager.component';
+import { UnavailabilityComponent } from './components/dashboard/manager/unavailability/unavailability.component';
+import { ConsecutiveSComponent } from './components/dashboard/manager/consecutive-s/consecutive-s.component';
+import { ParallelSComponent } from './components/dashboard/manager/parallel-s/parallel-s.component';
+import { NonOverlappingSComponent } from './components/dashboard/manager/non-overlapping-s/non-overlapping-s.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -99,6 +104,11 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ViewBuildingComponent,
     AddNewRoomComponent,
     ViewRoomComponent,
+    ManagerComponent,
+    UnavailabilityComponent,
+    ConsecutiveSComponent,
+    ParallelSComponent,
+    NonOverlappingSComponent,
   ],
   imports: [
     BrowserModule,

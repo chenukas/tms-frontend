@@ -95,7 +95,24 @@
                 </li>
             </ul>
         </li>
-        
+        <mat-divider></mat-divider>
+        <li>
+            <a href = "#managerSubmenu" data-toggle = "collapse" aria-expanded = "false" class = "dropdown-toggle">Manager</a>
+            <ul class = "collapse list-unstyled" id = "managerSubmenu">
+                <li>
+                    <a [routerLink] = "['manager/unavailability']">Unavailability</a>
+                </li>
+                <li>
+                    <a [routerLink] = "['manager/consecutives']">Consecutive Sessions</a>
+                </li>
+                <li>
+                    <a [routerLink] = "['manager/parallels']">Parallel Sessions</a>
+                </li>
+                <li>
+                    <a [routerLink] = "['manager/nonoverlappings']">Non-overlapping Sessions</a>
+                </li>
+            </ul>
+        </li>
     </ul>
 </nav>
 
