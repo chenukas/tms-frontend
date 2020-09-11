@@ -27,6 +27,11 @@ import { RoomsComponent } from './components/dashboard/locations/rooms/rooms.com
 import { ViewBuildingComponent } from './components/dashboard/locations/buildings/view-building/view-building.component';
 import { ViewRoomComponent } from './components/dashboard/locations/rooms/view-room/view-room.component';
 import { OverviewComponent } from './components/dashboard/overview/overview.component';
+import { ManagerComponent } from './components/dashboard/manager/manager.component';
+import { UnavailabilityComponent} from './components/dashboard/manager/unavailability/unavailability.component';
+import { ConsecutiveSComponent } from './components/dashboard/manager/consecutive-s/consecutive-s.component';
+import { ParallelSComponent } from './components/dashboard/manager/parallel-s/parallel-s.component';
+import { NonOverlappingSComponent } from './components/dashboard/manager/non-overlapping-s/non-overlapping-s.component';
 
 
 const routes: Routes = [
@@ -88,6 +93,16 @@ const routes: Routes = [
           { path: 'manage', component: ManageWorksComponent },
           { path: 'edit', component: UpdateWorksComponent },
           { path: 'timeslots', component: AddTimeSlotsComponent }
+        ]
+      },
+      {
+        path: 'manager',
+        component: ManagerComponent,
+        children: [
+          { path: 'unavailability', component: UnavailabilityComponent },
+          { path: 'consecutives', component: ConsecutiveSComponent },
+          { path: 'parallels', component: ParallelSComponent },
+          { path: 'nonoverlappings', component: NonOverlappingSComponent }
         ]
       }
     ]
