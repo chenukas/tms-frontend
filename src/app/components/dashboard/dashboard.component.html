@@ -7,7 +7,7 @@
 </nav> -->
 
 <!-- Sidebar -->
-<nav id="sidebar">
+<nav id="sidebar" class="space">
     <div class="sidebar-header" style="text-align: center;">
         <img src="assets/images/logo.png" class="logo" alt="logo">
         <h6>ABC INSTITUTE</h6>
@@ -64,6 +64,18 @@
         </li>
         <mat-divider></mat-divider>
         <li>
+            <a href = "#subjectSubmenu" data-toggle = "collapse" aria-expanded = "false" class = "dropdown-toggle">Subjects</a>
+            <ul class = "collapse list-unstyled" id = "subjectSubmenu">
+                <li>
+                    <a [routerLink] = "['subjects/add']">Add Subjects</a>
+                </li>
+                <li>
+                    <a [routerLink] = "['subjects/manage']">Manage Details</a>
+                </li>
+            </ul>
+        </li>
+        <mat-divider></mat-divider>
+        <li>
             <a href="#tagSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tags</a>
             <ul class="collapse list-unstyled" id="tagSubmenu">
                 <li>
@@ -73,25 +85,31 @@
         </li>
         <mat-divider></mat-divider>
         <li>
-            <a href = "#workSubmenu" data-toggle = "collapse" aria-expanded = "false" class = "dropdown-toggle">Works</a>
+            <a href = "#workSubmenu" data-toggle = "collapse" aria-expanded = "false" class = "dropdown-toggle">Working Time</a>
             <ul class = "collapse list-unstyled" id = "workSubmenu">
                 <li>
-                    <a [routerLink] = "['works/add']">Add Works</a>
+                    <a [routerLink] = "['works/add']">Add Working Time</a>
                 </li>
                 <li>
-                    <a [routerLink] = "['works/manage']">Manage Works</a>
+                    <a [routerLink] = "['works/manage']">Manage Working Time</a>
                 </li>
             </ul>
         </li>
         <mat-divider></mat-divider>
         <li>
-            <a href = "#subjectSubmenu" data-toggle = "collapse" aria-expanded = "false" class = "dropdown-toggle">Subjects</a>
-            <ul class = "collapse list-unstyled" id = "subjectSubmenu">
+            <a href = "#managerSubmenu" data-toggle = "collapse" aria-expanded = "false" class = "dropdown-toggle">Manager</a>
+            <ul class = "collapse list-unstyled" id = "managerSubmenu">
                 <li>
-                    <a [routerLink] = "['subjects/add']">Add Subjects</a>
+                    <a [routerLink] = "['manager/unavailability']">Unavailability</a>
                 </li>
                 <li>
-                    <a [routerLink] = "['subjects/manage']">Manage Details</a>
+                    <a [routerLink] = "['manager/consecutives']">Consecutive Sessions</a>
+                </li>
+                <li>
+                    <a [routerLink] = "['manager/parallels']">Parallel Sessions</a>
+                </li>
+                <li>
+                    <a [routerLink] = "['manager/nonoverlappings']">Non-overlapping Sessions</a>
                 </li>
             </ul>
         </li>

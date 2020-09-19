@@ -45,9 +45,17 @@ import { AddNewBuildingComponent } from './components/dashboard/locations/buildi
 import { ViewBuildingComponent } from './components/dashboard/locations/buildings/view-building/view-building.component';
 import { AddNewRoomComponent } from './components/dashboard/locations/rooms/add-new-room/add-new-room.component';
 import { ViewRoomComponent } from './components/dashboard/locations/rooms/view-room/view-room.component';
+<<<<<<< HEAD
 import { SessionsComponent } from './components/dashboard/sessions/sessions.component';
 import { AddSessionComponent } from './components/dashboard/sessions/add-session/add-session.component';
 import { ManageSessionsComponent } from './components/dashboard/sessions/manage-sessions/manage-sessions.component';
+=======
+import { ManagerComponent } from './components/dashboard/manager/manager.component';
+import { UnavailabilityComponent } from './components/dashboard/manager/unavailability/unavailability.component';
+import { ConsecutiveSComponent } from './components/dashboard/manager/consecutive-s/consecutive-s.component';
+import { ParallelSComponent } from './components/dashboard/manager/parallel-s/parallel-s.component';
+import { NonOverlappingSComponent } from './components/dashboard/manager/non-overlapping-s/non-overlapping-s.component';
+>>>>>>> fb31c9586be8eba5df4b5fd1aee941c80d1c55b7
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -102,9 +110,17 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ViewBuildingComponent,
     AddNewRoomComponent,
     ViewRoomComponent,
+<<<<<<< HEAD
     SessionsComponent,
     AddSessionComponent,
     ManageSessionsComponent,
+=======
+    ManagerComponent,
+    UnavailabilityComponent,
+    ConsecutiveSComponent,
+    ParallelSComponent,
+    NonOverlappingSComponent,
+>>>>>>> fb31c9586be8eba5df4b5fd1aee941c80d1c55b7
   ],
   imports: [
     BrowserModule,
