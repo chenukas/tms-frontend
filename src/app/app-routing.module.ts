@@ -36,67 +36,69 @@ import { ConsecutiveSComponent } from './components/dashboard/manager/consecutiv
 import { ParallelSComponent } from './components/dashboard/manager/parallel-s/parallel-s.component';
 import { NonOverlappingSComponent } from './components/dashboard/manager/non-overlapping-s/non-overlapping-s.component';
 
-
 const routes: Routes = [
   {
-    path: '', component: DashboardComponent,
+    path: "",
+    component: DashboardComponent,
     children: [
-      { path: '', component: OverviewComponent },
+      { path: "", component: OverviewComponent },
       {
-        path: 'tags',
+        path: "tags",
         component: TagsComponent,
         children: [
           {
-            path: 'manage', component: ManageTComponent
-          }
-        ]
-      },
-      { path: 'lecturers',
-        component: LecturersComponent,
-        children: [
-          { path: 'add', component: AddLecComponent },
-          { path: 'manage', component: ManageLecComponent}
-
-        ]
+            path: "manage",
+            component: ManageTComponent,
+          },
+        ],
       },
       {
-        path: 'students',
+        path: "lecturers",
+        component: LecturersComponent,
+        children: [
+          { path: "add", component: AddLecComponent },
+          { path: "manage", component: ManageLecComponent },
+        ],
+      },
+      {
+        path: "students",
         component: StudentsComponent,
         children: [
-          { path: 'yearsems', component: YearSemsComponent },
-          { path: 'programmes', component: ProgrammesComponent },
-          { path: 'groups', component: GroupsComponent },
-          { path: 'subgroups', component: SubGroupsComponent },
-          { path: 'generate', component: GenerateBComponent }
-        ]
+          { path: "yearsems", component: YearSemsComponent },
+          { path: "programmes", component: ProgrammesComponent },
+          { path: "groups", component: GroupsComponent },
+          { path: "subgroups", component: SubGroupsComponent },
+          { path: "generate", component: GenerateBComponent },
+        ],
       },
       //set path here
       {
-        path: 'locations', component: LocationComponent,
+        path: "locations",
+        component: LocationComponent,
         children: [
-          { path: 'buildings', component: BuildingsComponent },
-          { path: 'rooms', component: RoomsComponent },
-          { path: 'buildings/:id', component: ViewBuildingComponent },
-          { path: 'rooms/:id', component: ViewRoomComponent}
-        ]
+          { path: "buildings", component: BuildingsComponent },
+          { path: "rooms", component: RoomsComponent },
+          { path: "buildings/:id", component: ViewBuildingComponent },
+          { path: "rooms/:id", component: ViewRoomComponent },
+        ],
       },
       {
-        path: 'subjects',
+        path: "subjects",
         component: SubjectsComponent,
         children: [
-          { path: 'add', component: AddSubComponent },
-          { path: 'manage', component: ManageSubComponent }
-        ]
+          { path: "add", component: AddSubComponent },
+          { path: "manage", component: ManageSubComponent },
+        ],
       },
       {
-        path: 'works',
+        path: "works",
         component: WorksComponent,
         children: [
-          { path: 'add', component: AddWorksComponent },
-          { path: 'manage', component: ManageWorksComponent },
-          { path: 'edit', component: UpdateWorksComponent },
-          { path: 'timeslots', component: AddTimeSlotsComponent }
-        ]
+          { path: "add", component: AddWorksComponent },
+          { path: "manage", component: ManageWorksComponent },
+          { path: "edit", component: UpdateWorksComponent },
+          { path: "timeslots", component: AddTimeSlotsComponent },
+        ],
       },
       {
         path : 'sessions',
@@ -121,9 +123,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes)
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
