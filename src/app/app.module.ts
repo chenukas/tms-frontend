@@ -57,22 +57,22 @@ import {
   DeleteDialogBox6,
 } from "./components/dashboard/works/manage-works/manage-works.component";
 //import { ViewLocationsComponent } from './components/dashboard/locations/view-locations/view-locations.component';
-import { UpdateWorksComponent } from "./components/dashboard/works/update-works/update-works.component";
-import { AddTimeSlotsComponent } from "./components/dashboard/works/add-time-slots/add-time-slots.component";
-import { BuildingsComponent } from "./components/dashboard/locations/buildings/buildings.component";
-import { RoomsComponent } from "./components/dashboard/locations/rooms/rooms.component";
-import { AddNewBuildingComponent } from "./components/dashboard/locations/buildings/add-new-building/add-new-building.component";
-import { ViewBuildingComponent } from "./components/dashboard/locations/buildings/view-building/view-building.component";
-import { AddNewRoomComponent } from "./components/dashboard/locations/rooms/add-new-room/add-new-room.component";
-import { ViewRoomComponent } from "./components/dashboard/locations/rooms/view-room/view-room.component";
-import { SessionsComponent } from "./components/dashboard/sessions/sessions.component";
-import { AddSessionComponent } from "./components/dashboard/sessions/add-session/add-session.component";
-import { ManageSessionsComponent } from "./components/dashboard/sessions/manage-sessions/manage-sessions.component";
-import { ManagerComponent } from "./components/dashboard/manager/manager.component";
-import { UnavailabilityComponent } from "./components/dashboard/manager/unavailability/unavailability.component";
-import { ConsecutiveSComponent } from "./components/dashboard/manager/consecutive-s/consecutive-s.component";
-import { ParallelSComponent } from "./components/dashboard/manager/parallel-s/parallel-s.component";
-import { NonOverlappingSComponent } from "./components/dashboard/manager/non-overlapping-s/non-overlapping-s.component";
+import { UpdateWorksComponent } from './components/dashboard/works/update-works/update-works.component';
+import { AddTimeSlotsComponent } from './components/dashboard/works/add-time-slots/add-time-slots.component';
+import { BuildingsComponent } from './components/dashboard/locations/buildings/buildings.component';
+import { RoomsComponent } from './components/dashboard/locations/rooms/rooms.component';
+import { AddNewBuildingComponent } from './components/dashboard/locations/buildings/add-new-building/add-new-building.component';
+import { ViewBuildingComponent } from './components/dashboard/locations/buildings/view-building/view-building.component';
+import { AddNewRoomComponent } from './components/dashboard/locations/rooms/add-new-room/add-new-room.component';
+import { ViewRoomComponent } from './components/dashboard/locations/rooms/view-room/view-room.component';
+import { SessionsComponent } from './components/dashboard/sessions/sessions.component';
+import { AddSessionComponent } from './components/dashboard/sessions/add-session/add-session.component';
+import { ManageSessionsComponent } from './components/dashboard/sessions/manage-sessions/manage-sessions.component';
+import { ManagerComponent } from './components/dashboard/manager/manager.component';
+import { UnavailabilityComponent } from './components/dashboard/manager/unavailability/unavailability.component';
+import { ConsecutiveSComponent } from './components/dashboard/manager/consecutive-s/consecutive-s.component';
+import { ParallelSComponent } from './components/dashboard/manager/parallel-s/parallel-s.component';
+import { NonOverlappingSComponent } from './components/dashboard/manager/non-overlapping-s/non-overlapping-s.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
