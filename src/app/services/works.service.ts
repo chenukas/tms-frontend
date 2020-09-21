@@ -29,5 +29,8 @@ export class WorksService {
   public viewWorkById(_id:string) {
     return this.http.get(`${AppConfig.environment}/works/${_id}`);
   }
+  public viewWorkByTimeID(timeTableID:string) {
+    return this.http.post(`${AppConfig.environment}/worksTimeTable`, {timeTableID});
+  }
 
 }

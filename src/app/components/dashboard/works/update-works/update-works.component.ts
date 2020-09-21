@@ -35,6 +35,7 @@ export class UpdateWorksComponent implements OnInit {
       if (params._id) {
           this.worksService.viewWorkById(params._id).subscribe((res: { data: any }) => {
           this.worksService.selectedWorks._id = params._id;
+          this.worksService.selectedWorks.timeTableID = res.data.timeTableID;
           this.worksService.selectedWorks.timeTableType = res.data.timeTableType
           this.worksService.selectedWorks.noOfWorkingDays = res.data.noOfWorkingDays;
           this.worksService.selectedWorks.noOfHours = res.data.noOfHours;

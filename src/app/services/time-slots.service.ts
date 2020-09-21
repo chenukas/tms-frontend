@@ -16,4 +16,9 @@ export class TimeSlotsService {
   public postTimeSlots(timeSlots:TimeSlots) {
     return this.http.post(`${AppConfig.environment}/timeSlots`,timeSlots);
   }
+
+  public viewTimeSlotsByTimeID(timeTableID:string) {
+    return this.http.post(`${AppConfig.environment}/timeSlotsTimeTable`, {timeTableID});
+  }
+
 }

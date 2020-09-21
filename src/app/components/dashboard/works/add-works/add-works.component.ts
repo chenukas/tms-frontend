@@ -91,6 +91,7 @@ export class AddWorksComponent implements OnInit {
   getNoOfWorkingDays(){
     this.cheDisable = false;
   }
+
   workingDayChange(event:any, value:string){
     let index = this.selectedDays.indexOf(value);
     if (index == -1){
@@ -108,6 +109,7 @@ export class AddWorksComponent implements OnInit {
   }
 
   clear(){
+    this.worksService.selectedWorks.timeTableID = "",
     this.worksService.selectedWorks.timeTableType = "",
     this.worksService.selectedWorks.noOfWorkingDays = null,
     this.worksService.selectedWorks.workingDays = "",
