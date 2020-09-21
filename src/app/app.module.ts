@@ -73,6 +73,8 @@ import { UnavailabilityComponent } from './components/dashboard/manager/unavaila
 import { ConsecutiveSComponent } from './components/dashboard/manager/consecutive-s/consecutive-s.component';
 import { ParallelSComponent } from './components/dashboard/manager/parallel-s/parallel-s.component';
 import { NonOverlappingSComponent } from './components/dashboard/manager/non-overlapping-s/non-overlapping-s.component';
+import { TimeTableComponent } from './components/dashboard/time-table/time-table.component';
+import { LecturerTimetableComponent } from './components/dashboard/time-table/lecturer-timetable/lecturer-timetable.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -135,6 +137,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ConsecutiveSComponent,
     ParallelSComponent,
     NonOverlappingSComponent,
+    TimeTableComponent,
+    LecturerTimetableComponent,
   ],
   imports: [
     BrowserModule,

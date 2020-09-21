@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppConfig } from 'environments/environment';
+import { Lecturer } from 'app/models/lecturer.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,14 @@ import { AppConfig } from 'environments/environment';
 
 export class LecturersService {
 
+  selectedLectures:Lecturer;
+  lecturer: Lecturer[];
+
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+    this.selectedLectures = new Lecturer();
+   }
 
 
   public getLecturerId(id: string){

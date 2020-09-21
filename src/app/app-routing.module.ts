@@ -35,6 +35,8 @@ import { UnavailabilityComponent} from './components/dashboard/manager/unavailab
 import { ConsecutiveSComponent } from './components/dashboard/manager/consecutive-s/consecutive-s.component';
 import { ParallelSComponent } from './components/dashboard/manager/parallel-s/parallel-s.component';
 import { NonOverlappingSComponent } from './components/dashboard/manager/non-overlapping-s/non-overlapping-s.component';
+import { TimeTableComponent } from './components/dashboard/time-table/time-table.component';
+import { LecturerTimetableComponent } from './components/dashboard/time-table/lecturer-timetable/lecturer-timetable.component';
 
 const routes: Routes = [
   {
@@ -116,6 +118,13 @@ const routes: Routes = [
           { path: 'consecutives', component: ConsecutiveSComponent },
           { path: 'parallels', component: ParallelSComponent },
           { path: 'nonoverlappings', component: NonOverlappingSComponent }
+        ]
+      },
+      {
+        path: 'timetables',
+        component: TimeTableComponent,
+        children: [
+          { path: 'lecturer', component: LecturerTimetableComponent }
         ]
       }
     ]
