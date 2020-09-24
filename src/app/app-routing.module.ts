@@ -35,6 +35,9 @@ import { UnavailabilityComponent} from './components/dashboard/manager/unavailab
 import { ConsecutiveSComponent } from './components/dashboard/manager/consecutive-s/consecutive-s.component';
 import { ParallelSComponent } from './components/dashboard/manager/parallel-s/parallel-s.component';
 import { NonOverlappingSComponent } from './components/dashboard/manager/non-overlapping-s/non-overlapping-s.component';
+import { UBatchesComponent } from './components/dashboard/manager/unavailability/u-batches/u-batches.component';
+import { ULecturersComponent } from './components/dashboard/manager/unavailability/u-lecturers/u-lecturers.component';
+import { USessionsComponent } from './components/dashboard/manager/unavailability/u-sessions/u-sessions.component';
 
 const routes: Routes = [
   {
@@ -112,7 +115,12 @@ const routes: Routes = [
         path: 'manager',
         component: ManagerComponent,
         children: [
-          { path: 'unavailability', component: UnavailabilityComponent },
+          { path: 'unavailability', component: UnavailabilityComponent,
+            children: [
+              { path: 'lecturers', component: ULecturersComponent },
+              { path: 'batches', component: UBatchesComponent },
+              { path: 'sessions', component: USessionsComponent }
+            ] },
           { path: 'consecutives', component: ConsecutiveSComponent },
           { path: 'parallels', component: ParallelSComponent },
           { path: 'nonoverlappings', component: NonOverlappingSComponent }
