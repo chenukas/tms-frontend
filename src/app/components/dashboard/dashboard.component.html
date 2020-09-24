@@ -97,10 +97,36 @@
         </li>
         <mat-divider></mat-divider>
         <li>
-            <a href = "#managerSubmenu" data-toggle = "collapse" aria-expanded = "false" class = "dropdown-toggle">Manager</a>
+            <a href = "#sessionSubmenu" data-toggle="collapse" aria-expanded="false" class = "dropdown-toggle">Sessions</a>
+            <ul class = "collapse list-unstyled" id="sessionSubmenu">
+                <li>
+                    <a [routerLink] = "['sessions/add']">Add Sessions</a>
+                </li>
+                <li>
+                    <a [routerLink] = "['sessions/manage']">Manage Sessions</a>
+                </li>
+            </ul>
+        </li>
+        <mat-divider></mat-divider>
+        <li>
+            <a href = "#managerSubmenu" data-toggle = "collapse" aria-expanded = "false" class = "dropdown-toggle">Constraints</a>
             <ul class = "collapse list-unstyled" id = "managerSubmenu">
                 <li>
-                    <a [routerLink] = "['manager/unavailability']">Unavailability</a>
+                    <a href ="#unavailabilitySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Unavailability</a>
+                    <ul class="collapse list-unstyled" id="unavailabilitySubmenu">
+                        <li>
+                            <a [routerLink] = "['manager/unavailability/lecturers']">Lecturers</a>
+                        </li>
+                        <mat-divider></mat-divider>
+                        <li>
+                            <a [routerLink] = "['manager/unavailability/batches']">Batches</a>
+                        </li>
+                        <mat-divider></mat-divider>
+                        <li>
+                            <a [routerLink] = "['manager/unavailability/sessions']">Sessions</a>
+                        </li>
+                        <mat-divider></mat-divider>
+                    </ul>
                 </li>
                 <li>
                     <a [routerLink] = "['manager/consecutives']">Consecutive Sessions</a>
@@ -112,16 +138,19 @@
                     <a [routerLink] = "['manager/nonoverlappings']">Non-overlapping Sessions</a>
                 </li>
             </ul>
-        </li>
+        </li> 
         <mat-divider></mat-divider>
         <li>
-            <a href = "#sessionSubmenu" data-toggle="collapse" aria-expanded="false" class = "dropdown-toggle">Sessions</a>
-            <ul class = "collapse list-unstyled" id="sessionSubmenu">
+            <a href = "#generateSubmenu" data-toggle="collapse" aria-expanded="false" class = "dropdown-toggle">Generate</a>
+            <ul class = "collapse list-unstyled" id="generateSubmenu">
                 <li>
-                    <a [routerLink] = "['sessions/add']">Add Sessions</a>
+                    <a [routerLink] = "">Lecturer Timetables</a>
                 </li>
                 <li>
-                    <a [routerLink] = "['sessions/manage']">Manage Sessions</a>
+                    <a [routerLink] = "">Batch Timetables</a>
+                </li>
+                <li>
+                    <a [routerLink] = "">Location Timetables</a>
                 </li>
             </ul>
         </li>
