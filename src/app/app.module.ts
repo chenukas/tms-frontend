@@ -77,6 +77,8 @@ import { ULecturersComponent } from './components/dashboard/manager/unavailabili
 import { UBatchesComponent } from './components/dashboard/manager/unavailability/u-batches/u-batches.component';
 import { USessionsComponent } from './components/dashboard/manager/unavailability/u-sessions/u-sessions.component';
 
+
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
