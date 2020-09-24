@@ -18,10 +18,12 @@ export class AddTimeSlotsComponent implements OnInit {
     public worksService: WorksService,
   ) { }
 
-  timeSlotsTimes: string[];
+  timeSlotsStarting: string[];
+  timeSlotsEnding: string[];
 
   ngOnInit(): void {
-    this.timeSlotsTimes = new Array<string>();
+    this.timeSlotsStarting = new Array<string>();
+    this.timeSlotsEnding = new Array<string>();
 
     this.route.queryParams.subscribe(params => {
       if (params._id) {
@@ -48,7 +50,8 @@ export class AddTimeSlotsComponent implements OnInit {
       endTime: endTime
     };
     this.works.push(newTimeSlot);
-    this.timeSlotsTimes.push(startTime+" "+"-"+" "+endTime);
+    this.timeSlotsStarting.push(startTime);
+    this.timeSlotsEnding.push(endTime);
 
     this.timeSlotsService.selectedTimeSlot.startTime = null;
     this.timeSlotsService.selectedTimeSlot.endTime =  null;
@@ -62,7 +65,8 @@ export class AddTimeSlotsComponent implements OnInit {
 
   addTime(){
     //this.timeSlotsService.selectedTimeSlot.timeSlots = this.works;
-    this.timeSlotsService.selectedTimeSlot.timeSlotsTimes = this.timeSlotsTimes.toString();
+    this.timeSlotsService.selectedTimeSlot.timeSlotsStartTimes = this.timeSlotsStarting.toString();
+    this.timeSlotsService.selectedTimeSlot.timeSlotsEndTimes = this.timeSlotsEnding.toString();
     this.timeSlotsService.postTimeSlots(this.timeSlotsService.selectedTimeSlot).subscribe(response => {
       console.log(response);
     }, err => {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LecturersService } from 'app/services/lecturers.service';
+import { SessionsService } from "app/services/sessions.service";
 import { TimeSlotsService } from './../../../../services/time-slots.service';
 import { WorksService } from './../../../../services/works.service';
 import { Works } from 'app/models/works.model';
@@ -27,7 +28,8 @@ export class LecturerTimetableComponent implements OnInit {
   constructor(
     public lecturersService: LecturersService,
     public worksService: WorksService,
-    public timeSlotsService: TimeSlotsService
+    public timeSlotsService: TimeSlotsService,
+    public sessionsService: SessionsService,
   ) { }
 
   ngOnInit(): void {
@@ -52,11 +54,17 @@ export class LecturerTimetableComponent implements OnInit {
       this.working = res.data.workingDays.split(",");
     });
     this.timeSlotsService.viewTimeSlotsByTimeID(this.timeTableID).subscribe((res: { data: any }) => {
-      this.time_slots = res.data.timeSlotsTimes.split(",");
+      this.time_slots = res.data.timeSlotsStartTimes.split(",");
+      this.time_slots = res.data.timeSlotsEndTimes.split(",");
 
-      console.log(res.data.timeSlotsTimes);
-
+      console.log(res.data.timeSlotsStartTimes);
+      console.log(res.data.timeSlotsEndTimes);
     });
+
+    this.sessionsService.viewSessions().subscribe((res: APIResponse) => {
+      console.log(res.data);
+    });
+
 
   }
 

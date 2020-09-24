@@ -5,5 +5,6 @@ export class TimeSlots {
   timeTableID: string;
   startTime: string;
   endTime: string;
-  timeSlotsTimes: string;
+  timeSlotsStartTimes: string;
+  timeSlotsEndTimes: string;
 }
