@@ -41,4 +41,13 @@ export class SessionsService {
   public deleteSessionsById(id) {
     return this.http.delete(`${AppConfig.environment}/sessions/${id}`);
   }
+
+  public viewLectureSessions() {
+    return this.http.get(`${AppConfig.environment}/lsessions`);
+  }
+
+  public viewTutorialSessions() {
+    return this.http.get(`${AppConfig.environment}/tsessions`);
+  }
+
 }
