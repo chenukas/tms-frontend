@@ -1,1 +1,49 @@
-<p>u-batches works!</p>
+<h2>Unavailability of Batches</h2>
+<br>
+<div>
+    <form>
+        <div class="content">
+            <div class="form-row">
+                <div class="col-md-12 col-sm-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Batch</mat-label>
+                        <mat-select name="batches" [(ngModel)]="selectedBatch" style="color: #999;" required>
+                            <mat-option value={{batch._id}} *ngFor="let batch of batches">{{batch.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12 col-sm-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Day</mat-label>
+                        <mat-select name="day" [(ngModel)]="day" style="color: #999;" required>
+                            <mat-option value="monday">Monday</mat-option>
+                            <mat-option value="tuesday">Tuesday</mat-option>
+                            <mat-option value="wednesday">Wednesday</mat-option>
+                            <mat-option value="thursday">Thursday</mat-option>
+                            <mat-option value="friday">Friday</mat-option>
+                            <mat-option value="saturday">Saturday</mat-option>
+                            <mat-option value="sunday">Sunday</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 col-sm-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Start Time</mat-label>
+                    <input matInput type="time"  placeholder="24hr format" aria-label="24hr format" [(ngModel)]="startTime" name="startTime" required>
+                </mat-form-field>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>End Time</mat-label>
+                    <input matInput type="time" placeholder="24hr format" aria-label="24hr format" [(ngModel)]="endTime" name="endTime" required>
+                </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <button mat-raised-button color="primary" style="float: right;" (click)="save()" [disabled]="!endTime">Save</button>
+    </form>
+</div>
