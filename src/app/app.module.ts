@@ -75,6 +75,11 @@ import { ParallelSComponent } from './components/dashboard/manager/parallel-s/pa
 import { NonOverlappingSComponent } from './components/dashboard/manager/non-overlapping-s/non-overlapping-s.component';
 import { TimeTableComponent } from './components/dashboard/time-table/time-table.component';
 import { LecturerTimetableComponent } from './components/dashboard/time-table/lecturer-timetable/lecturer-timetable.component';
+import { ULecturersComponent } from './components/dashboard/manager/unavailability/u-lecturers/u-lecturers.component';
+import { UBatchesComponent } from './components/dashboard/manager/unavailability/u-batches/u-batches.component';
+import { USessionsComponent } from './components/dashboard/manager/unavailability/u-sessions/u-sessions.component';
+
+
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -139,6 +144,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     NonOverlappingSComponent,
     TimeTableComponent,
     LecturerTimetableComponent,
+    ULecturersComponent,
+    UBatchesComponent,
+    USessionsComponent,
   ],
   imports: [
     BrowserModule,
