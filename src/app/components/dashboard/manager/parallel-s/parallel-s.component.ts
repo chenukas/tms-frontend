@@ -24,11 +24,11 @@ export class ParallelSComponent implements OnInit {
 
   ngOnInit(): void {
     this.parallel = false;
-    this.viewAllFourthYearSubjects();
+    this.viewAllCanOverlappingSubjects();
   }
 
-  viewAllFourthYearSubjects() {
-    this.subjectsService.viewFourthYearSubjects().subscribe((res: APIResponse) => {
+  viewAllCanOverlappingSubjects() {
+    this.subjectsService.viewCanOverlappingSubjects().subscribe((res: APIResponse) => {
       this.dataSource = new MatTableDataSource ( res.data ); 
     })
   }
@@ -37,7 +37,7 @@ export class ParallelSComponent implements OnInit {
     this.parallel = true;
     this.subjectsService.updateSubjectParallelById(subject._id,this.parallel).subscribe(response => {
       console.log(response);
-      this.viewAllFourthYearSubjects();
+      this.viewAllCanOverlappingSubjects();
       
     }, err => {
       console.log(err.message);

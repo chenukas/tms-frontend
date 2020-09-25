@@ -40,7 +40,15 @@ export class SubjectsService {
         return this.http.put(`${AppConfig.environment}/subjects/${id}/parallel`,parallel);
       }
 
-      public viewFourthYearSubjects() {
-        return this.http.get(`${AppConfig.environment}/fsubjects`);
+      public viewCanOverlappingSubjects() {
+        return this.http.get(`${AppConfig.environment}/olsubjects`);
+      }
+
+      public updateSubjectNoolappingById(id: string, noolapping: Boolean) {
+        return this.http.put(`${AppConfig.environment}/subjects/${id}/noolapping`,noolapping);
+      }
+
+      public viewNonParallelSubjects() {
+        return this.http.get(`${AppConfig.environment}/npsubjects`);
       }
 }
