@@ -16,8 +16,8 @@
         <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Action </th>
             <td mat-cell *matCellDef="let subject">
-                <a mat-raised-button color="primary" *ngIf="subject.parallel === false"  (click) = "updateSubjectParallel(subject)">Mark as Parallel</a>
-                <a mat-raised-button color="warn" *ngIf="subject.parallel === true" disabled>Marked as Parallel</a>    
+                <a mat-raised-button color="primary" style="float: right;" *ngIf="subject.parallel === false"  (click) = "updateSubjectParallel(subject)">Mark as Parallel</a>
+                <a mat-raised-button color="warn" style="float: right;" *ngIf="subject.parallel === true" disabled>Marked as Parallel</a>    
             </td> 
         </ng-container>
 
