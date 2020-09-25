@@ -35,4 +35,12 @@ export class SubjectsService {
       public deleteSubjectById(id) {
         return this.http.delete(`${AppConfig.environment}/subjects/${id}`);
       }  
+
+      public updateSubjectParallelById(id: string, parallel: Boolean) {
+        return this.http.put(`${AppConfig.environment}/subjects/${id}/parallel`,parallel);
+      }
+
+      public viewFourthYearSubjects() {
+        return this.http.get(`${AppConfig.environment}/fsubjects`);
+      }
 }
