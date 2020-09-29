@@ -1,5 +1,5 @@
 export class Lecturer {
-    _id: string;
+  _id: string;
   empid: string;
   fname: string;
   lname: string;

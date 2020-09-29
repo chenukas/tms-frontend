@@ -40,6 +40,8 @@ import { LecturerTimetableComponent } from './components/dashboard/time-table/le
 import { UBatchesComponent } from './components/dashboard/manager/unavailability/u-batches/u-batches.component';
 import { ULecturersComponent } from './components/dashboard/manager/unavailability/u-lecturers/u-lecturers.component';
 import { USessionsComponent } from './components/dashboard/manager/unavailability/u-sessions/u-sessions.component';
+import { ClassroomTimetableComponent } from './components/dashboard/time-table/classroom-timetable/classroom-timetable.component';
+import { StudentbatchTimetableComponent } from './components/dashboard/time-table/studentbatch-timetable/studentbatch-timetable.component';
 
 const routes: Routes = [
   {
@@ -132,7 +134,9 @@ const routes: Routes = [
         path: 'timetables',
         component: TimeTableComponent,
         children: [
-          { path: 'lecturer', component: LecturerTimetableComponent }
+          { path: 'lecturer', component: LecturerTimetableComponent },
+          { path: 'classroom', component: ClassroomTimetableComponent },
+          { path: 'batch', component: StudentbatchTimetableComponent }
         ]
       }
     ]

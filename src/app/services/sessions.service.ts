@@ -1,12 +1,15 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { AppConfig } from "environments/environment";
+import { Session } from './../models/session.model';
 
 @Injectable({
   providedIn: "root",
 })
 export class SessionsService {
   constructor(private http: HttpClient) {}
+
+  session: Session[];
 
   public addSession(
     selectedLecturer,
