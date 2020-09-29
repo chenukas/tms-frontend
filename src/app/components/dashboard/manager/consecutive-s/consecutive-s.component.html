@@ -1,1 +1,29 @@
-<p>consecutive-s works!</p>
+<h2>Consecutive Sessions</h2>
+<br>
+<div>
+    <form>
+        <div class="content">
+            <div class="form-row">
+                <div class="col-md-12 col-sm-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Session 1</mat-label>
+                        <mat-select name="lsessions" [(ngModel)]="session1" style="color: #999;" required>
+                            <mat-option value={{lsession._id}} *ngFor="let lsession of lsessions">{{lsession.selectedLecturer.fname}} {{lsession.selectedLecturer.lname}} - {{lsession.selectedSubject.name}} - {{lsession.selectedSubject.code}} - {{lsession.selectedTag}} - {{lsession.selectedGroup.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12 col-sm-12">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Session 2</mat-label>
+                        <mat-select name="tsessions" [(ngModel)]="session2" style="color: #999;" required>
+                            <mat-option value={{tsession._id}} *ngFor="let tsession of tsessions">{{tsession.selectedLecturer.fname}} {{tsession.selectedLecturer.lname}} - {{tsession.selectedSubject.name}} - {{tsession.selectedSubject.code}} - {{tsession.selectedTag}} - {{tsession.selectedGroup.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <button mat-raised-button color="primary" style="float: right;" (click)="save()" [disabled]="!session2">Save</button>
+    </form>
+</div>
