@@ -18,17 +18,18 @@ export class AddTimeSlotsComponent implements OnInit {
     public worksService: WorksService,
   ) { }
 
-  timeSlotsStartTime: string[];
-  timeSlotsEndTime: string[];
+  timeSlotsStarting: string[];
+  timeSlotsEnding: string[];
 
   ngOnInit(): void {
-    this.timeSlotsStartTime = new Array<string>();
-    this.timeSlotsEndTime = new Array<string>();
+    this.timeSlotsStarting = new Array<string>();
+    this.timeSlotsEnding = new Array<string>();
 
     this.route.queryParams.subscribe(params => {
       if (params._id) {
           this.worksService.viewWorkById(params._id).subscribe((res: { data: any }) => {
-          this.timeSlotsService.selectedTimeSlot.timeTableID = params._id;
+          this.timeSlotsService.selectedTimeSlot.workID = params._id;
+          this.timeSlotsService.selectedTimeSlot.timeTableID = res.data.timeTableID;
           this.timeSlotsService.selectedTimeSlot.timeTableType = res.data.timeTableType
         });
       }
@@ -49,8 +50,8 @@ export class AddTimeSlotsComponent implements OnInit {
       endTime: endTime
     };
     this.works.push(newTimeSlot);
-    this.timeSlotsStartTime.push(startTime);
-    this.timeSlotsEndTime.push(endTime);
+    this.timeSlotsStarting.push(startTime);
+    this.timeSlotsEnding.push(endTime);
 
     this.timeSlotsService.selectedTimeSlot.startTime = null;
     this.timeSlotsService.selectedTimeSlot.endTime =  null;
@@ -64,9 +65,8 @@ export class AddTimeSlotsComponent implements OnInit {
 
   addTime(){
     //this.timeSlotsService.selectedTimeSlot.timeSlots = this.works;
-    this.timeSlotsService.selectedTimeSlot.timeSlotsStartTimes = this.timeSlotsStartTime.toString();
-    this.timeSlotsService.selectedTimeSlot.timeSlotsEndTimes = this.timeSlotsEndTime.toString();
-    console.log(this.timeSlotsService.selectedTimeSlot);
+    this.timeSlotsService.selectedTimeSlot.timeSlotsStartTimes = this.timeSlotsStarting.toString();
+    this.timeSlotsService.selectedTimeSlot.timeSlotsEndTimes = this.timeSlotsEnding.toString();
     this.timeSlotsService.postTimeSlots(this.timeSlotsService.selectedTimeSlot).subscribe(response => {
       console.log(response);
     }, err => {

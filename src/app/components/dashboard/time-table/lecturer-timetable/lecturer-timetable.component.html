@@ -1,0 +1,80 @@
+<div class="content">
+  <div class="col-sm-12">
+    <h4 class="m-3" style="color: #089be1">
+      Generate Lecturers Time Tables
+    </h4>
+
+    <div class="row">
+      <div class="col-4">
+        <mat-form-field appearance="outline" class="col-12">
+          <mat-label>Select Timetable ID</mat-label>
+          <mat-select
+            name="timetableID"
+            [(ngModel)]="this.timeTableID"
+            #timetableID="ngModel"
+          >
+            <mat-option
+              *ngFor="let obj of worksService.works"
+              value="{{ obj.timeTableID }}"
+              >{{ obj.timeTableID }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-5">
+        <mat-form-field appearance="outline" class="col-12">
+          <mat-label>Select Lecturer Name</mat-label>
+          <mat-select
+            name="lecturerName"
+            [(ngModel)]="this.lecturerName"
+            #lectureName="ngModel"
+          >
+            <mat-option
+              *ngFor="let lec of lecturersService.lecturer"
+              value="{{ lec.fname }}"
+              >{{ lec.fname }} {{ lec.lname }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <button
+          mat-flat-button
+          class="col-4"
+          (click)="searchTimetable()"
+          style="background-color: #5a59f2; margin-top: 15px"
+        >
+          SEARCH
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <table class="table table-dark">
+    <thead style="color: #2e86c1; font-weight: bold">
+      <tr>
+        <th scope="col">Timetable Type</th>
+        <th scope="col" *ngFor="let workingDays of working">
+          {{ workingDays }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let timeSlots of time_slots">
+        <td>{{ timeSlots }}</td>
+        <td *ngFor="let session of getSession">
+          {{ session.batchName }}<br />
+          {{ session.subjectCode }} - {{ session.subjectName }}<br />
+          {{ session.tagName }}<br />
+          {{ session.lectureName }}<br />
+          {{ session.classRoom }}
+        </td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

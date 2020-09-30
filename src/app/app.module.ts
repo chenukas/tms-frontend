@@ -73,9 +73,13 @@ import { UnavailabilityComponent } from './components/dashboard/manager/unavaila
 import { ConsecutiveSComponent } from './components/dashboard/manager/consecutive-s/consecutive-s.component';
 import { ParallelSComponent } from './components/dashboard/manager/parallel-s/parallel-s.component';
 import { NonOverlappingSComponent } from './components/dashboard/manager/non-overlapping-s/non-overlapping-s.component';
+import { TimeTableComponent } from './components/dashboard/time-table/time-table.component';
+import { LecturerTimetableComponent } from './components/dashboard/time-table/lecturer-timetable/lecturer-timetable.component';
 import { ULecturersComponent } from './components/dashboard/manager/unavailability/u-lecturers/u-lecturers.component';
 import { UBatchesComponent } from './components/dashboard/manager/unavailability/u-batches/u-batches.component';
 import { USessionsComponent } from './components/dashboard/manager/unavailability/u-sessions/u-sessions.component';
+import { ClassroomTimetableComponent } from './components/dashboard/time-table/classroom-timetable/classroom-timetable.component';
+import { StudentbatchTimetableComponent } from './components/dashboard/time-table/studentbatch-timetable/studentbatch-timetable.component';
 
 
 
@@ -140,9 +144,13 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ConsecutiveSComponent,
     ParallelSComponent,
     NonOverlappingSComponent,
+    TimeTableComponent,
+    LecturerTimetableComponent,
     ULecturersComponent,
     UBatchesComponent,
     USessionsComponent,
+    ClassroomTimetableComponent,
+    StudentbatchTimetableComponent,
   ],
   imports: [
     BrowserModule,

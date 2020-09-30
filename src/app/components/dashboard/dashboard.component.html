@@ -138,20 +138,20 @@
                     <a [routerLink] = "['manager/nonoverlappings']">Non-overlapping Sessions</a>
                 </li>
             </ul>
-        </li> 
+        </li>
         <mat-divider></mat-divider>
         <li>
-            <a href = "#generateSubmenu" data-toggle="collapse" aria-expanded="false" class = "dropdown-toggle">Generate</a>
-            <ul class = "collapse list-unstyled" id="generateSubmenu">
+            <a href = "#timetableSubmenu" data-toggle = "collapse" aria-expanded = "false" class = "dropdown-toggle">Generate</a>
+            <ul class = "collapse list-unstyled" id = "timetableSubmenu">
                 <li>
-                    <a [routerLink] = "">Lecturer Timetables</a>
+                    <a [routerLink] = "['timetables/lecturer']">Lecturer Timetables</a>
                 </li>
                 <li>
-                    <a [routerLink] = "">Batch Timetables</a>
-                </li>
-                <li>
-                    <a [routerLink] = "">Location Timetables</a>
-                </li>
+                  <a [routerLink] = "['timetables/batch']">Batch Timetables</a>
+              </li>
+              <li>
+                  <a [routerLink] = "['timetables/classroom']">Location Timetables</a>
+              </li>
             </ul>
         </li>
     </ul>
