@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
+import { ManageSuitableRoomsComponent } from '../../locations/rooms/manage-suitable-rooms/manage-suitable-rooms.component';
 
 interface APIResponse {
   success: boolean,
@@ -110,6 +111,17 @@ export class SubGroupsComponent implements OnInit {
       this.viewAllSubGroups();
     },err => {
       console.log(err.message);
+    });
+  }
+
+  openSuitableRoomsComponent() {
+    const ref = this.dialog.open(ManageSuitableRoomsComponent, {
+      width: '50%',
+      disableClose: true,
+      data: {
+        resource: 'subgroups',
+        id: this.id
+      }
     });
   }
 }
