@@ -6,6 +6,8 @@ import { Room } from 'app/models/room';
 import { TileStyler } from '@angular/material/grid-list/tile-styler';
 import { APIResponse } from 'app/models/apiresponse';
 import { TagsService } from 'app/services/tags.service';
+import { FormControl } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-view-room',
@@ -20,6 +22,14 @@ export class ViewRoomComponent implements OnInit {
   public tags: [];
   public roomTags = [];
   public selectedTag;
+
+  public fromControl = new FormControl();
+  public toControl = new FormControl();
+
+  public uaTimes: MatTableDataSource<{ _id: string, from: Date, to: Date }>;
+  minDate = Date.now();
+
+  displayedColumns: string[] = ['from', 'to', 'actions'];
 
 
   constructor(
@@ -49,6 +59,7 @@ export class ViewRoomComponent implements OnInit {
     this.roomService.getRoomById(this.id).subscribe((response: APIResponse) => {
       this.room = response.data as Room;
       this.roomTags = this.room.tags.map(t => t._id);
+      this.uaTimes = new MatTableDataSource<T>(this.room.unavailable);
       this.loading = false;
     });
   }
@@ -105,5 +116,20 @@ export class ViewRoomComponent implements OnInit {
     this.roomTags = this.roomTags.filter(t => t !== _id);
     this.updateRoomTags();
   }
+
+  public addUnavailableTime() {
+    console.log(this.fromControl.value);
+    console.log(this.toControl.value);
+    this.roomService.addUnavailableTimeSlot(this.room._id, this.fromControl.value, this.toControl.value)
+      .subscribe((response: APIResponse) => {
+        this.getRoomById();
+      });
+  }
+
+  public removeUnavailableTime(_id: string) {
+    this.roomService.removeUnavailableTimeSlot(this.room._id, _id).subscribe((response: APIResponse) => {
+      this.getRoomById();
+    })
+  } 
 
 }

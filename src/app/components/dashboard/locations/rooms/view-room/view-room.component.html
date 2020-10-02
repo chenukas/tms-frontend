@@ -72,7 +72,7 @@
         </div>
     </div>
 
-    <div class="row" *ngIf="Room">
+    <div class="row" *ngIf="Room" style="margin-bottom: 1.5rem;">
         <div class="col-md-8">
             <span style="margin-right: 15px;" *ngIf="Room.tags.length !== 0">Tags:</span> 
             <span class="badge badge-success" *ngFor="let tag of Room.tags" style="margin-right: 10px; font-size: 16px">
@@ -81,4 +81,74 @@
             </span>
         </div>
     </div>
+
+    <hr>
+
+    <div class="row" style="margin-bottom: 1.5rem;">
+        <div class="col-md-8">
+            <h5>Unavailable Times</h5>
+            <p><small>Add time slots which the room can not be allocated to any sessions here.</small></p>
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 1.5rem;">
+        <div class="col-md-3">
+            <mat-form-field>
+                <input matInput [ngxMatDatetimePicker]="pickerTo" placeholder="From" [formControl]="fromControl"
+                  [min]="minDate">
+                <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                <ngx-mat-datetime-picker #pickerTo>
+                </ngx-mat-datetime-picker>
+              </mat-form-field>
+        </div>
+        <div class="col-md-3">
+            <mat-form-field>
+                <input matInput [ngxMatDatetimePicker]="picker" placeholder="To" [formControl]="toControl"
+                  [min]="minDate" [disabled]="!fromControl.value">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <ngx-mat-datetime-picker #picker>
+                </ngx-mat-datetime-picker>
+              </mat-form-field>
+        </div>
+        <div class="col-md-2">
+            <button mat-flat-button color="primary" style="position: relative; bottom: -20px;" (click)="addUnavailableTime()">Add Unavailable Time Slot</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <mat-table [dataSource]="uaTimes" class="mat-elevation-z8">
+                <!-- Position Column -->
+                <ng-container matColumnDef="from">
+                  <mat-header-cell *matHeaderCellDef> From </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.from | date: 'dd/MM/yyyy HH:mm'}} </mat-cell>
+                </ng-container>
+              
+                <!-- Name Column -->
+                <ng-container matColumnDef="to">
+                  <mat-header-cell *matHeaderCellDef> To </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.to | date: 'dd/MM/yyyy HH:mm'}} </mat-cell>
+                </ng-container>
+
+                 <!-- Name Column -->
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <button mat-stroked-button color="warn" (click)="removeUnavailableTime(element._id)">Remove</button>
+                    </mat-cell>
+                </ng-container>
+            
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              </mat-table>
+
+            <div class="image-wrapper" *ngIf="uaTimes.data.length === 0">
+                <img src="../../../../../assets/images/safebox.svg" width="60px">
+                <p><small>No unavailable times found for this room!</small></p>
+            </div>
+        </div>
+    </div>
+
+
+
 </div>

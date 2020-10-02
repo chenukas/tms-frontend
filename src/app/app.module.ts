@@ -82,6 +82,7 @@ import { ClassroomTimetableComponent } from './components/dashboard/time-table/c
 import { StudentbatchTimetableComponent } from './components/dashboard/time-table/studentbatch-timetable/studentbatch-timetable.component';
 import { ManagePreferredLocationsComponent } from './components/dashboard/subjects/manage-preferred-locations/manage-preferred-locations.component';
 
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
 
 
 // AoT requires an exported function for factories
@@ -168,6 +169,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         deps: [HttpClient],
       },
     }),
+    NgxMatNativeDateModule,
+    NgxMatDatetimePickerModule, 
+    NgxMatTimepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent],
