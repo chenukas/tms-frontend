@@ -5,6 +5,7 @@ import { AlertService } from 'app/services/alert.service';
 import { Room } from 'app/models/room';
 import { TileStyler } from '@angular/material/grid-list/tile-styler';
 import { APIResponse } from 'app/models/apiresponse';
+import { TagsService } from 'app/services/tags.service';
 
 @Component({
   selector: 'app-view-room',
@@ -16,12 +17,16 @@ export class ViewRoomComponent implements OnInit {
   private id: string;
   private room: Room;
   private loading: boolean;
+  public tags: [];
+  public roomTags = [];
+  public selectedTag;
 
 
   constructor(
     private route: ActivatedRoute,
     private roomService: RoomService,
     private alertService: AlertService,
+    private tagService: TagsService,
     private router: Router
   ) { }
 
@@ -30,12 +35,20 @@ export class ViewRoomComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
       this.getRoomById();
+      this.loadAllTags();
     })
+  }
+
+  private loadAllTags() {
+    this.tagService.viewTags().subscribe((response: APIResponse) => {
+      this.tags = response.data;
+    });
   }
 
   private getRoomById() {
     this.roomService.getRoomById(this.id).subscribe((response: APIResponse) => {
       this.room = response.data as Room;
+      this.roomTags = this.room.tags.map(t => t._id);
       this.loading = false;
     });
   }
@@ -71,7 +84,27 @@ export class ViewRoomComponent implements OnInit {
           this.getRoomById();
         });
       }
-  })
+    });
+  }
+
+  public updateRoomTags() {
+    this.roomService.updateRoomTags(this.room._id, this.roomTags).subscribe((response: APIResponse) => {
+      this.getRoomById();
+    })
+  }
+
+  public addTag() {
+    if (!this.selectedTag) {
+      return;
+    }
+    console.log(this.selectedTag);
+    this.roomTags.push(this.selectedTag);
+    this.updateRoomTags();
+  }
+
+  public removeTag(_id: string) {
+    this.roomTags = this.roomTags.filter(t => t !== _id);
+    this.updateRoomTags();
   }
 
 }
