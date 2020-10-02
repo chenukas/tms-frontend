@@ -1,4 +1,4 @@
 export const AppConfig = {
   production: true,
-  environment: 'http://localhost:3000'
+  environment: 'https://tms-suhara.herokuapp.com'
 };
