@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { LecturersService } from 'app/services/lecturers.service';
 import { Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ManageSuitableRoomsComponent } from '../../locations/rooms/manage-suitable-rooms/manage-suitable-rooms.component';
 
 interface APIResponse {
   success: boolean,
@@ -29,13 +31,15 @@ export class AddLecComponent implements OnInit {
   public level: string;
   public id : string;
   public isOnUpdate : boolean;
+  private id: string;
 
   constructor( 
       private formBuilder: FormBuilder,
       private lecturersService: LecturersService,
       private snackbar: MatSnackBar,
       private route: ActivatedRoute,
-      private router: Router
+      private router: Router,
+      private dialog: MatDialog
     ) {}
 
   ngOnInit(): void {
@@ -52,6 +56,7 @@ export class AddLecComponent implements OnInit {
     
     this.route.queryParams.subscribe(params => {
       if (params.id) {
+        this.id = params.id;
         this.lecturersService.viewLecturerById(params.id).subscribe((res: {data: any}) => {
           this.id = params.id;
           this.empid = res.data.empid;
@@ -116,6 +121,17 @@ export class AddLecComponent implements OnInit {
     }, err => {
       this.snackbar.open('Unsuccessfull', null, { duration : 2000});
       console.log(err.message);
+    });
+  }
+
+  openSuitableRoomsComponent() {
+    const ref = this.dialog.open(ManageSuitableRoomsComponent, {
+      width: '50%',
+      disableClose: true,
+      data: {
+        resource: 'lecturers',
+        id: this.id
+      }
     });
   }
 }

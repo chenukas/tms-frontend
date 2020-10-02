@@ -35,7 +35,9 @@ export class ManageSuitableRoomsComponent implements OnInit {
   }
 
   private updateResource(roomIds: string[]) {
-    this.roomService.updateSuitableRoomsByResource(this.data.resource, this.data.id, roomIds)
+    this.roomService.updateSuitableRoomsByResource(this.data.resource, this.data.id, roomIds).subscribe((response: APIResponse) => {
+      this.getResourceById();
+    })
   }
 
   private getResourceById() {
@@ -46,6 +48,7 @@ export class ManageSuitableRoomsComponent implements OnInit {
   }
 
   public addSuitableRoom() {
+    console.log('suitable rooms');
     const roomIds = this.resource.suitable_rooms.map(r => r._id);
     roomIds.push(this.selectedRoomId);
     this.updateResource(roomIds);
