@@ -5,7 +5,7 @@
     </h4>
 
     <div class="row">
-      <div class="col-4">
+      <div class="col-6">
         <mat-form-field appearance="outline" class="col-12">
           <mat-label>Select Timetable ID</mat-label>
           <mat-select
@@ -22,7 +22,7 @@
         </mat-form-field>
       </div>
 
-      <div class="col-4">
+      <div class="col-6">
         <mat-form-field appearance="outline" class="col-12">
           <mat-label>Select Student Batch</mat-label>
           <mat-select
@@ -35,23 +35,6 @@
               value="{{ batch.name }}"
               >{{ batch.name }}</mat-option
             >
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-      <div class="col-4">
-        <mat-form-field appearance="outline" class="col-12">
-          <mat-label>Select Room</mat-label>
-          <mat-select
-            name="roomName"
-            [(ngModel)]="this.roomName"
-            #lectureName="ngModel"
-          >
-          <mat-option
-            *ngFor="let batch of batchesService.batch"
-            value="{{ batch.name }}"
-            >{{ batch.name }}</mat-option
-          >
           </mat-select>
         </mat-form-field>
       </div>

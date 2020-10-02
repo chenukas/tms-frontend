@@ -8,6 +8,9 @@ import { Room } from 'app/models/room';
 })
 export class RoomService {
 
+  selectedRoom:Room;
+  room : Room[];
+
   constructor(
     private http: HttpClient
   ) { }
