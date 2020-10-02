@@ -31,7 +31,6 @@ export class AddLecComponent implements OnInit {
   public level: string;
   public id : string;
   public isOnUpdate : boolean;
-  private id: string;
 
   constructor( 
       private formBuilder: FormBuilder,
