@@ -44,12 +44,12 @@
           <mat-select
             name="roomName"
             [(ngModel)]="this.roomName"
-            #lectureName="ngModel"
+            #roomNames="ngModel"
           >
-            <mat-option
-              *ngFor="let lec of lecturersService.lecturer"
-              value="{{ lec.fname }}"
-              >{{ lec.fname }} {{ lec.lname }}</mat-option
+          <mat-option
+              *ngFor="let room of roomNameArry"
+              value="{{ room }}"
+              >{{ room }}</mat-option
             >
           </mat-select>
         </mat-form-field>
