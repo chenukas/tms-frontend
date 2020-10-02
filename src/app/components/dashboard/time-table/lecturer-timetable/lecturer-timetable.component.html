@@ -22,7 +22,7 @@
         </mat-form-field>
       </div>
 
-      <div class="col-5">
+      <div class="col-4">
         <mat-form-field appearance="outline" class="col-12">
           <mat-label>Select Lecturer Name</mat-label>
           <mat-select
@@ -38,25 +38,43 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="col-3">
-        <button
-          mat-flat-button
-          class="col-4"
-          (click)="searchTimetable()"
-          style="background-color: #5a59f2; margin-top: 15px"
-        >
-          GENERATE
-        </button>
+      <div class="col-4">
+        <mat-form-field appearance="outline" class="col-12">
+          <mat-label>Select Room</mat-label>
+          <mat-select
+            name="roomName"
+            [(ngModel)]="this.roomName"
+            #lectureName="ngModel"
+          >
+            <mat-option
+              *ngFor="let lec of lecturersService.lecturer"
+              value="{{ lec.fname }}"
+              >{{ lec.fname }} {{ lec.lname }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
       </div>
-      <div>
-        <button
-          mat-flat-button
-          class="mb-3"
-          (click)="generatePdf()"
-          style="background-color: #5a59f2; margin-top: 15px; margin-left: 30px;"
-        >
-          EXPORT TO PDF
-        </button>
+      <div class="row">
+        <div class="col-6">
+          <button
+            mat-flat-button
+            class="col-6"
+            (click)="searchTimetable()"
+            style="background-color: #5a59f2; margin-left: 30px; margin-bottom: 10px;"
+          >
+            GENERATE
+          </button>
+        </div>
+        <div class="col-6">
+          <button
+            mat-flat-button
+            class="col-6"
+            (click)="generatePdf()"
+            style="background-color: #5a59f2; margin-left: 30px; margin-bottom: 10px;"
+          >
+            EXPORT TO PDF
+          </button>
+        </div>
       </div>
     </div>
   </div>

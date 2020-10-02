@@ -31,6 +31,7 @@ export class LecturerTimetableComponent implements OnInit {
   public timeTableID: string;
   public timeTableTypeID: string;
   public lecturerName: string;
+  public roomName: string;
   public working: string[];
   public tID: string;
   public start_time_slots: string[];
@@ -72,6 +73,12 @@ export class LecturerTimetableComponent implements OnInit {
   }
 
   viewTimeTableID(){
+    this.worksService.viewWorks().subscribe((res) => {
+      this.worksService.works = res as Works[];
+    });
+  }
+
+  viewGroup(){
     this.worksService.viewWorks().subscribe((res) => {
       this.worksService.works = res as Works[];
     });
@@ -188,8 +195,11 @@ export class LecturerTimetableComponent implements OnInit {
             var i = 0;
             var length = this.slotsAndSessionService.slotsAndSession.length;
 
+            var get = [];
+
             for(i=0; i<length; i++){
-              this.getSession.push(this.slotsAndSessionService.slotsAndSession[i]);
+              get.push(this.slotsAndSessionService.slotsAndSession[i]);
+              this.getSession = get;
               this.slotsAndSessionService.deleteSlotsAndSession(this.getSession[i]._id).subscribe((res)=>{
             });
             }
@@ -215,7 +225,6 @@ export class LecturerTimetableComponent implements OnInit {
     .set(options)
     .save()
 
-    console.log("hi");
   }
 
 }

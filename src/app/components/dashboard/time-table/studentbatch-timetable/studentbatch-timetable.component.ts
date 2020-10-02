@@ -35,6 +35,8 @@ export class StudentbatchTimetableComponent implements OnInit {
 
   public disable: string;
 
+  public roomName: string;
+
   public time_id: string;
   public timeTableTypeID: string;
   public working: string[];
