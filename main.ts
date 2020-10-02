@@ -20,7 +20,6 @@ function createWindow(): BrowserWindow {
       nodeIntegration: true,
       allowRunningInsecureContent: serve ? true : false,
     },
-    icon: `${__dirname}/src/assets/images/icon.ico`,
   });
 
   if (serve) {
