@@ -80,6 +80,7 @@ import { UBatchesComponent } from './components/dashboard/manager/unavailability
 import { USessionsComponent } from './components/dashboard/manager/unavailability/u-sessions/u-sessions.component';
 import { ClassroomTimetableComponent } from './components/dashboard/time-table/classroom-timetable/classroom-timetable.component';
 import { StudentbatchTimetableComponent } from './components/dashboard/time-table/studentbatch-timetable/studentbatch-timetable.component';
+import { GenerateComponent } from './components/dashboard/time-table/generate/generate.component';
 
 
 
@@ -151,6 +152,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     USessionsComponent,
     ClassroomTimetableComponent,
     StudentbatchTimetableComponent,
+    GenerateComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppConfig } from 'environments/environment';
+import { Batch } from './../models/batch.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BatchesService {
+
+  batch: Batch[];
 
   constructor(
     private http: HttpClient

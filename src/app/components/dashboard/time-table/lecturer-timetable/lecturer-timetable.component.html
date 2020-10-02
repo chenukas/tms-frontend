@@ -45,36 +45,52 @@
           (click)="searchTimetable()"
           style="background-color: #5a59f2; margin-top: 15px"
         >
-          SEARCH
+          GENERATE
+        </button>
+      </div>
+      <div>
+        <button
+          mat-flat-button
+          class="mb-3"
+          (click)="generatePdf()"
+          style="background-color: #5a59f2; margin-top: 15px; margin-left: 30px;"
+        >
+          EXPORT TO PDF
         </button>
       </div>
     </div>
   </div>
 </div>
 
-<div>
-  <table class="table table-dark">
-    <thead style="color: #2e86c1; font-weight: bold">
-      <tr>
-        <th scope="col">Timetable Type</th>
-        <th scope="col" *ngFor="let workingDays of working">
-          {{ workingDays }}
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let timeSlots of time_slots">
-        <td>{{ timeSlots }}</td>
-        <td *ngFor="let session of getSession">
-          {{ session.batchName }}<br />
-          {{ session.subjectCode }} - {{ session.subjectName }}<br />
-          {{ session.tagName }}<br />
-          {{ session.lectureName }}<br />
-          {{ session.classRoom }}
-        </td>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+<div *ngIf="this.disable == 'false'">
+  <div id="content" #content>
+    <h6 style="color: #089be1">
+      Mr.{{this.slotsAndSessionService.selectedSlotsAndSession.lectureName}}
+    </h6>
+    <table class="table table-dark">
+      <thead style="color: #fff;">
+        <tr>
+          <th scope="col">Timetable Type</th>
+          <th scope="col" *ngFor="let workingDays of working">
+            {{ workingDays }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let timeSlots of time_slots">
+          <td>{{ timeSlots }}</td>
+          <td *ngFor="let session of getSession">
+            {{ session.batchName }}<br />
+            {{ session.subjectCode }} - {{ session.subjectName }}<br />
+            {{ session.tagName }}<br />
+            {{ session.lectureName }}<br />
+            {{ session.classRoom }}
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
+

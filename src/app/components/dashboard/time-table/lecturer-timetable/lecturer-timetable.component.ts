@@ -2,7 +2,7 @@ import { SlotsAndSession } from './../../../../models/slots-and-session.model';
 import { TimeSlots } from './../../../../models/time-slots.model';
 import { Batch } from './../../../../models/batch.model';
 import { Subject } from './../../../../models/subject.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { LecturersService } from 'app/services/lecturers.service';
 import { SessionsService } from "app/services/sessions.service";
 import { TimeSlotsService } from './../../../../services/time-slots.service';
@@ -10,9 +10,10 @@ import { WorksService } from './../../../../services/works.service';
 import { Works } from 'app/models/works.model';
 import { Lecturer } from 'app/models/lecturer.model';
 import { Session } from './../../../../models/session.model';
-import { MatTableDataSource } from "@angular/material/table";
-import { MatSort } from "@angular/material/sort";
 import { SlotsAndSessionService } from './../../../../services/slots-and-session.service';
+
+import * as jsPDF from 'jspdf';
+import * as html2pdf from 'html2pdf.js';
 
 interface APIResponse {
   success : boolean,
@@ -26,16 +27,7 @@ interface APIResponse {
 })
 export class LecturerTimetableComponent implements OnInit {
 
-  displayedColumns = [
-    "times&days",
-    "monday",
-    "tuesday",
-    "wednesday",
-    "thursday",
-    "friday"
-  ];
-  dataSource: MatTableDataSource<any>;
-
+  public time_id: string;
   public timeTableID: string;
   public timeTableTypeID: string;
   public lecturerName: string;
@@ -43,6 +35,8 @@ export class LecturerTimetableComponent implements OnInit {
   public tID: string;
   public start_time_slots: string[];
   public end_time_slots: string[];
+
+  public disable: string;
 
   public time_slots: string[];
   public allSessionLec : Lecturer[];
@@ -62,6 +56,7 @@ export class LecturerTimetableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.disable = "true";
     this.time_slots = new Array<string>();
     this.timeSession = new Array<Session>();
     this.getSession = new Array<SlotsAndSession>();
@@ -83,6 +78,8 @@ export class LecturerTimetableComponent implements OnInit {
   }
 
   searchTimetable(){
+
+    this.disable = "false";
 
     this.worksService.viewWorkByTimeID(this.timeTableID).subscribe((res: { data: any }) => {
       this.working = res.data.workingDays.split(",");
@@ -107,17 +104,12 @@ export class LecturerTimetableComponent implements OnInit {
     this.sessionsService.viewSessions().subscribe((res: APIResponse) => {
       this.sessionsService.session = res.data as Session[];
 
-      //this.allSessionLec = this.sessionsService.session[0].selectedLecturer;
-
 
       length = this.sessionsService.session.length;
 
       var i = 0;
-      var selectedLecSession = [];
 
       for(i = 0; i < length; i++){
-
-        //console.log(this.sessionsService.session[i].selectedSubject);
 
         this.allSessionLec = this.sessionsService.session[i].selectedLecturer;
 
@@ -167,8 +159,8 @@ export class LecturerTimetableComponent implements OnInit {
 
           lecturerFirstName = resultLec[2];
           lecturerLastName = resultLec[3];
-          subjectName = resultSub[3];
-          subjectCode = resultSub[4];
+          subjectName = resultSub[5];
+          subjectCode = resultSub[6];
           classRoom = "A502";
           tagName = this.sessionsService.session[i].selectedTag;
           groupName = resultBatch[1];
@@ -183,34 +175,47 @@ export class LecturerTimetableComponent implements OnInit {
           this.slotsAndSessionService.selectedSlotsAndSession.tagName = tagName;
           this.slotsAndSessionService.selectedSlotsAndSession.batchName = groupName;
           this.slotsAndSessionService.selectedSlotsAndSession.classRoom = classRoom;
-          this.slotsAndSessionService.selectedSlotsAndSession.timeSlots = this.time_slots;
 
-          /*this.slotsAndSessionService.addSlotsAndSession(this.slotsAndSessionService.selectedSlotsAndSession).subscribe(response => {
+          this.slotsAndSessionService.addSlotsAndSession(this.slotsAndSessionService.selectedSlotsAndSession).subscribe(response => {
             console.log(response);
           }, err => {
             console.log(err.message);
-          });*/
+          });
 
+          this.slotsAndSessionService.viewSlotsAndSession().subscribe((res) => {
+            this.slotsAndSessionService.slotsAndSession = res as SlotsAndSession[];
+
+            var i = 0;
+            var length = this.slotsAndSessionService.slotsAndSession.length;
+
+            for(i=0; i<length; i++){
+              this.getSession.push(this.slotsAndSessionService.slotsAndSession[i]);
+              this.slotsAndSessionService.deleteSlotsAndSession(this.getSession[i]._id).subscribe((res)=>{
+            });
+            }
+          });
         }
       }
-      this.getSlotsAndSession();
-      console.log(this.getSession);
     });
   }
 
-  getSlotsAndSession(){
-    this.slotsAndSessionService.viewSlotsAndSession().subscribe((res) => {
-      this.slotsAndSessionService.slotsAndSession = res as SlotsAndSession[];
+  generatePdf(){
 
-      var i = 0;
-      var length = this.slotsAndSessionService.slotsAndSession.length;
-      for(i=0; i<length; i++){
-        this.getSession.push(this.slotsAndSessionService.slotsAndSession[i]);
-      }
+    const options = {
+      filename: this.slotsAndSessionService.selectedSlotsAndSession.lectureName+' Timetable.pdf',
+      image: { type: 'jpeg'},
+      html2canvas : {},
+      jsPDF : {orientation:'portrait'}
+    }
 
-      this.dataSource = new MatTableDataSource(this.getSession);
+    const content: Element = document.getElementById('content');
 
-    });
+    html2pdf()
+    .from(content)
+    .set(options)
+    .save()
+
+    console.log("hi");
   }
 
 }
