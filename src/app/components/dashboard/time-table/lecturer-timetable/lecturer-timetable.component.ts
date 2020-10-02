@@ -210,14 +210,17 @@ export class LecturerTimetableComponent implements OnInit {
           this.slotsAndSessionService.viewSlotsAndSession().subscribe((res) => {
             this.slotsAndSessionService.slotsAndSession = res as SlotsAndSession[];
 
+            console.log("fi");
             var i = 0;
             var length = this.slotsAndSessionService.slotsAndSession.length;
 
             var get = [];
 
             for(i=0; i<length; i++){
-              get.push(this.slotsAndSessionService.slotsAndSession[i]);
-              this.getSession = get;
+              this.getSession.push(this.slotsAndSessionService.slotsAndSession[i]);
+              console.log(this.getSession[i]);
+
+
               this.slotsAndSessionService.deleteSlotsAndSession(this.getSession[i]._id).subscribe((res)=>{
             });
             }
