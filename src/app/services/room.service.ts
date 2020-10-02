@@ -39,4 +39,12 @@ export class RoomService {
     return this.http.put(`${AppConfig.environment}/rooms/${roomId}/tags`, { tags });
   }
 
+  public addUnavailableTimeSlot(roomId: string, from, to) {
+    return this.http.post(`${AppConfig.environment}/rooms/${roomId}/unavailable`, { from, to });
+  }
+
+  public removeUnavailableTimeSlot(roomId: string, _id: string) {
+    return this.http.delete(`${AppConfig.environment}/rooms/${roomId}/unavailable/${_id}`);
+  }
+
 }
