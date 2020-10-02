@@ -51,4 +51,8 @@ export class SubjectsService {
       public viewNonParallelSubjects() {
         return this.http.get(`${AppConfig.environment}/npsubjects`);
       }
+
+      public updatePreferredRooms(subjectId: string, preferred_rooms: {room: string, tag: string}[]) {
+        return this.http.put(`${AppConfig.environment}/subjects/${subjectId}/preferred_rooms`, { preferred_rooms });
+      }
 }
