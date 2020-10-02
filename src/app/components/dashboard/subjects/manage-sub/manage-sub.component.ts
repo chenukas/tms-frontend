@@ -36,7 +36,7 @@ export class ManageSubComponent implements OnInit {
     private subjectsService: SubjectsService,
     private router: Router,
     private snackBar: MatSnackBar,
-    private dialog: MatDialog
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -67,4 +67,6 @@ export class ManageSubComponent implements OnInit {
       console.log(err.message);
     });
   }
+
+  
 }

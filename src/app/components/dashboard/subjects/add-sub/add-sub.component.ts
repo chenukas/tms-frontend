@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { SubjectsService } from 'app/services/subjects.service';
 import { Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ManagePreferredLocationsComponent } from '../manage-preferred-locations/manage-preferred-locations.component';
 
 interface APIResponse {
   success: boolean,
@@ -28,12 +30,14 @@ export class AddSubComponent implements OnInit {
   public id : string;
   public isOnUpdate : boolean;
 
+  private subjectId: string;
   constructor(
     private formBuilder: FormBuilder,
     private subjectsService: SubjectsService,
     private snackBar: MatSnackBar,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +53,8 @@ export class AddSubComponent implements OnInit {
 
     this.route.queryParams.subscribe(params => {
       if (params.id) {
+        this.subjectId = params.id;
+        this.isOnUpdate = true;
         this.subjectsService.viewSubjectById(params.id).subscribe((res: {data: any}) => {
           this.id = params.id;
           this.year = res.data.year;
@@ -111,5 +117,16 @@ export class AddSubComponent implements OnInit {
       console.log(err.message);
     });
   }
+
+  openPreferredLocationsModal() {
+    const ref = this.dialog.open(ManagePreferredLocationsComponent, {
+      width: '50%',
+      disableClose: true,
+      data: {
+        subjectId: this.subjectId
+      }
+    });
+  }
+
 }
 
