@@ -182,11 +182,11 @@ export class LecturerTimetableComponent implements OnInit {
             this.allSessionBatch.hasOwnProperty(x) && resultBatch.push(this.allSessionBatch[x]);
           }
 
-          lecturerFirstName = resultLec[3];
-          lecturerLastName = resultLec[4];
+          lecturerFirstName = resultLecturer[3];
+          lecturerLastName = resultLecturer[4];
           subjectName = resultSub[5];
           subjectCode = resultSub[6];
-          classRoom = this.roomName;
+          classRoom = "A501";
           tagName = this.sessionsService.session[i].selectedTag;
           groupName = resultBatch[1];
           studentCount = this.sessionsService.session[i].studentCount;

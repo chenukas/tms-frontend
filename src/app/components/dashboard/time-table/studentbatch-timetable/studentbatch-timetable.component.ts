@@ -160,8 +160,6 @@ export class StudentbatchTimetableComponent implements OnInit {
           this.allSessionBatch.hasOwnProperty(x) && resultBatch.push(this.allSessionBatch[x]);
         }
 
-        //console.log(resultBatch[1])
-
         if(this.studentbatch === resultBatch[1]){
 
           this.allLecturerSession = this.sessionsService.session[i].selectedLecturer;
@@ -185,7 +183,7 @@ export class StudentbatchTimetableComponent implements OnInit {
           lecturerLastName = resultLecturer[4];
           subjectName = resultSub[5];
           subjectCode = resultSub[6];
-          classRoom = this.roomName;
+          classRoom = "A502";
           tagName = this.sessionsService.session[i].selectedTag;
           groupName = resultBatch[1];
           studentCount = this.sessionsService.session[i].studentCount;
@@ -217,8 +215,6 @@ export class StudentbatchTimetableComponent implements OnInit {
   }
 
   getSlotsAndSession(){
-
-    console.log("hi");
 
     this.slotsAndSessionService.viewSlotsAndSession().subscribe((res) => {
       this.slotsAndSessionService.slotsAndSession = res as SlotsAndSession[];

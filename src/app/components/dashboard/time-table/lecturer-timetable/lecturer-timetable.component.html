@@ -5,7 +5,7 @@
     </h4>
 
     <div class="row">
-      <div class="col-4">
+      <div class="col-6">
         <mat-form-field appearance="outline" class="col-12">
           <mat-label>Select Timetable ID</mat-label>
           <mat-select
@@ -22,7 +22,7 @@
         </mat-form-field>
       </div>
 
-      <div class="col-4">
+      <div class="col-6">
         <mat-form-field appearance="outline" class="col-12">
           <mat-label>Select Lecturer Name</mat-label>
           <mat-select
@@ -34,22 +34,6 @@
               *ngFor="let lec of lecturersService.lecturer"
               value="{{ lec.fname }}"
               >{{ lec.fname }} {{ lec.lname }}</mat-option
-            >
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="col-4">
-        <mat-form-field appearance="outline" class="col-12">
-          <mat-label>Select Room</mat-label>
-          <mat-select
-            name="roomName"
-            [(ngModel)]="this.roomName"
-            #roomNames="ngModel"
-          >
-          <mat-option
-              *ngFor="let room of roomNameArry"
-              value="{{ room }}"
-              >{{ room }}</mat-option
             >
           </mat-select>
         </mat-form-field>
@@ -83,7 +67,7 @@
 <div *ngIf="this.disable == 'false'">
   <div id="content" #content>
     <h6 style="color: #089be1">
-      Mr.{{this.slotsAndSessionService.selectedSlotsAndSession.lectureName}}
+      Mr/Mrs.{{this.slotsAndSessionService.selectedSlotsAndSession.lectureName}}
     </h6>
     <table class="table table-dark">
       <thead style="color: #fff;">
