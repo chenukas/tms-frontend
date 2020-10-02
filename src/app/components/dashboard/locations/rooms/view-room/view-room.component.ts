@@ -97,7 +97,6 @@ export class ViewRoomComponent implements OnInit {
     if (!this.selectedTag) {
       return;
     }
-    console.log(this.selectedTag);
     this.roomTags.push(this.selectedTag);
     this.updateRoomTags();
   }
