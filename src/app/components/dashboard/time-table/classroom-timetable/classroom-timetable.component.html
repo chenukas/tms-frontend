@@ -64,3 +64,35 @@
     </div>
   </div>
 </div>
+
+<div *ngIf="this.disable == 'false'">
+  <div id="content" #content>
+    <h6 style="color: #089be1">
+      {{roomName}}
+    </h6>
+    <table class="table table-dark">
+      <thead style="color: #fff;">
+        <tr>
+          <th scope="col">  </th>
+          <th scope="col" *ngFor="let workingDays of working">
+            {{ workingDays }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let timeSlots of time_slots">
+          <td>{{ timeSlots }}</td>
+          <td *ngFor="let session of getSession">
+            {{ session.batchName }}<br />
+            {{ session.subjectCode }} - {{ session.subjectName }}<br />
+            {{ session.tagName }}<br />
+            {{ session.lectureName }}<br />
+            {{ session.classRoom }}
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
