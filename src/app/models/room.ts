@@ -7,4 +7,5 @@ export class Room extends BaseEntity {
   room_type: ROOM_TYPE;
   building: Building;
   tags;
+  unavailable;
 }

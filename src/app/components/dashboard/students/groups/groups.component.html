@@ -12,6 +12,7 @@
                 </div>
             </div>
         </div>
+        <button mat-flat-button color="primary" style="float: right; margin-left: 10px;" *ngIf="isOnUpdate" (click)="openSuitableRoomsComponent()">Manage Suitable Rooms</button>
         <button mat-raised-button color="primary" style="float: right;" (click)="createGroup()" *ngIf="!isOnUpdate" [disabled]="!name">Save</button>
         <button mat-raised-button color="primary" style="float: right;" (click)="updateGroup()" *ngIf="isOnUpdate" [disabled]="!name">Update</button>
     </form>

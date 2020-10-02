@@ -39,4 +39,20 @@ export class RoomService {
     return this.http.put(`${AppConfig.environment}/rooms/${roomId}/tags`, { tags });
   }
 
+  public addUnavailableTimeSlot(roomId: string, from, to) {
+    return this.http.post(`${AppConfig.environment}/rooms/${roomId}/unavailable`, { from, to });
+  }
+
+  public removeUnavailableTimeSlot(roomId: string, _id: string) {
+    return this.http.delete(`${AppConfig.environment}/rooms/${roomId}/unavailable/${_id}`);
+  }
+
+  public getSuitableRoomsByResource(resource: string, id: string) {
+    return this.http.get(`${AppConfig.environment}/${resource}/${id}`);
+  }
+
+  public updateSuitableRoomsByResource(resource: string, id: string,  suitable_rooms: string[]) {
+    return this.http.put(`${AppConfig.environment}/${resource}/${id}/suitable_rooms`, { suitable_rooms });
+  }
+
 }

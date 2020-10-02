@@ -1,10 +1,19 @@
-<h2>ADD SUBJECTS</h2>
-<br>
+<div class="row">
+    <div class="col-md-12">
+        <h2>{{ isOnUpdate ? 'UPDATE' : 'ADD'}} SUBJECTS</h2>
+    </div>
+</div>
+
 <div>
-    <form>
+    <div class="row">
         <div class = "col-md-6">
             <h4 style="padding-bottom: 20px;"> Details of Subjects </h4>
         </div>
+        <div class="col-md-6">
+            <button mat-flat-button color="primary" style="float: right;" *ngIf="isOnUpdate" (click)="openPreferredLocationsModal()">Manage Preferred Rooms</button>
+        </div>
+    </div>
+    <form>
         <div class="content">
             <div class="form-row">
                 <div class="col-md-6 col-sm-12">
