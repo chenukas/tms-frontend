@@ -14,6 +14,8 @@ import { MatTableDataSource } from "@angular/material/table";
 import { MatSort } from "@angular/material/sort";
 import { SlotsAndSessionService } from './../../../../services/slots-and-session.service';
 import { BatchesService } from 'app/services/batches.service';
+import { RoomService } from './../../../../services/room.service';
+import { Room } from 'app/models/room';
 
 import * as jsPDF from 'jspdf';
 import * as html2pdf from 'html2pdf.js';
@@ -37,6 +39,8 @@ export class StudentbatchTimetableComponent implements OnInit {
 
   public roomName: string;
 
+  public roomNameArry: string[];
+
   public time_id: string;
   public timeTableTypeID: string;
   public working: string[];
@@ -58,17 +62,20 @@ export class StudentbatchTimetableComponent implements OnInit {
     public worksService: WorksService,
     public timeSlotsService: TimeSlotsService,
     public sessionsService: SessionsService,
-    public slotsAndSessionService: SlotsAndSessionService
+    public slotsAndSessionService: SlotsAndSessionService,
+    public roomService: RoomService
   ) { }
 
   ngOnInit(): void {
     this.disable = "true";
     this.viewAllBatches();
     this.viewTimeTableID();
+    this.viewGroup();
 
     this.time_slots = new Array<string>();
     this.timeSession = new Array<Session>();
     this.getSession = new Array<SlotsAndSession>();
+    this.roomNameArry = new Array<string>();
   }
 
   viewAllBatches() {
@@ -80,6 +87,19 @@ export class StudentbatchTimetableComponent implements OnInit {
   viewTimeTableID(){
     this.worksService.viewWorks().subscribe((res) => {
       this.worksService.works = res as Works[];
+    });
+  }
+
+  viewGroup(){
+    this.roomService.getAllRooms().subscribe((res : APIResponse) => {
+      this.roomService.room = res.data as Room[];
+      console.log(this.roomService.room.length);
+
+      var len = this.roomService.room.length
+      var i = 0;
+      for(i = 0; i < len; i++){
+        this.roomNameArry.push(this.roomService.room[i].room_name);
+      }
     });
   }
 
@@ -161,11 +181,11 @@ export class StudentbatchTimetableComponent implements OnInit {
             this.allSessionBatch.hasOwnProperty(x) && resultBatch.push(this.allSessionBatch[x]);
           }
 
-          lecturerFirstName = resultLecturer[2];
-          lecturerLastName = resultLecturer[3];
+          lecturerFirstName = resultLecturer[3];
+          lecturerLastName = resultLecturer[4];
           subjectName = resultSub[5];
           subjectCode = resultSub[6];
-          classRoom = "A502";
+          classRoom = this.roomName;
           tagName = this.sessionsService.session[i].selectedTag;
           groupName = resultBatch[1];
           studentCount = this.sessionsService.session[i].studentCount;

@@ -30,11 +30,11 @@
             [(ngModel)]="this.roomName"
             #timetableID="ngModel"
           >
-            <mat-option
-              *ngFor="let obj of worksService.works"
-              value="{{ obj.timeTableID }}"
-              >{{ obj.timeTableID }}</mat-option
-            >
+          <mat-option
+            *ngFor="let room of roomNameArry"
+            value="{{ room }}"
+            >{{ room }}</mat-option
+          >
           </mat-select>
         </mat-form-field>
       </div>
