@@ -191,9 +191,6 @@ export class StudentbatchTimetableComponent implements OnInit {
 
           lecFullName = lecturerFirstName + " " + lecturerLastName;
 
-          console.log(resultLec[2]);
-          console.log(resultLec[3]);
-
           this.slotsAndSessionService.selectedSlotsAndSession.lectureName = lecFullName;
           this.slotsAndSessionService.selectedSlotsAndSession.subjectName = subjectName;
           this.slotsAndSessionService.selectedSlotsAndSession.subjectCode = subjectCode;
@@ -207,7 +204,19 @@ export class StudentbatchTimetableComponent implements OnInit {
             console.log(err.message);
           });
 
-          this.getSlotsAndSession();
+          this.slotsAndSessionService.viewSlotsAndSession().subscribe((res) => {
+            this.slotsAndSessionService.slotsAndSession = res as SlotsAndSession[];
+
+            var i = 0;
+            var length = this.slotsAndSessionService.slotsAndSession.length;
+            for(i=0; i<length; i++){
+              this.getSession.push(this.slotsAndSessionService.slotsAndSession[i]);
+              console.log(this.getSession[i]);
+
+              this.slotsAndSessionService.deleteSlotsAndSession(this.getSession[i]._id).subscribe((res)=>{
+              });
+            }
+          });
 
         }
       }
@@ -216,19 +225,7 @@ export class StudentbatchTimetableComponent implements OnInit {
 
   getSlotsAndSession(){
 
-    this.slotsAndSessionService.viewSlotsAndSession().subscribe((res) => {
-      this.slotsAndSessionService.slotsAndSession = res as SlotsAndSession[];
 
-      var i = 0;
-      var length = this.slotsAndSessionService.slotsAndSession.length;
-      for(i=0; i<length; i++){
-        this.getSession.push(this.slotsAndSessionService.slotsAndSession[i]);
-        console.log(this.getSession[i]._id);
-
-        this.slotsAndSessionService.deleteSlotsAndSession(this.getSession[0]._id).subscribe((res)=>{
-        });
-      }
-    });
   }
   generatePdf(){
 
