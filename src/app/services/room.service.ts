@@ -32,4 +32,8 @@ export class RoomService {
     return this.http.delete(`${AppConfig.environment}/rooms/${id}`);
   }
 
+  public updateRoomTags(roomId: string, tags: string[]) {
+    return this.http.put(`${AppConfig.environment}/rooms/${roomId}/tags`, { tags });
+  }
+
 }
