@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="row" style="margin-bottom: 1.5rem;">
+        <div class="col-md-12">
+            <h2>Manage Suitable Rooms</h2>
+            <p><small>Add/Remove suitable rooms for {{data.resource}}.</small></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Rooms</mat-label>
+                    <mat-select [(ngModel)]="selectedRoomId">
+                        <mat-option *ngFor="let room of rooms" 
+                            [value]="room._id">
+                            {{room.room_name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+              </p>
+        </div>
+
+        <div class="col-md-4">
+            <button mat-flat-button color="primary" style="float: right;" (click)="addSuitableRoom()" [disabled]="!selectedRoomId">Add Suitable Room</button>
+        </div>
+    </div>
+
+
+    <div>
+        <table mat-table [dataSource] = "suitable_rooms" matSort class="mat-elevation-z8" style="margin-bottom: 1.5rem;">
+    
+            <ng-container matColumnDef="room">
+                <th mat-header-cell *matHeaderCellDef> Room</th>
+                <td mat-cell *matCellDef = "let item"> {{item.room_name}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Actions </th>
+                <td mat-cell *matCellDef="let item">
+                    <a mat-stroked-button style="color: red;" (click) = "removeSuitableRoom(item._id)">Delete</a>    
+                </td> 
+            </ng-container>
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <button mat-flat-button style="float: right; margin-left: 10px;" (click)="closeDialog()">Close</button>
+        </div>
+    </div>
+
+</div>

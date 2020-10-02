@@ -83,6 +83,7 @@ import { StudentbatchTimetableComponent } from './components/dashboard/time-tabl
 import { ManagePreferredLocationsComponent } from './components/dashboard/subjects/manage-preferred-locations/manage-preferred-locations.component';
 
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
+import { ManageSuitableRoomsComponent } from './components/dashboard/locations/rooms/manage-suitable-rooms/manage-suitable-rooms.component';
 
 
 // AoT requires an exported function for factories
@@ -154,6 +155,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ClassroomTimetableComponent,
     StudentbatchTimetableComponent,
     ManagePreferredLocationsComponent,
+    ManageSuitableRoomsComponent,
   ],
   imports: [
     BrowserModule,

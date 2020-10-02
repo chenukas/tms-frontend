@@ -59,7 +59,7 @@ export class ViewRoomComponent implements OnInit {
     this.roomService.getRoomById(this.id).subscribe((response: APIResponse) => {
       this.room = response.data as Room;
       this.roomTags = this.room.tags.map(t => t._id);
-      this.uaTimes = new MatTableDataSource<T>(this.room.unavailable);
+      this.uaTimes = new MatTableDataSource<{ _id: string, from: Date, to: Date }>(this.room.unavailable);
       this.loading = false;
     });
   }
