@@ -42,4 +42,43 @@
             <div class="form-field-ghost" *ngIf="isLoading"></div>
         </div>
     </div>
+    <hr>
+    <div class="row" style="margin-bottom: 1.5rem;">
+        <div class="col-md-8">
+            <h5>Tags</h5>
+            <p><small>Use tags to describe the types of sessions that can be allocated to this room</small></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <mat-form-field appearance="fill">
+                <mat-label>Select tag</mat-label>
+                <mat-select [(ngModel)]="selectedTag">
+                    <mat-option *ngFor="let tag of tags" [value]="tag._id">{{tag.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-2">
+            <button mat-flat-button color="primary" style="position: relative; bottom: -20px;" (click)="addTag()">Add Tag</button>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="Room">
+        <div class="col-md-8" *ngIf="Room.tags.length === 0">
+            <div class="image-wrapper">
+                <img src="../../../../../../assets/images/safebox.svg" width="60px" alt="">
+                <p><small>No tags attached to this room!</small></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="Room">
+        <div class="col-md-8">
+            <span style="margin-right: 15px;" *ngIf="Room.tags.length !== 0">Tags:</span> 
+            <span class="badge badge-success" *ngFor="let tag of Room.tags" style="margin-right: 10px; font-size: 16px">
+                {{tag.name}} 
+                <a class="remove-icon" [href]="" (click)="removeTag(tag._id)">x</a>
+            </span>
+        </div>
+    </div>
 </div>
