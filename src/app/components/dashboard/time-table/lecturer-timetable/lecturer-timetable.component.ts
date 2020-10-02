@@ -8,12 +8,15 @@ import { SessionsService } from "app/services/sessions.service";
 import { TimeSlotsService } from './../../../../services/time-slots.service';
 import { WorksService } from './../../../../services/works.service';
 import { Works } from 'app/models/works.model';
+import { Room } from 'app/models/room';
 import { Lecturer } from 'app/models/lecturer.model';
 import { Session } from './../../../../models/session.model';
 import { SlotsAndSessionService } from './../../../../services/slots-and-session.service';
+import { RoomService } from './../../../../services/room.service';
 
 import * as jsPDF from 'jspdf';
 import * as html2pdf from 'html2pdf.js';
+
 
 interface APIResponse {
   success : boolean,
@@ -48,22 +51,27 @@ export class LecturerTimetableComponent implements OnInit {
   public getSession: SlotsAndSession[];
   public timeSession: Session[];
 
+  public roomNameArry: string[];
+
   constructor(
     public lecturersService: LecturersService,
     public worksService: WorksService,
     public timeSlotsService: TimeSlotsService,
     public sessionsService: SessionsService,
-    public slotsAndSessionService: SlotsAndSessionService
+    public slotsAndSessionService: SlotsAndSessionService,
+    public roomService: RoomService
   ) { }
 
   ngOnInit(): void {
     this.disable = "true";
     this.time_slots = new Array<string>();
     this.timeSession = new Array<Session>();
+    this.roomNameArry = new Array<string>();
     this.getSession = new Array<SlotsAndSession>();
 
     this.viewAllLecturers();
     this.viewTimeTableID();
+    this.viewGroup();
   }
 
   viewAllLecturers() {
@@ -79,8 +87,15 @@ export class LecturerTimetableComponent implements OnInit {
   }
 
   viewGroup(){
-    this.worksService.viewWorks().subscribe((res) => {
-      this.worksService.works = res as Works[];
+    this.roomService.getAllRooms().subscribe((res : APIResponse) => {
+      this.roomService.room = res.data as Room[];
+      console.log(this.roomService.room.length);
+
+      var len = this.roomService.room.length
+      var i = 0;
+      for(i = 0; i < len; i++){
+        this.roomNameArry.push(this.roomService.room[i].room_name);
+      }
     });
   }
 
@@ -111,6 +126,7 @@ export class LecturerTimetableComponent implements OnInit {
     this.sessionsService.viewSessions().subscribe((res: APIResponse) => {
       this.sessionsService.session = res.data as Session[];
 
+      console.log(this.sessionsService.session);
 
       length = this.sessionsService.session.length;
 
@@ -119,6 +135,8 @@ export class LecturerTimetableComponent implements OnInit {
       for(i = 0; i < length; i++){
 
         this.allSessionLec = this.sessionsService.session[i].selectedLecturer;
+
+        console.log(this.allSessionLec);
 
         var resultLec = [];
         var resultLecturer = [];
@@ -144,7 +162,7 @@ export class LecturerTimetableComponent implements OnInit {
         }
 
 
-        if(this.lecturerName === resultLec[2]){
+        if(this.lecturerName === resultLec[3]){
 
           this.allLecturerSession = this.sessionsService.session[i].selectedLecturer;
           this.allSessionSub = this.sessionsService.session[i].selectedSubject;
@@ -164,11 +182,11 @@ export class LecturerTimetableComponent implements OnInit {
             this.allSessionBatch.hasOwnProperty(x) && resultBatch.push(this.allSessionBatch[x]);
           }
 
-          lecturerFirstName = resultLec[2];
-          lecturerLastName = resultLec[3];
+          lecturerFirstName = resultLec[3];
+          lecturerLastName = resultLec[4];
           subjectName = resultSub[5];
           subjectCode = resultSub[6];
-          classRoom = "A502";
+          classRoom = this.roomName;
           tagName = this.sessionsService.session[i].selectedTag;
           groupName = resultBatch[1];
           studentCount = this.sessionsService.session[i].studentCount;

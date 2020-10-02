@@ -8,6 +8,9 @@ import { Room } from 'app/models/room';
 })
 export class RoomService {
 
+  selectedRoom:Room;
+  room : Room[];
+
   constructor(
     private http: HttpClient
   ) { }
@@ -30,6 +33,10 @@ export class RoomService {
 
   public deleteRoom(id: string) {
     return this.http.delete(`${AppConfig.environment}/rooms/${id}`);
+  }
+
+  public updateRoomTags(roomId: string, tags: string[]) {
+    return this.http.put(`${AppConfig.environment}/rooms/${roomId}/tags`, { tags });
   }
 
 }
