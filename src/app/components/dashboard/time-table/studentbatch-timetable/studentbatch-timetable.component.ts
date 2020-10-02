@@ -1,37 +1,36 @@
-import { SlotsAndSession } from './../../../../models/slots-and-session.model';
-import { TimeSlots } from './../../../../models/time-slots.model';
-import { Batch } from './../../../../models/batch.model';
-import { Subject } from './../../../../models/subject.model';
-import { Component, OnInit } from '@angular/core';
-import { LecturersService } from 'app/services/lecturers.service';
+import { SlotsAndSession } from "./../../../../models/slots-and-session.model";
+import { TimeSlots } from "./../../../../models/time-slots.model";
+import { Batch } from "./../../../../models/batch.model";
+import { Subject } from "./../../../../models/subject.model";
+import { Component, OnInit } from "@angular/core";
+import { LecturersService } from "app/services/lecturers.service";
 import { SessionsService } from "app/services/sessions.service";
-import { TimeSlotsService } from './../../../../services/time-slots.service';
-import { WorksService } from './../../../../services/works.service';
-import { Works } from 'app/models/works.model';
-import { Lecturer } from 'app/models/lecturer.model';
-import { Session } from './../../../../models/session.model';
+import { TimeSlotsService } from "./../../../../services/time-slots.service";
+import { WorksService } from "./../../../../services/works.service";
+import { Works } from "app/models/works.model";
+import { Lecturer } from "app/models/lecturer.model";
+import { Session } from "./../../../../models/session.model";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatSort } from "@angular/material/sort";
-import { SlotsAndSessionService } from './../../../../services/slots-and-session.service';
-import { BatchesService } from 'app/services/batches.service';
-import { RoomService } from './../../../../services/room.service';
-import { Room } from 'app/models/room';
+import { SlotsAndSessionService } from "./../../../../services/slots-and-session.service";
+import { BatchesService } from "app/services/batches.service";
+import { RoomService } from "./../../../../services/room.service";
+import { Room } from "app/models/room";
 
-import * as jsPDF from 'jspdf';
-import * as html2pdf from 'html2pdf.js';
+import * as jsPDF from "jspdf";
+import * as html2pdf from "html2pdf.js";
 
 interface APIResponse {
-  success : boolean,
-  data : any
+  success: boolean;
+  data: any;
 }
 
 @Component({
-  selector: 'app-studentbatch-timetable',
-  templateUrl: './studentbatch-timetable.component.html',
-  styleUrls: ['./studentbatch-timetable.component.scss']
+  selector: "app-studentbatch-timetable",
+  templateUrl: "./studentbatch-timetable.component.html",
+  styleUrls: ["./studentbatch-timetable.component.scss"],
 })
 export class StudentbatchTimetableComponent implements OnInit {
-
   public timeTableID: string;
   public studentbatch: string;
 
@@ -49,10 +48,10 @@ export class StudentbatchTimetableComponent implements OnInit {
   public end_time_slots: string[];
 
   public time_slots: string[];
-  public allSessionLec : Lecturer[];
-  public allLecturerSession : Lecturer[];
-  public allSessionSub : Subject[];
-  public allSessionBatch : Batch[];
+  public allSessionLec: Lecturer[];
+  public allLecturerSession: Lecturer[];
+  public allSessionSub: Subject[];
+  public allSessionBatch: Batch[];
 
   public getSession: SlotsAndSession[];
   public timeSession: Session[];
@@ -64,7 +63,7 @@ export class StudentbatchTimetableComponent implements OnInit {
     public sessionsService: SessionsService,
     public slotsAndSessionService: SlotsAndSessionService,
     public roomService: RoomService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.disable = "true";
@@ -79,52 +78,55 @@ export class StudentbatchTimetableComponent implements OnInit {
   }
 
   viewAllBatches() {
-    this.batchesService.viewBatches().subscribe((res : APIResponse) => {
+    this.batchesService.viewBatches().subscribe((res: APIResponse) => {
       this.batchesService.batch = res.data as Batch[];
-    })
+    });
   }
 
-  viewTimeTableID(){
+  viewTimeTableID() {
     this.worksService.viewWorks().subscribe((res) => {
       this.worksService.works = res as Works[];
     });
   }
 
-  viewGroup(){
-    this.roomService.getAllRooms().subscribe((res : APIResponse) => {
+  viewGroup() {
+    this.roomService.getAllRooms().subscribe((res: APIResponse) => {
       this.roomService.room = res.data as Room[];
       console.log(this.roomService.room.length);
 
-      var len = this.roomService.room.length
+      var len = this.roomService.room.length;
       var i = 0;
-      for(i = 0; i < len; i++){
+      for (i = 0; i < len; i++) {
         this.roomNameArry.push(this.roomService.room[i].room_name);
       }
     });
   }
 
-  searchTimetable(){
-
+  searchTimetable() {
     this.disable = "false";
 
-    this.worksService.viewWorkByTimeID(this.timeTableID).subscribe((res: { data: any }) => {
-      this.working = res.data.workingDays.split(",");
-    });
+    this.worksService
+      .viewWorkByTimeID(this.timeTableID)
+      .subscribe((res: { data: any }) => {
+        this.working = res.data.workingDays.split(",");
+      });
 
-    this.timeSlotsService.viewTimeSlotsByTimeID(this.timeTableID).subscribe((res: { data: any }) => {
-      this.start_time_slots = res.data.timeSlotsStartTimes.split(",");
-      this.end_time_slots = res.data.timeSlotsEndTimes.split(",");
+    this.timeSlotsService
+      .viewTimeSlotsByTimeID(this.timeTableID)
+      .subscribe((res: { data: any }) => {
+        this.start_time_slots = res.data.timeSlotsStartTimes.split(",");
+        this.end_time_slots = res.data.timeSlotsEndTimes.split(",");
 
-      var i = 0;
+        var i = 0;
 
-      for(i = 0; i < this.start_time_slots.length; i++){
-        var start = this.start_time_slots[i];
-        var end = this.end_time_slots[i];
+        for (i = 0; i < this.start_time_slots.length; i++) {
+          var start = this.start_time_slots[i];
+          var end = this.end_time_slots[i];
 
-        var fullSlots = start+"-"+end;
-        this.time_slots.push(fullSlots);
-      }
-    });
+          var fullSlots = start + "-" + end;
+          this.time_slots.push(fullSlots);
+        }
+      });
 
     this.sessionsService.viewSessions().subscribe((res: APIResponse) => {
       this.sessionsService.session = res.data as Session[];
@@ -135,8 +137,7 @@ export class StudentbatchTimetableComponent implements OnInit {
 
       var i = 0;
 
-      for(i = 0; i < length; i++){
-
+      for (i = 0; i < length; i++) {
         this.allSessionBatch = this.sessionsService.session[i].selectedGroup;
 
         var resultLec = [];
@@ -156,34 +157,39 @@ export class StudentbatchTimetableComponent implements OnInit {
 
         var lecFullName: string;
 
-        for (var x in this.allSessionBatch){
-          this.allSessionBatch.hasOwnProperty(x) && resultBatch.push(this.allSessionBatch[x]);
+        for (var x in this.allSessionBatch) {
+          this.allSessionBatch.hasOwnProperty(x) &&
+            resultBatch.push(this.allSessionBatch[x]);
         }
 
-        if(this.studentbatch === resultBatch[1]){
-
-          this.allLecturerSession = this.sessionsService.session[i].selectedLecturer;
+        if (this.studentbatch === resultBatch[1]) {
+          this.allLecturerSession = this.sessionsService.session[
+            i
+          ].selectedLecturer;
           this.allSessionSub = this.sessionsService.session[i].selectedSubject;
           this.allSessionBatch = this.sessionsService.session[i].selectedGroup;
 
           console.log(this.allSessionSub);
           console.log(this.allSessionBatch);
 
-          for (var x in this.allLecturerSession){
-            this.allLecturerSession.hasOwnProperty(x) && resultLecturer.push(this.allLecturerSession[x]);
+          for (var x in this.allLecturerSession) {
+            this.allLecturerSession.hasOwnProperty(x) &&
+              resultLecturer.push(this.allLecturerSession[x]);
           }
-          for (var x in this.allSessionSub){
-            this.allSessionSub.hasOwnProperty(x) && resultSub.push(this.allSessionSub[x]);
+          for (var x in this.allSessionSub) {
+            this.allSessionSub.hasOwnProperty(x) &&
+              resultSub.push(this.allSessionSub[x]);
           }
-          for (var x in this.allSessionBatch){
-            this.allSessionBatch.hasOwnProperty(x) && resultBatch.push(this.allSessionBatch[x]);
+          for (var x in this.allSessionBatch) {
+            this.allSessionBatch.hasOwnProperty(x) &&
+              resultBatch.push(this.allSessionBatch[x]);
           }
 
           lecturerFirstName = resultLecturer[3];
           lecturerLastName = resultLecturer[4];
           subjectName = resultSub[5];
           subjectCode = resultSub[6];
-          classRoom = "A502";
+          classRoom = "A501";
           tagName = this.sessionsService.session[i].selectedTag;
           groupName = resultBatch[1];
           studentCount = this.sessionsService.session[i].studentCount;
@@ -198,50 +204,54 @@ export class StudentbatchTimetableComponent implements OnInit {
           this.slotsAndSessionService.selectedSlotsAndSession.batchName = groupName;
           this.slotsAndSessionService.selectedSlotsAndSession.classRoom = classRoom;
 
-          this.slotsAndSessionService.addSlotsAndSession(this.slotsAndSessionService.selectedSlotsAndSession).subscribe(response => {
-            console.log(response);
-          }, err => {
-            console.log(err.message);
-          });
+          this.slotsAndSessionService
+            .addSlotsAndSession(
+              this.slotsAndSessionService.selectedSlotsAndSession
+            )
+            .subscribe(
+              (response) => {
+                console.log(response);
+              },
+              (err) => {
+                console.log(err.message);
+              }
+            );
 
           this.slotsAndSessionService.viewSlotsAndSession().subscribe((res) => {
             this.slotsAndSessionService.slotsAndSession = res as SlotsAndSession[];
 
             var i = 0;
             var length = this.slotsAndSessionService.slotsAndSession.length;
-            for(i=0; i<length; i++){
-              this.getSession.push(this.slotsAndSessionService.slotsAndSession[i]);
+            for (i = 0; i < length; i++) {
+              this.getSession.push(
+                this.slotsAndSessionService.slotsAndSession[i]
+              );
               console.log(this.getSession[i]);
 
-              this.slotsAndSessionService.deleteSlotsAndSession(this.getSession[i]._id).subscribe((res)=>{
-              });
+              this.slotsAndSessionService
+                .deleteSlotsAndSession(this.getSession[i]._id)
+                .subscribe((res) => {});
             }
           });
-
         }
       }
     });
   }
 
-  getSlotsAndSession(){
-
-
-  }
-  generatePdf(){
-
+  getSlotsAndSession() {}
+  generatePdf() {
     const options = {
-      filename: this.slotsAndSessionService.selectedSlotsAndSession.batchName+' Timetable.pdf',
-      image: { type: 'jpeg'},
-      html2canvas : {},
-      jsPDF : {orientation:'portrait'}
-    }
+      filename:
+        this.slotsAndSessionService.selectedSlotsAndSession.batchName +
+        " Timetable.pdf",
+      image: { type: "jpeg" },
+      html2canvas: {},
+      jsPDF: { orientation: "portrait" },
+    };
 
-    const content: Element = document.getElementById('content');
+    const content: Element = document.getElementById("content");
 
-    html2pdf()
-    .from(content)
-    .set(options)
-    .save()
+    html2pdf().from(content).set(options).save();
 
     console.log("hi");
   }

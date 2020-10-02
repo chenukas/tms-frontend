@@ -1,7 +1,6 @@
 {
-  "name": "tms-frontend",
+  "name": "time-table-manager",
   "version": "1.0.0",
-  "description": "Timetable Management System with Angular 10 with Electron (Typescript + SASS + Hot Reload)",
   "author": {
     "name": "2020-JUN-WD-01"
   },
